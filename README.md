@@ -54,14 +54,31 @@ Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
 
 ### Projeto: Criando uma Pokédex usando a PokéAPI
 
-A [PokéAPI](https://pokeapi.co/) é uma API aberta, sem necessidade de  disponibiliza uma API REST com, entre outras coisas, informações de todos os Pokémons até a geração 7. Seu objetivo, neste projeto, é criar uma Pokédex em Angular usando a PokéAPI.
+Pokémon é uma enorme franquia com jogos, desenhos, filmes, brinquedos e diversos produtos mundialmente conhecidos. Da [Wikipédia](https://pt.wikipedia.org/wiki/Pokémon_(série_de_jogos_eletrônicos)):
+
+> Pokémon é uma série de jogos eletrônicos desenvolvidos pela Game Freak e publicados pela Nintendo como parte da franquia de mídia Pokémon. Lançado pela primeira vez em 1996 no Japão para o console Game Boy, a principal série de jogos de RPGs, que continuou em cada geração em portáteis da Nintendo.
+> 
+> Os jogos são geralmente lançados em pares - cada um com pequenas variações - com uma recriação aprimorado dos usados jogos lançados em alguns anos depois das versões originais. Enquanto a série principal consiste em RPGs, os spin-off abrangem outros gêneros, como RPG de ação, quebra-cabeça e jogos virtuais para animais de estimação.
+> 
+> A partir de 24 de novembro de 2017, mais de 300 milhões de jogos de Pokémon foram vendidos em todo o mundo, em 76 títulos. Isso faz de Pokémon a segunda franquia de jogos eletrônicos mais vendidas, atrás da própria franquia da Nintendo Mario.
+
+Em 2016, a Nintendo lançou o jogo Pokémon Go, para Android e iOS, que permitia aos jogadores "caçar" Pokémons no "mundo real" através de realidade aumentada, utilizando o GPS e a câmera dos celulares dos jogadores. Seus monstrinhos capturados ficavam listados na chamada Pokédex, um acervo de Pokémons que já existia desde o primeiro jogo.
+
+Seu objetivo, neste projeto, é criar uma Pokédex em Angular usando a PokéAPI.
+
+A [PokéAPI](https://pokeapi.co/) é uma API aberta, sem necessidade de  disponibiliza uma API REST com, entre outras coisas, informações de todos os Pokémons até a geração 7. Você pode consultar a documentação da API [aqui](https://pokeapi.co/docs/v2).
 
 Você é livre para montar a aplicação como quiser, mas gostaríamos de ver a listagem de todos o Pokémons, com informações básicas, em uma página inicial e detalhes do Pokémon selecionado em outra página. Como referência de layout, recomendamos que utilize as seguintes Pokédex como exemplo:
+
 - [Pokédex oficial](https://www.pokemon.com/br/pokedex/)
+
+(link: [https://www.pokemon.com/br/pokedex/](https://www.pokemon.com/br/pokedex/))
 
 ![Pokédex oficial](pokemon.com.png)
 
 - [Pokedex.org](https://pokedex.org/)
+
+(link: [https://pokedex.org/](https://pokedex.org/))
 
 ![Podedex.org](pokedex.org.png)
 
@@ -82,5 +99,7 @@ Ganhe pontos extras por:
 - Testes unitários e end to end;
 - Scripts de deploy;
 - Organização e mensagens dos commits.
+
+E não se esqueça, bugs e exceções são como Pokémons: *Gotta catch 'em all!*
 
 **Boa sorte! =)**
