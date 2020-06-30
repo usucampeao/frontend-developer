@@ -28,7 +28,7 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 ### Instruções:
 
 1. Faça um fork deste repositório;
-1. Responda as questões no README.md;
+1. Responda as questões no README.md - caso prefira, podemos conversar sobre elas na entrevista;
 1. Construa uma aplicação conforme solicitado, utilizando HTML, CSS e Angular;
 1. Adicione quaisquer informações adicionais para executar sua aplicação no README.md;
 1. Após terminar, submeta um pull request e aguarde seu feedback.
@@ -40,21 +40,17 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 1. O que são ``components`` e ``directives`` e quais as difenças entre eles? Dê alguns exemplos de utilização.
 2. O que são ``services``? Dê alguns exemplos de utilização.
 3. O que são ``pipes``? Dê alguns exemplos de utilização.
-4. Como se adiciona um *listener* de eventos do usuário em um componente? Por exemplo, como adicionar uma função que responde a um clique de usuário?
-5. O que é ``data-binding`` e quais os tipos que o Angular dá suporte?
+4. O que é ``data-binding`` e quais os tipos que o Angular dá suporte?
+5. Como se adiciona um *listener* de eventos do usuário em um componente? Por exemplo, como adicionar uma função que responde a um clique de usuário?
 6. Quais as diferenças entre ``constructor`` e ``ngOnInit``, e quando devemos usar cada um?
 7. Quais as diferenças entre ``Observables`` e ``Promises``? Como você o utilizaria cada um em um ``template``?
 8. Quais as diferenças entre ``template-driven forms`` e ``reactive forms``? Como fazer validação de dados de formulário em cada caso?
-9. O que é ``ViewEncapsulation``?
-10. O que é ``ng-content`` e como utilizá-lo?
-11. Como se utiliza o ``angular router``? Quais são as formas de enviar parâmetros para uma rota?
-12. O que são *guards de rota* e para que são úteis?
-13. O que é *lazy loading* e como utilizá-lo?
-14. O que são as anotações **@Input** e **@Output**? Como são utilizadas?
-15. O que é ``NgZone``? Em que momento deve ser utilizada?
-16. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
-17. Quais as diferenças entre **AOT** e **JIT** na compilação de uma aplicação Angular?
-18. E, a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
+9.  Como se utiliza o ``angular router``? Quais são as formas de enviar parâmetros para uma rota?
+10.  O que são *guards de rota* e para que são úteis?
+11. O que é ``NgZone``? Em que momento deve ser utilizada?
+12. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
+
+Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
 
 ### Projeto: Criando uma Pokédex usando a PokéAPI
 
