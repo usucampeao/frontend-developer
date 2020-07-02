@@ -84,11 +84,10 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadjQueryScripts()
+    this.loadjQueryScripts();
   }
 
   testinho(){
     console.log('nada por aqui ainda');
   }
-  
 }

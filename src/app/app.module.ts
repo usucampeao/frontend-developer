@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome/';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
+import { PokemonComponent } from './components/pokedex/pokemon/pokemon.component';
 
 
 
@@ -29,7 +30,8 @@ import { PokedexComponent } from './components/pokedex/pokedex.component';
     MenuComponent,
     HomeComponent,
     FooterComponent,
-    PokedexComponent
+    PokedexComponent,
+    PokemonComponent
   ],
   imports: [
     BrowserModule,
