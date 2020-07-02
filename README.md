@@ -2,7 +2,7 @@
 
 # MATINHODÉX - Uma PokeDéx em Angular PWA! 
 
-1. Desenvolvido para processo retorno de processo seletivo para a empresa USUCAMPEÃO.
+1. Desenvolvido para retorno de processo seletivo para a empresa USUCAMPEÃO.
 1. Não contavam com meu amor eterno por pokémons. ~~e com a minha astúcia!~~
 
 
