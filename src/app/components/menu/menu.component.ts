@@ -51,8 +51,9 @@ export class MenuComponent implements OnInit {
           open();
         }
       });
+
       content.click(() => {
-        if (content.hasClass('open')) {
+        if (content.hasClass('open') && clickevent === 'touchstart') {
           close();
         }
       });

@@ -26,14 +26,7 @@ export class PokedexComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    this.pokemonService.getTest().subscribe((res) => {
-      const list: any[] = [];
-
-      list.push(res.results);
-      this.lstPokemon = list[0];
-      console.log(this.lstPokemon);
-
-    });
+    this.pokemonService.getAllPokemons();
 
 
     this.filteredOptions = this.myControl.valueChanges
