@@ -1,4 +1,4 @@
-![MatinhoDex](matinhuDexLogo.png)
+![MatinhoDex](matinhudexLogo.png)
 
 # MATINHODÉX - Uma PokeDéx em Angular PWA! 
 
