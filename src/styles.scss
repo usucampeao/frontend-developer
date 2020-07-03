@@ -75,7 +75,7 @@ $demiDarkin: #1d1c1c;
 .main-content {
   font-family: $font;
   color: #9aa6af;
-  text-rendering: optimizelegibility;
+  text-rendering: optimizeLegibility;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: none;
@@ -94,13 +94,13 @@ a {
 }
 
 .container {
-  overflow: hidden;
-
+  // overflow: hidden;
   /*  Impede que trema aleatóriamente [não é bug, é feature]  */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
+  width: 100%;
 }
 
 .menu {
@@ -263,7 +263,10 @@ nav li a {
   display: block;
 }
 nav li a:hover {
-  color: #af1c41;
+  color: $demiBlue;
+}
+nav li a:active {
+  color: $demiNiPurple
 }
 
 // hamburginho virando x 
@@ -295,17 +298,13 @@ nav li a:hover {
 }
 .body-section {
   padding: 40px;
+  padding-top: 80px; // mudar depois do breadcrumb
   margin-left: 35px;
   margin-right: 40px;
-  height: auto;
-  min-height: 60%;
+  min-height: 800px;
   background-color: $demiDark;
   box-shadow: 0px -5px 5px 1px rgba(0, 0, 0, 0.61);
   padding-bottom: 2%;
-
-  display: flex;
-  justify-content: center;
-  align-content: center;
   background: $demiDark;
 //   background: linear-gradient(90deg, $demiDarkin 0%,$demiNiPurple 50%, $demiDarkin 100%); // keepinho
 }
@@ -332,7 +331,7 @@ nav li a:hover {
   line-height: 50px;
 }
 .body-section .placefiller {
-  line-height: 200px;
+  line-height: 30px;
 }
 .footer-section .placefiller {
   border: 0px;
@@ -369,6 +368,7 @@ nav li a:hover {
 .contatinho{
     padding-left: 23rem; 
 }
+
 
 //  Poké Styles [arrumando pra web]
 .pokeball {
@@ -500,6 +500,42 @@ nav li a:hover {
   }
 
 
+
+  /*------scroll bar---------------------*/
+  
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: $darkWine;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $darkWine;
+}
+::-webkit-scrollbar-thumb:active {
+  background: $darkWine;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
 
 
 

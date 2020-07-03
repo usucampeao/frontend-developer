@@ -21,7 +21,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome/';
 import { PokedexComponent } from './components/pokedex/pokedex.component';
 import { PokemonComponent } from './components/pokedex/pokemon/pokemon.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -46,7 +48,10 @@ import { PokemonComponent } from './components/pokedex/pokemon/pokemon.component
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
+    MatGridListModule,
     ReactiveFormsModule,
+    MatTableModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     FontAwesomeModule

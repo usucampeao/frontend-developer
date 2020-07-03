@@ -7,13 +7,17 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PokemonService {
-
   pokemons: Pokemon[] = new Array<Pokemon>(20);
-  listaPoke = new Subject<Pokemon[]>();
+  listaPokeAtt = new Subject<Pokemon[]>();
+  contadorResponse = 0; // api só deixa 20
+
   constructor(private http: HttpClient) {
-    // this.getAllpokemons();
+    this.getAllPokemons();
   }
 
+  getTest() {
+    return this.http.get<any>('https://pokeapi.co/api/v2/pokemon');
+  }
 
   getAllPokemons() {
     this.http
@@ -25,8 +29,24 @@ export class PokemonService {
       }>('https://pokeapi.co/api/v2/pokemon')
       .subscribe((response) => {
         const pokemons: { name: string; url: string }[] = response.results;
-        console.log(pokemons); // dale i7 16GB RAM
+        for (const pokemon of pokemons) {
+          this.getPokemon(pokemon.url);
+        }
       });
   }
 
+  getPokemon(url: string) {
+    this.http.get<{ name: string; id: string }>(url).subscribe((response) => {
+      this.pokemons[+response.id - 1] = new Pokemon(
+        response.name,
+        response.id,
+        response['sprites']['front_default']
+      );
+      this.contadorResponse++;
+      if (this.contadorResponse === 20) {
+        this.contadorResponse = 0;
+        this.listaPokeAtt.next(this.pokemons);
+      }
+    });
+  }
 }
