@@ -24,6 +24,7 @@ import { PokemonComponent } from './components/pokedex/pokemon/pokemon.component
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatTooltipModule,
     MatGridListModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     MatTableModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
