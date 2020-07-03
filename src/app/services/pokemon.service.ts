@@ -12,25 +12,23 @@ export class PokemonService {
   contadorResponse = 0; // api só deixa 20
 
   constructor(private http: HttpClient) {
-    this.getAllPokemons();
+    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon');
   }
 
   getTest() {
     return this.http.get<any>('https://pokeapi.co/api/v2/pokemon');
   }
 
-  getAllPokemons() {
-    this.http
-      .get<{
-        count: string;
-        next: string;
-        previous: string;
-        results: { name: string; url: string }[];
-      }>('https://pokeapi.co/api/v2/pokemon')
-      .subscribe((response) => {
-        const pokemons: { name: string; url: string }[] = response.results;
+  getAllPokemons(url) {
+    this.http.get<{ count: string, next: string, previous: string, results: { name: string, url: string }[] }>
+    (url).subscribe(
+      (response) => {
+        const pokemons: { name: string, url: string }[] = response.results;
         for (const pokemon of pokemons) {
           this.getPokemon(pokemon.url);
+        }
+        if (response.next != null) {
+          this.getAllPokemons(response.next); // pegando próxima lista;
         }
       });
   }
