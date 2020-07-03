@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/Pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { FormControl } from '@angular/forms';
@@ -11,11 +11,13 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss'],
 })
-export class PokedexComponent implements OnInit {
+export class PokedexComponent implements OnInit, OnDestroy {
   pokemons: Pokemon[] = [];
   lstPokemon = [];
+  pokemonsCarregados: number;
 
-
+  pokemonListSubscription;
+  nrPokesCarregados;
 
   displayedColumns: string[] = ['id', 'name', 'sprite'];
   dataSource = new MatTableDataSource();
@@ -25,15 +27,23 @@ export class PokedexComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(private pokemonService: PokemonService) {
-
-  }
+  constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
-    this.pokemonService.listaPokeAtt.subscribe((pokes) => {
-      this.pokemons = pokes;
-      this.dataSource = new MatTableDataSource(this.pokemons);
-      console.log(this.pokemons);
-    });
-
+    this.pokemonListSubscription = this.pokemonService.listaPokeAtt.subscribe(
+      (response) => {
+        this.pokemons = response;
+        this.dataSource = new MatTableDataSource(this.pokemons);
+        console.log(this.pokemons);
+      }
+    );
+    this.nrPokesCarregados = this.pokemonService.novosPokesCarregados.subscribe(
+      (response) => {
+        this.pokemonsCarregados = response;
+        console.log(this.pokemonsCarregados);
+      }
+    );
+  }
+  ngOnDestroy(): void {
+    this.pokemonListSubscription.unsubscribe();
   }
 }

@@ -541,6 +541,12 @@ nav li a:active {
 
 @media only screen and (max-width: 823px){
 
+  table {
+    width: 50%;
+  }
+  table img {
+    max-height: 50px;
+  }
     nav li .contatinho{
         // padding-left: 8rem !important; 
         position: fixed !important;

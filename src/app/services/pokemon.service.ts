@@ -7,33 +7,43 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PokemonService {
-  pokemons: Pokemon[] = new Array<Pokemon>(20);
+  pokemons: Pokemon[] = new Array<Pokemon>(100);
   listaPokeAtt = new Subject<Pokemon[]>();
-  contadorResponse = 0; // api só deixa 20
+  contadorResponse = 0;
+  totalCarregado = 0;
+  novosPokesCarregados = new Subject<number>();
+  contadorTotal = 0;
 
   constructor(private http: HttpClient) {
-    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon');
+    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100?');
   }
 
   getTest() {
     return this.http.get<any>('https://pokeapi.co/api/v2/pokemon');
   }
 
-  getAllPokemons(url) {
-    this.http.get<{ count: string, next: string, previous: string, results: { name: string, url: string }[] }>
-    (url).subscribe(
-      (response) => {
-        const pokemons: { name: string, url: string }[] = response.results;
+  getAllPokemons(url: string) {
+    this.http
+      .get<{
+        count: string;
+        next: string;
+        previous: string;
+        results: { name: string; url: string }[];
+      }>(url)
+      .subscribe((response) => {
+        const pokemons: { name: string; url: string }[] = response.results;
         for (const pokemon of pokemons) {
-          this.getPokemon(pokemon.url);
-        }
-        if (response.next != null) {
-          this.getAllPokemons(response.next); // pegando próxima lista;
+          if (pokemon.url === 'https://pokeapi.co/api/v2/pokemon/807/') {
+            this.getPokemon(pokemon.url, null);
+            return;
+          } else {
+            this.getPokemon(pokemon.url, response.next);
+          }
         }
       });
   }
 
-  getPokemon(url: string) {
+  getPokemon(url: string, proximosPokes) {
     this.http.get<{ name: string; id: string }>(url).subscribe((response) => {
       this.pokemons[+response.id - 1] = new Pokemon(
         response.name,
@@ -41,9 +51,20 @@ export class PokemonService {
         response['sprites']['front_default']
       );
       this.contadorResponse++;
-      if (this.contadorResponse === 20) {
+      this.contadorTotal++;
+      console.log(this.contadorTotal);
+      if (this.contadorTotal === 807) {
+        return;
+      }
+      if (this.contadorResponse === 100) {
+        this.totalCarregado = this.totalCarregado + 100;
+        this.novosPokesCarregados.next(this.totalCarregado);
         this.contadorResponse = 0;
+
         this.listaPokeAtt.next(this.pokemons);
+        if (proximosPokes != null) {
+          this.getAllPokemons(proximosPokes);
+        }
       }
     });
   }
