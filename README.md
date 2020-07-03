@@ -37,7 +37,7 @@ O projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) V
 
 ## Servidor de desenvolvimento
 
-Execute  `ng serve` para rodar a aplicação em um servidor de desenvolvimento. Por padrão navegue até  `http://localhost:4200/`. A aplicação irá recarregar automaticamente se qualquer mudança nos arquivos de recursos forem feitas.
+Execute  `ng serve` para rodar a aplicação em um servidor de desenvolvimento. Por padrão navegue até  `http://localhost:4200/`. A aplicação irá recarregar automaticamente assim que uma mudança nos arquivos de recursos for feita.
 
 ## Build
 
