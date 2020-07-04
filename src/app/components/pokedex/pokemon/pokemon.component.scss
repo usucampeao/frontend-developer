@@ -1,18 +1,56 @@
+@import "../../../../assets/scss/modules/variables";
+
 .poke-card {
-  max-width: 228px;
-  min-width: 228px;
-  img {
-    max-height: 96px;
-    max-width: 96px;
-    margin-left: 40px;
-  }
+  max-width: 223px;
+  min-width: 223px;
+  max-height: 200px;
   margin: 1px;
   display: inline-block;
+  cursor: pointer;
+  .poke-img {
+    max-height: 96px;
+    max-width: 96px;
+    margin: 64px; // tem uns grandões hein.
+    margin-bottom: 0px;
+    position: relative;
+  }
+}
+.poke-card:hover {
+  background-color: #faf3;
+}
+.poke-card-content {
+  text-align: center;
+}
+.poke-card-header {
+  max-height: 30px;
+  justify-content: space-between;
+}
+.poke-card-types {
+  position: absolute;
+  margin-left: 5px;
 }
 
 .card-header-icon {
   background-image: url("../../../../assets/icons/pokes/openBall.png");
   background-size: cover;
+  box-shadow: 0 0 10px $demiRed;
+  margin: 0 !important;
+}
+
+.id {
+  color: blanchedalmond;
+  -webkit-text-shadow: 0px 4px 4px $demiDark;
+  -moz-text-shadow: 0px 4px 4px $demiDark;
+  text-shadow: 0px 4px 4px $demiDark;
+  -webkit-background-clip: text !important;
+  text-align: center;
+  text-align: -webkit-center;
+  margin-top: 2rem;
+  font: {
+    size: 18px;
+    family: $mainP !important;
+    weight: $black !important;
+  }
 }
 
 // @media only screen and (max-width: 823px) {

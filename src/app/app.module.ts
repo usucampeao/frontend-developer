@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatCardModule } from '@angular/material/card';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     FontAwesomeModule,
     DeviceDetectorModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],

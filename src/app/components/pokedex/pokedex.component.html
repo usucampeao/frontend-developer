@@ -1,6 +1,6 @@
 <!-- <button mat-raised-button (click)="testinho()">Teste</button> -->
+<!-- <img src="../../../assets/icons/fas/pokeball.svg" height="45px" width="45px"> -->
+<hr />
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#f3497c" type = "square-jelly-box" [fullScreen] = "true"><h3 class="textinho blue">Capturando pokémons...</h3></ngx-spinner>
 
-
-
-
-<app-pokemon *ngFor="let pokemon of pokemons; let i = index;" [pokemon]="pokemon"></app-pokemon>
+<app-pokemon *ngFor="let pokemon of pokemons; let i = index" [pokemon]="pokemon"></app-pokemon>

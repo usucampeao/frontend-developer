@@ -1,37 +1,7 @@
 @import "@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import "assets/scss/modules/_fonts.scss";
 @import "@fortawesome/fontawesome-free/css/all.css";
-
-/*--------------------*/
-// Font face
-$mainP: Poppins;
-$subR: Roboto;
-
-// Font-weight
-$thin: 100;
-$light: 300;
-$regular: 400;
-$bold: 700;
-$black: 900;
-
-// Font size
-$f-xs: 12px !important;
-$f-sm: 14px !important;
-$f-md: 18px !important;
-$f-lg: 30px !important;
-
-// Main colors
-$demiRed: #f52357;
-$demiYellow: #faf38e;
-$darkWine: #911131;
-$darkinWine: #921d3a;
-$demiPink: #f3497c;
-$demiBlue: #38daf0;
-$demiNiPurple: #602cda;
-$demiPurple: #812399;
-$demiDark: #303030;
-$demiDarkin: #1d1c1c;
-/*--------------------*/
+@import "assets/scss/modules/variables";
 
 html,
 body {
@@ -62,6 +32,23 @@ body {
     to right,
     $demiYellow 0%,
     $demiRed 100%
+  ) !important;
+  background-clip: text;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font: {
+    family: $mainP !important;
+    weight: $black !important;
+  }
+}
+
+.textinho.blue {
+  max-width: fit-content;
+  text-transform: uppercase !important;
+  background: linear-gradient(
+    to right,
+    $demiBlue 0%,
+    #0C69C8 100%
   ) !important;
   background-clip: text;
   -webkit-background-clip: text !important;
@@ -870,6 +857,7 @@ nav li a:active {
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     z-index: 1;
+    text-align: center;
   }
 
   /*Content slide*/
@@ -1078,3 +1066,117 @@ table {
 }
 
 /* @fim */
+
+
+
+// ícones de tipo
+.icon {
+  border-radius: 100%;
+  height:30px;
+  width: 30px;
+  margin:auto;
+  margin-right: 5px;
+  transition: 200ms all;
+}
+
+.icon:hover{
+  filter: saturate(200%);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.icon img {
+  height: 60%;
+  width: 60%;
+  margin: 20%;
+}
+
+.bug {
+  background: #92BC2C;
+  box-shadow: 0 0 20px #92BC2C;
+}
+
+.dark {
+  background: #595761;
+  box-shadow: 0 0 20px #595761;
+}
+
+.dragon {
+  background: #0C69C8;
+  box-shadow: 0 0 20px #0C69C8;
+}
+
+.electric {
+  background: #F2D94E;
+  box-shadow: 0 0 20px #F2D94E;
+}
+
+.fire {
+  background: #FBA54C;
+  box-shadow: 0 0 20px #FBA54C;
+}
+
+.fairy {
+  background: #EE90E6;
+  box-shadow: 0 0 20px #EE90E6;
+}
+
+.fighting {
+  background: #D3425F;
+  box-shadow: 0 0 20px #D3425F;
+}
+
+.flying {
+  background: #A1BBEC;
+  box-shadow: 0 0 20px #A1BBEC;
+}
+
+.ghost {
+  background: #5F6DBC;
+  box-shadow: 0 0 20px #5F6DBC;
+}
+
+.grass {
+  background: #5FBD58;
+  box-shadow: 0 0 20px #5FBD58;
+}
+
+.ground {
+  background: #DA7C4D;
+  box-shadow: 0 0 20px #DA7C4D;
+}
+
+.ice {
+  background: #75D0C1;
+  box-shadow: 0 0 20px #75D0C1;
+}
+
+.normal {
+  background: #A0A29F;
+  box-shadow: 0 0 20px #A0A29F;
+}
+
+.poison {
+  background: #B763CF;
+  box-shadow: 0 0 20px #B763CF;
+}
+
+.psychic {
+  background: #FA8581;
+  box-shadow: 0 0 20px #FA8581;
+}
+
+.rock {
+  background: #C9BB8A;
+  box-shadow: 0 0 20px #C9BB8A;
+}
+
+.steel {
+  background: #5695A3;
+  box-shadow: 0 0 20px #5695A3;
+}
+
+.water {
+  background: #539DDF;
+  box-shadow: 0 0 20px #539DDF;
+}

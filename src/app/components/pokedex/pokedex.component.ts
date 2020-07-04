@@ -23,8 +23,9 @@ export class PokedexComponent implements OnInit, OnDestroy {
 
   displayedColumns: string[] = ['id', 'name', 'sprite'];
 
-
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService
+  ) {}
   ngOnInit(): void {
     this.pokemonListSubscription = this.pokemonService.listaPokeAtt.subscribe(
       (response) => {
@@ -49,10 +50,8 @@ export class PokedexComponent implements OnInit, OnDestroy {
     this.pokemonListSubscription.unsubscribe();
   }
 
-
-
-  testinho(){
-    console.log('PokemonService.Pokemons: ',this.pokemonService.pokemons);
+  testinho() {
+    console.log('PokemonService.Pokemons: ', this.pokemonService.pokemons);
     console.log('Pokemons', this.pokemons);
     // console.log('',this.pokemonService.pokemons);
   }
