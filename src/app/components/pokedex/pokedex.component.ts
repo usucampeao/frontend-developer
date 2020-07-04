@@ -13,30 +13,29 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./pokedex.component.scss'],
 })
 export class PokedexComponent implements OnInit, OnDestroy {
-  pokemons: Pokemon[] = [];
-  lstPokemon = [];
-  pokemonsCarregados: number;
-
-  pokemonListSubscription;
-  nrPokesCarregados;
-
-  displayedColumns: string[] = ['id', 'name', 'sprite'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataSource = new MatTableDataSource();
 
+  pokemons: Pokemon[] = [];
+  nrPokesCarregados: number;
+  pokemonListSubscription;
+  nrPokesCarregadosSub;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  displayedColumns: string[] = ['id', 'name', 'sprite'];
+
+
   constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
     this.pokemonListSubscription = this.pokemonService.listaPokeAtt.subscribe(
       (response) => {
-        this.pokemons = response;
+        this.pokemons = response.slice(0, this.nrPokesCarregados);
         this.dataSource = new MatTableDataSource(this.pokemons);
         this.dataSource.paginator = this.paginator;
       }
     );
-    this.nrPokesCarregados = this.pokemonService.novosPokesCarregados.subscribe(
+    this.nrPokesCarregadosSub = this.pokemonService.novosPokesCarregados.subscribe(
       (response) => {
-        this.pokemonsCarregados = response;
+        this.nrPokesCarregados = response;
       }
     );
   }
@@ -48,5 +47,13 @@ export class PokedexComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.pokemonListSubscription.unsubscribe();
+  }
+
+
+
+  testinho(){
+    console.log('PokemonService.Pokemons: ',this.pokemonService.pokemons);
+    console.log('Pokemons', this.pokemons);
+    // console.log('',this.pokemonService.pokemons);
   }
 }

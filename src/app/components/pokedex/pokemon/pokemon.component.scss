@@ -1,0 +1,42 @@
+.poke-card {
+  max-width: 228px;
+  min-width: 228px;
+  img {
+    max-height: 96px;
+    max-width: 96px;
+    margin-left: 40px;
+  }
+  margin: 1px;
+  display: inline-block;
+}
+
+.card-header-icon {
+  background-image: url("../../../../assets/icons/pokes/openBall.png");
+  background-size: cover;
+}
+
+// @media only screen and (max-width: 823px) {
+//   .poke-card {
+//     max-width: 87px;
+//     min-width: 87px;
+//     img {
+//       max-height: 96px;
+//       max-width: 96px;
+//       margin-left: 0px;
+//     }
+//     margin: 1px;
+//     display: inline-block;
+//   }
+//   .card-header-mobile{
+//       display:flex;
+//       flex-direction: row-reverse;
+//       img{
+//           max-height: 20px;
+//       }
+//   }
+
+//   .card-header-icon {
+//     background-image: url("../../../../assets/icons/pokes/openBall.png");
+//     background-size: cover;
+//   }
+// }

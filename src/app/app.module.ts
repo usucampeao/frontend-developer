@@ -26,6 +26,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
     MatTooltipModule,
     MatGridListModule,
     MatPaginatorModule,
+    MatCardModule,
     ReactiveFormsModule,
     MatTableModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

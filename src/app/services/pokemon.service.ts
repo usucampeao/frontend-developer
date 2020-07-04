@@ -53,11 +53,15 @@ export class PokemonService {
       this.contadorResponse++;
       this.contadorTotal++;
       if (this.contadorTotal === 807) {
+        this.totalCarregado = this.totalCarregado + 7;
+        this.novosPokesCarregados.next(this.totalCarregado);
+        this.listaPokeAtt.next(this.pokemons);
         return;
       }
       if (this.contadorResponse === 100) {
         this.totalCarregado = this.totalCarregado + 100;
         this.novosPokesCarregados.next(this.totalCarregado);
+        this.listaPokeAtt.next(this.pokemons);
         this.contadorResponse = 0;
 
         this.listaPokeAtt.next(this.pokemons);

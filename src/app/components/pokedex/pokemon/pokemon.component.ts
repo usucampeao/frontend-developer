@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pokemon } from 'src/app/models/Pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemon } from '../../../models/Pokemon';
+import { PokemonService } from '../../../services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon',
@@ -12,7 +12,6 @@ export class PokemonComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-
   }
 
 }
