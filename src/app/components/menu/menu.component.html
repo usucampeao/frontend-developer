@@ -1,7 +1,7 @@
-<div class="menu slide">
+<div class="menu slide" #menuZao>
     
-    <div id="navToggle" class="slide pokeball ">
-        <div class="pokeball__button">
+    <div id="navToggle" class="slide pokeball " #pokeBall (click)="toggleMenu()">
+        <div id="navToggleButton" class="pokeball__button">
 
         </div>
     </div>
@@ -11,11 +11,11 @@
     <h1 class="textinho yellow font-lg">MatinhoDéx</h1>
 </div>
 
-<nav class="slide">
+<nav class="slide" #menuZin>
     <ul>
-        <li><a [routerLink]="['/home']" class="active">INÍCIO</a></li>
-        <li><a [routerLink]="['/pokedex']">POKEDÉX</a></li>
-        <li (click)="testinho()" class="contatinho" style="padding-left: 8rem;"><a [routerLink]="['./']">ME CHAMA!</a></li>
+        <li><a [routerLinkActive]="['active']" [routerLink]="['/home']">INÍCIO</a></li>
+        <li><a [routerLinkActive]="['active']" [routerLink]="['/pokedex']">POKEDÉX</a></li>
+        <li class="contatinho" style="padding-left: 8rem;"><a [routerLinkActive]="['active']">ME CHAMA!</a></li>
     </ul>
 </nav>
 

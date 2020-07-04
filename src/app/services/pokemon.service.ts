@@ -52,7 +52,6 @@ export class PokemonService {
       );
       this.contadorResponse++;
       this.contadorTotal++;
-      console.log(this.contadorTotal);
       if (this.contadorTotal === 807) {
         return;
       }

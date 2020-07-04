@@ -2,24 +2,25 @@
 @import "assets/scss/modules/_fonts.scss";
 @import "@fortawesome/fontawesome-free/css/all.css";
 
+/*--------------------*/
+// Font face
+$mainP: Poppins;
+$subR: Roboto;
 
-// font
-$font: Poppins;
-$font2: Roboto;
-// font-weight
+// Font-weight
 $thin: 100;
 $light: 300;
 $regular: 400;
 $bold: 700;
 $black: 900;
-// Font size
-$font-xs: 12px !important;
-$font-sm: 14px !important;
-$primary-fs: 16px !important;
-$font-md: 18px !important;
-$font-lg: 30px !important;
 
-// main colors
+// Font size
+$f-xs: 12px !important;
+$f-sm: 14px !important;
+$f-md: 18px !important;
+$f-lg: 30px !important;
+
+// Main colors
 $demiRed: #f52357;
 $demiYellow: #faf38e;
 $darkWine: #911131;
@@ -30,8 +31,6 @@ $demiNiPurple: #602cda;
 $demiPurple: #812399;
 $demiDark: #303030;
 $demiDarkin: #1d1c1c;
-
-
 /*--------------------*/
 
 html,
@@ -47,12 +46,12 @@ body {
 
 .textinho {
   text-transform: uppercase;
-  background: linear-gradient(to right, #911131 0%, #921d3a 100%);
+  background: linear-gradient(to right, $darkWine 0%, $darkinWine 100%);
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   font: {
     size: 20px;
-    family: $font !important;
+    family: $mainP !important;
     weight: $black !important;
   }
 }
@@ -68,15 +67,15 @@ body {
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   font: {
-    family: $font !important;
+    family: $mainP !important;
     weight: $black !important;
   }
 }
 
 
 .main-content {
-  font-family: $font;
-  color: #9aa6af;
+  font-family: $mainP;
+  color: $demiBlue;
   text-rendering: optimizeLegibility;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -115,7 +114,7 @@ a {
 
 }
 .menu h1 {
-  color: #9aa6af;
+  color: $demiBlue;
   text-align: left;
   font-size: 27px;
   line-height: 60px;
@@ -151,7 +150,7 @@ nav {
 
 }
 nav li {
-  font-family: $font;
+  font-family: $mainP;
   margin-right: 2rem;
   display: none;
 }
@@ -341,28 +340,28 @@ nav li a:active {
 .footer-section a:link {
   margin-top: -6px;
   margin-left: 5px;
-  font: $font;
+  font: $mainP;
   text-decoration: dashed;
   color: $demiPink;
 }
 .footer-section a:visited {
   margin-top: -6px;
   margin-left: 5px;
-  font: $font;
+  font: $mainP;
   text-decoration: dashed;
   color: $demiPink;
 }
 .footer-section a:hover {
   margin-top: -6px;
   margin-left: 5px;
-  font: $font;
+  font: $mainP;
   text-decoration: dashed;
   color: $demiBlue;
 }
 .footer-section a:active {
   margin-top: -6px;
   margin-left: 5px;
-  font: $font;
+  font: $mainP;
   text-decoration: dashed;
   color: $demiPurple;
 }
@@ -978,7 +977,6 @@ h6,
 p,
 blockquote,
 pre,
-a,
 abbr,
 acronym,
 address,
