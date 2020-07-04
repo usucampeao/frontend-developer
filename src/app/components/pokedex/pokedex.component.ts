@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Pokemon } from 'src/app/models/Pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemon } from '../../models/Pokemon';
+import { PokemonService } from '../../services/pokemon.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +27,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +34,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
     HomeComponent,
     FooterComponent,
     PokedexComponent,
-    PokemonComponent
+    PokemonComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,12 +54,14 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
     MatPaginatorModule,
     ReactiveFormsModule,
     MatTableModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     BrowserAnimationsModule,
     FontAwesomeModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -13,12 +13,15 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
+
+
 export class MenuComponent implements OnInit, AfterViewInit {
   private wasInside = false;
 
   @ViewChild('menuZin') menuZin: ElementRef;
   @ViewChild('menuZao') menuZao: ElementRef;
   @ViewChild('pokeBall') pokeBall: ElementRef;
+  @ViewChild('linkis') linkis: ElementRef;
   constructor(private deviceService: DeviceDetectorService) {
     this.getDeviceInfo();
   }
@@ -45,24 +48,18 @@ export class MenuComponent implements OnInit, AfterViewInit {
       const menuZin = this.menuZin.nativeElement;
       const menuZao = this.menuZao.nativeElement;
       const pokeball = this.pokeBall.nativeElement;
+      const linkis = this.linkis.nativeElement;
 
-      if (this.menuOpen && this.isMobile) {
-        menuZin.className = 'slide close';
-        menuZao.className = 'menu slide close';
-        pokeball.className = 'slide pokeball animated rotateOut';
-        this.content.classList.remove('open');
-        this.content.classList.add('close');
-        this.menuOpen = false;
-      }
+      
 
       // pokeBall animation
       if (pokeball.className === 'slide pokeball') {
-        pokeball.className = 'slide pokeball animated rotateIn';
+        pokeball.className = 'slide open pokeball animated rotateIn';
       } else {
-        if (pokeball.className === 'slide pokeball animated rotateIn') {
-          pokeball.className = 'slide pokeball animated rotateOut';
+        if (pokeball.className === 'slide open pokeball animated rotateIn') {
+          pokeball.className = 'slide close pokeball animated rotateOut';
         } else {
-          pokeball.className = 'slide pokeball animated rotateIn';
+          pokeball.className = 'slide open pokeball animated rotateIn';
         }
       }
       // mobile navBar and web menu links
@@ -94,6 +91,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
         this.content.classList.add('open');
       }
       this.menuOpen = !this.menuOpen;
+      const links = document.getElementsByTagName('ul')[0];
+      
+      return false;
     }
   }
 
@@ -102,8 +102,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
     this.wasInside = true;
   }
 
-  @HostListener('document:click')
-  clickOut() {
+  @HostListener('document:click', ['$event'])
+  clickOut(event: any) {
     if (!this.wasInside && this.isMobile && this.menuOpen) {
       this.toggleMenu();
     }
