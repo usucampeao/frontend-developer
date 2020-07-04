@@ -384,6 +384,7 @@ nav li a:active {
     overflow: hidden;
     box-shadow: inset -4px 4px 0 4px #ccc;
     cursor: pointer;
+    z-index: 2001;
   }
 
   .pokeball::before,
@@ -413,7 +414,7 @@ nav li a:active {
     background: #7f8c8d;
     border: 1px solid #fff;
     border-radius: 50%;
-    z-index: 10;
+    z-index: 2001;
     box-shadow: 0 0 0 4px black;
   }
 
@@ -572,6 +573,7 @@ nav li a:active {
     border-radius: 50%;
     overflow: hidden;
     box-shadow: inset -4px 4px 0 4px #ccc;
+    z-index: 2001;
   }
 
   .pokeball::before,
@@ -603,6 +605,7 @@ nav li a:active {
     border-radius: 50%;
     z-index: 10;
     box-shadow: 0 0 0 4px black;
+    z-index: 2001;
   }
 
   .animated {
@@ -729,6 +732,7 @@ nav li a:active {
     padding: 22px 25px;
     letter-spacing: 3px;
     font-size: 14px;
+    z-index: 2001;
   }
   nav li a.logo {
     display: none;
