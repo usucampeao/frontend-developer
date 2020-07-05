@@ -1,4 +1,4 @@
-<mat-card class="poke-card" routerLink='/pokemon/{{pokemon.id}}'>
+<mat-card class="poke-card" (click)="openDialog(pokemon.id)">
   <mat-card-header class="poke-card-header">
     <div mat-card-avatar class="card-header-icon">
       <div class="id">{{ pokemon.id }}</div>

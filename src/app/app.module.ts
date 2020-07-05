@@ -29,7 +29,12 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { PokemonInfoComponent } from './components/pokedex/pokemon/pokemon-info/pokemon-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -66,7 +71,9 @@ import { PokemonInfoComponent } from './components/pokedex/pokemon/pokemon-info/
     BrowserAnimationsModule,
     FontAwesomeModule,
     DeviceDetectorModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],

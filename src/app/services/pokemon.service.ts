@@ -16,9 +16,8 @@ export class PokemonService {
   contadorTotal = 0;
 
   @Output() searchItemSubject: Subject<string> = new Subject<string>();
-  constructor(private http: HttpClient,private spinner: NgxSpinnerService) {
+  constructor(private http: HttpClient, private spinner: NgxSpinnerService) {
     this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
-    
   }
 
   getTest() {
@@ -53,11 +52,33 @@ export class PokemonService {
         response.name,
         response.id,
         response['sprites']['front_default'],
-        response['types']
+        response['types'],
+        response['abilities'],
+        response['height'],
+        response['weight'],
+        response['base_experience'],
+        response['forms'],
+        response['held_items'],
+        response['game_indices'],
+        response['is_default'],
+        response['location'],
+        response['moves'],
+        response['order'],
+        response['stats'],
+        response['species']
       );
       this.contadorResponse++;
       this.contadorTotal++;
-      
+      // t
+      if (this.contadorTotal === 100) {
+        this.totalCarregado = this.totalCarregado + 100;
+        this.novosPokesCarregados.next(this.totalCarregado);
+        this.listaPokeAtt.next(this.pokemons);
+        console.log(this.pokemons);
+        this.spinner.hide();
+        return;
+      }
+      // t
       if (this.contadorTotal === 807) {
         this.totalCarregado = this.totalCarregado + 7;
         this.novosPokesCarregados.next(this.totalCarregado);

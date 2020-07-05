@@ -1,1 +1,32 @@
-<p>{{pokemonId}}</p>
+<h2 mat-dialog-title>{{ pokemon.name }}</h2>
+
+<mat-dialog-content>
+
+    <table class="table table-borderless">
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Height :</td>
+          <td>{{pokemon.height + "m"}}</td>
+        </tr>
+        <tr>
+          <td>Weight</td>
+          <td>{{pokemon.weight + "kg"}}</td>
+        </tr>
+        <tr>
+          <td>Abilities</td>
+          <td>{{pokemon.abilities[1]['ability']['name']}} {{pokemon.abilities[0]['ability']['name']}}</td>
+        </tr>
+        <tr>
+        <td>Image</td>    
+        <td><img class="img-fluid" src="{{pokemon.sprite}}" alt=""></td>
+        </tr>
+        </tbody>
+      </table>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <!-- <button class="mat-raised-button mat-primary">Save</button> -->
+</mat-dialog-actions>
