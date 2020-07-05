@@ -1,5 +1,30 @@
 <h2 mat-dialog-title>{{ pokemon.name }}</h2>
+<div>
 
+  <ng-container *ngFor="let type of pokemon.types">
+    <ng-container [ngSwitch]="type['type']['name']">
+      <img class="icon bug" *ngSwitchCase="'bug'" src="../../../../assets/icons/pokes/types/bug.svg" title="INSETO">
+      <img class="icon dark" *ngSwitchCase="'dark'" src="../../../../assets/icons/pokes/types/dark.svg" title="NOTURNO">
+      <img class="icon dragon" *ngSwitchCase="'dragon'" src="../../../../assets/icons/pokes/types/dragon.svg" title="DRAGÃO">
+      <img class="icon electric" *ngSwitchCase="'electric'" src="../../../../assets/icons/pokes/types/electric.svg" title="ELÉTRICO">
+      <img class="icon fire" *ngSwitchCase="'fire'" src="../../../../assets/icons/pokes/types/fire.svg" title="FOGO">
+      <img class="icon fairy" *ngSwitchCase="'fairy'" src="../../../../assets/icons/pokes/types/fairy.svg" title="FADA">
+      <img class="icon fighting" *ngSwitchCase="'fighting'" src="../../../../assets/icons/pokes/types/fighting.svg" title="LUTADOR">
+      <img class="icon flying" *ngSwitchCase="'flying'" src="../../../../assets/icons/pokes/types/flying.svg" title="VOADOR">
+      <img class="icon ghost" *ngSwitchCase="'ghost'" src="../../../../assets/icons/pokes/types/ghost.svg" title="FANTASMA">
+      <img class="icon grass" *ngSwitchCase="'grass'" src="../../../../assets/icons/pokes/types/grass.svg" title="GRAMA">
+      <img class="icon ground" *ngSwitchCase="'ground'" src="../../../../assets/icons/pokes/types/ground.svg" title="TERRESTRE">
+      <img class="icon ice" *ngSwitchCase="'ice'" src="../../../../assets/icons/pokes/types/ice.svg" title="GELO">
+      <img class="icon normal" *ngSwitchCase="'normal'" src="../../../../assets/icons/pokes/types/normal.svg" title="NORMAL">
+      <img class="icon poison" *ngSwitchCase="'poison'" src="../../../../assets/icons/pokes/types/poison.svg" title="VENENOSO">
+      <img class="icon psychic" *ngSwitchCase="'psychic'" src="../../../../assets/icons/pokes/types/psychic.svg" title="PSÍQUICO">
+      <img class="icon rock" *ngSwitchCase="'rock'" src="../../../../assets/icons/pokes/types/rock.svg" title="PEDRA">
+      <img class="icon steel" *ngSwitchCase="'steel'" src="../../../../assets/icons/pokes/types/steel.svg" title="METÁLICO">
+      <img class="icon water" *ngSwitchCase="'water'" src="../../../../assets/icons/pokes/types/water.svg" title="ÁGUA">
+    </ng-container>
+  </ng-container>
+
+</div>
 <mat-dialog-content>
 
     <table class="table table-borderless">
@@ -16,7 +41,9 @@
         </tr>
         <tr>
           <td>Abilities</td>
-          <td>{{pokemon.abilities[1]['ability']['name']}} {{pokemon.abilities[0]['ability']['name']}}</td>
+          <td><span class="text-capitalize"
+            *ngFor="let ability of pokemon.abilities">{{ability['ability']['name']}} </span>
+          </td>
         </tr>
         <tr>
         <td>Image</td>    
@@ -27,6 +54,9 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Close</button>
-    <!-- <button class="mat-raised-button mat-primary">Save</button> -->
+ <a href="javascript:void(0)" class="backinho" routerLink="pokedex" (click)="close()">
+   <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+ </a>
+
+    
 </mat-dialog-actions>

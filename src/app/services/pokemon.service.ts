@@ -46,6 +46,11 @@ export class PokemonService {
       });
   }
 
+  getPokemonById(id) {
+    let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    return this.http.get(url);
+  }
+
   getPokemon(url: string, proximosPokes) {
     this.http.get<{ name: string; id: number }>(url).subscribe((response) => {
       this.pokemons[+response.id - 1] = new Pokemon(

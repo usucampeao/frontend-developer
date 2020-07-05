@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../../../../services/pokemon.service';
 import { Pokemon } from '../../../../models/Pokemon';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ export class PokemonInfoComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokemonService: PokemonService,
+    private router: Router,
     private dialogRef: MatDialogRef<PokemonInfoComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
@@ -35,5 +36,6 @@ export class PokemonInfoComponent implements OnInit {
   }
   close() {
     this.dialogRef.close();
+    // this.router.navigate(['pokedex']);
   }
 }

@@ -34,6 +34,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { InfoComponent } from './components/pokedex/pokemon/info/info.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -44,6 +45,7 @@ registerLocaleData(ptBr);
     PokedexComponent,
     PokemonComponent,
     PokemonInfoComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
