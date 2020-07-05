@@ -42,6 +42,22 @@ body {
   }
 }
 
+.textinho.yellowIn {
+  text-transform: uppercase !important;
+  background: linear-gradient(
+    to right,
+    $demiYellow 0%,
+    $demiOrange 100%
+  ) !important;
+  background-clip: text;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font: {
+    family: $mainP !important;
+    weight: $black !important;
+  }
+}
+
 .textinho.blue {
   max-width: fit-content;
   text-transform: uppercase !important;
@@ -135,7 +151,7 @@ nav {
 }
 nav li {
   font-family: $mainP;
-  margin-right: 2rem;
+  margin-right: 1rem;
   display: none;
 }
 
@@ -248,7 +264,7 @@ nav li a:hover {
   color: $demiBlue;
 }
 nav li a:active {
-  color: $demiNiPurple;
+  color: $darkWine;
 }
 
 // hamburginho virando x
@@ -347,7 +363,16 @@ nav li a:active {
 }
 
 .contatinho {
-  padding-left: 23rem;
+  margin-left: 12rem;
+}
+
+.pokedex-link{
+  margin-left: 10rem;
+  font: {
+    size: 20px;
+    family: $mainP !important;
+    weight: $black !important;
+  }
 }
 
 //  Poké Styles [arrumando pra web]
@@ -516,6 +541,29 @@ nav li a:active {
 }
 
 @media only screen and (max-width: 823px) {
+
+  .textinho {
+    text-transform: uppercase;
+    background: linear-gradient(to right, $darkWine 0%, $darkinWine 100%);
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font: {
+      size: 20px;
+      family: $mainP !important;
+      weight: $black !important;
+    }
+  }
+
+  .pokedex-link{
+    margin-left: 0;
+    margin-top: 8rem;
+    font: {
+      size: 20px;
+      family: $mainP !important;
+      weight: $black !important;
+    }
+  }
+
   .nav {
     max-width: 100%;
   }
@@ -530,16 +578,24 @@ nav li a:active {
     max-height: 50px;
   }
   nav li .contatinho {
-    // padding-left: 8rem !important;
-    position: fixed !important;
-    right: 10px !important;
-    bottom: 10px !important;
+    margin-left: 0px;
+    padding-right: 16rem;
+    text-align: end;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: -webkit-fill-available;
+    
   }
   .contatinho {
-    // padding-left: 8rem !important;
-    position: fixed !important;
-    left: 10px !important;
-    bottom: 10px !important;
+    margin-left: 0px;
+    text-align: end;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: -webkit-fill-available;
+    
+    
   }
   /* Poké Styles */
   .pokeball {

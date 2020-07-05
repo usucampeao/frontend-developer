@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MenuComponent } from './components/menu/menu.component';
-import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,13 +26,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatCardModule } from '@angular/material/card';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    HomeComponent,
     FooterComponent,
     PokedexComponent,
     PokemonComponent,
@@ -57,6 +57,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MatCardModule,
     ReactiveFormsModule,
     MatTableModule,
+    Ng2SearchPipeModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

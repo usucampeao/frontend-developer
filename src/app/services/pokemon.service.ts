@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { Pokemon } from '../models/Pokemon';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -15,8 +15,9 @@ export class PokemonService {
   novosPokesCarregados = new Subject<number>();
   contadorTotal = 0;
 
+  @Output() searchItemSubject: Subject<string> = new Subject<string>();
   constructor(private http: HttpClient,private spinner: NgxSpinnerService) {
-    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100?');
+    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
     
   }
 
@@ -56,6 +57,7 @@ export class PokemonService {
       );
       this.contadorResponse++;
       this.contadorTotal++;
+      
       if (this.contadorTotal === 807) {
         this.totalCarregado = this.totalCarregado + 7;
         this.novosPokesCarregados.next(this.totalCarregado);

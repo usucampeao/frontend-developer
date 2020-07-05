@@ -7,6 +7,7 @@
   margin: 1px;
   display: inline-block;
   cursor: pointer;
+  transition: background-color 750ms ease;
   .poke-img {
     max-height: 96px;
     max-width: 96px;
@@ -17,6 +18,7 @@
 }
 .poke-card:hover {
   background-color: #faf3;
+  transition: background-color 300ms ease;
 }
 .poke-card-content {
   text-align: center;

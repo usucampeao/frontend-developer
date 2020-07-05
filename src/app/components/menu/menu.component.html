@@ -8,13 +8,16 @@
     
     
     
-    <h1 class="textinho yellow font-lg">MatinhoDéx</h1>
+    <h1 class="textinho yellowIn font-lg">MatinhoDéx</h1>
 </div>
 
 <nav class="slide" #menuZin>
     <ul #linkis  >
-        <li><a [routerLinkActive]="['active']" routerLink="/home">INÍCIO</a></li>
-        <li><a [routerLinkActive]="['active']" routerLink="/pokedex">POKEDÉX</a></li>
-        <li class="contatinho" style="padding-left: 8rem;"><a [routerLinkActive]="['active']">ME CHAMA!</a></li>
+        <li><a routerLink="./">LINKS</a></li>
+        <li><a routerLink="./">QUE</a></li>
+        <li><a routerLink="./">NADA</a></li>
+        <li><a routerLink="./">FAZEM</a></li>
+        <li class="pokedex-link"><a [routerLinkActive]="['active']" routerLink="/pokedex">POKEDÉX</a></li>
+        <li class="contatinho"><a [routerLinkActive]="['active']">ME CHAMA!</a></li>
     </ul>
 </nav>
