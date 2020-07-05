@@ -28,6 +28,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { MatCardModule } from '@angular/material/card';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { PokemonInfoComponent } from './components/pokedex/pokemon/pokemon-info/pokemon-info.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FooterComponent,
     PokedexComponent,
     PokemonComponent,
+    PokemonInfoComponent,
   ],
   imports: [
     BrowserModule,
