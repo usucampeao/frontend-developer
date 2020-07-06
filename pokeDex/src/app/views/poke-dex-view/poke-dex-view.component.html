@@ -1,1 +1,39 @@
-<p>poke-dex-view works!</p>
+<div class="content">
+    <div class="pokedex">
+      <img src="../assets/images/pokedex.png" alt="" class="pokedex-image">
+      <div id="div_light" class=""  [ngClass]="{'pokedex-light': isOn === true}"></div>
+      <div id="div_light" class="" [ngClass]="{'pokedex-light-green': isOn === true}"></div>
+      <div id="div_screen" class="pokedex-screen" [ngClass]="{'pokedex-screen-on': isOn === true}">
+        <img src="{{pokemonPicture}}" alt="" class="pokemon-picture " [ngClass]="{'pokemon-picture-on': isOn === false}">
+      </div>
+      <div id="div_data" class="pokedex-data" [ngClass]="{'pokedex-data-off': isOn === false}">
+        <p class="pokedex-data-text">ID: <span id="text_id">{{pokeInfo.id}}</span></p>
+        <p class="pokedex-data-text">Nome: <span id="text_name">{{pokeInfo.name}}</span></p>
+        <p class="pokedex-data-text">Tipo: <span id="text_name">{{pokemonType}}</span></p>
+        <p class="pokedex-data-text">Peso: <span id="text_ability">{{pokeInfo.weight}} KG</span></p>
+      </div>
+      <button id="btn_on" (click)="turnOnPokedex()" class="pokedex-button-on">{{pokeDexState}}</button>
+      <input class="pokedex-input" type="text" id="pokeInput" #pokeId [ngClass]="{'disable-search': isOn === false}">
+      <button id="btn_go" class="pokedex-button" (click)="searchPokemonData(pokeId.value)" [ngClass]="{'disable-search': isOn === false}">Go</button>
+      <button id="btn_shiny" class="pokedex-button-shiny" [ngClass]="{'disable-search': isOn === false}" (click)="shinyPokemon()" style="font-size: 0px;"> 
+        {{pokemonVersion}}
+        <img src="../../../assets/icons/shiny.png" alt="" srcset="" class="shiny-logo">
+      </button>
+      <table class="pokedex-table" [ngClass]="{'disable-search': isOn === false}">
+        <tr>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[0])">{{pokemonRandom[0]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[1])">{{pokemonRandom[1]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[2])">{{pokemonRandom[2]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[3])">{{pokemonRandom[3]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[4])">{{pokemonRandom[4]}}</button></td>
+        </tr>
+        <tr>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[5])">{{pokemonRandom[5]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[6])">{{pokemonRandom[6]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[7])">{{pokemonRandom[7]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[8])">{{pokemonRandom[8]}}</button></td>
+          <td class="pokedex-table-cell"><button class="pokedex-button-random" (click)="searchByRandom(pokemonRandom[9])">{{pokemonRandom[9]}}</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
