@@ -33,7 +33,7 @@ Que pergunta mais absurda...
 
 # Detalhes do projeto gerado: MatinhuPokedex
 
-O projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) Verão  9.1.4.
+O projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) Versão  9.1.4. - Atualizado para Versão 10.0.1
 
 ## Servidor de desenvolvimento
 

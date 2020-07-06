@@ -5,6 +5,15 @@
   <mat-label>Busque um pokémon aqui...</mat-label>
   <input matInput placeholder="Ex. pika, psychic, 150" type="text" class="form-control search-menu" [(ngModel)]="searchItem">
 </mat-form-field>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#f3497c" type = "square-jelly-box" [fullScreen] = "true"><h3 class="textinho blue">Capturando pokémons...</h3></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "transparent" show="false" [fullScreen] = "true">
+  <img src="../../../assets/gifs/pikarunning.gif" height="96px">
+  <h3 class="textinho blue">Capturando pokémons...</h3></ngx-spinner>
 
-<app-pokemon *ngFor="let pokemon of pokemons | searchFilter: searchItem; let i = index" [pokemon]="pokemon"></app-pokemon>
+
+<div class="pokedex row faded" #scrollingBlock [ngClass]="{fade:scrolled}">
+  <virtual-scroller #scroll [items]="pokemons| searchFilter: searchItem" [parentScroll]="scrollingBlock"
+                    scrollAnimationTime="0">
+    <app-pokemon *ngFor="let pokemon of scroll.viewPortItems; trackBy: myTrackByFunction; let i = index;"
+                      [pokemon]="pokemon"></app-pokemon>
+  </virtual-scroller>
+</div>

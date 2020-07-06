@@ -1,8 +1,8 @@
 table {
   width: 100%;
 }
-td{
-    padding-top:20px;
+td {
+  padding-top: 20px;
 }
 
 table img {
@@ -12,10 +12,43 @@ table img {
   font-size: 14px;
 }
 
-.fw{
+.fw {
   width: 100%;
 }
 
 .example-margin {
   margin: 0 10px;
+}
+
+virtual-scroller {
+  justify-content: center !important;
+  text-align: center;
+  flex: auto;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  display: flex;
+}
+
+.loading{
+  position: absolute;
+  right: calc(100vh - 64px);
+}
+.scrollable-content {
+  justify-content: center !important;
+}
+
+app-pokemon {
+  display: inline-flex !important;
+}
+.row {
+  justify-content: center !important;
+}
+
+.faded {
+  opacity: 0;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }

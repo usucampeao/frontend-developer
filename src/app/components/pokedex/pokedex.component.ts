@@ -28,6 +28,7 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
   searchItem = '';
 
   numbers = [];
+  scrolled = true;
 
   constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
@@ -74,6 +75,11 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
     console.log('Pokemons', this.pokemons);
     // this.pokemonService.getIndexedDbItens(1);
     // console.log('',this.pokemonService.pokemons);
+  }
+
+
+  public myTrackByFunction(index: number, pokemon: Pokemon): number {
+    return pokemon.id;
   }
 
 }

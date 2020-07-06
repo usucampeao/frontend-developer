@@ -40,6 +40,7 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-device-detector": "^1.4.5",
     "ngx-spinner": "^9.0.2",
+    "ngx-virtual-scroller": "^4.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -507,6 +507,10 @@ nav li a:active {
   animation-name: rotateOut;
 }
 
+
+
+
+
 /*------scroll bar---------------------*/
 
 ::-webkit-scrollbar {
@@ -1322,8 +1326,14 @@ table {
 .grasspoison {
   background: linear-gradient(to right, $grass 50%, $poison 50%);
 }
+.poisonbug {
+  background: linear-gradient(to right, $poison 50%, $bug 50%);
+}
 .bugpoison {
   background: linear-gradient(to right, $bug 50%, $poison 50%);
+}
+.waterrock {
+  background: linear-gradient(to right, $water 50%, $rock 50%);
 }
 .rockwater {
   background: linear-gradient(to right, $rock 50%, $water 50%);
@@ -1337,8 +1347,11 @@ table {
 .waterground {
   background: linear-gradient(to right, $water 50%, $ground 50%);
 }
+.psychicsteel {
+  background: linear-gradient(to right, $psychic 50%, $steel 50%);
+}
 .steelpsychic {
-  background: linear-gradient(to right, $steel 50%, $psychic 50%);
+  background: linear-gradient(to right, $psychic 50%, $steel 50%);
 }
 .waterflying {
   background: linear-gradient(to right, $water 50%, $flying 50%);
@@ -1349,8 +1362,14 @@ table {
 .psychicfairy {
   background: linear-gradient(to right, $psychic 50%, $fairy 50%);
 }
+.rocksteel {
+  background: linear-gradient(to right, $rock 50%, $steel 50%);
+}
 .steelrock {
   background: linear-gradient(to right, $steel 50%, $rock 50%);
+}
+.icewater {
+  background: linear-gradient(to right, $ice 50%, $water 50%);
 }
 .waterice {
   background: linear-gradient(to right, $water 50%, $ice 50%);
@@ -1358,8 +1377,14 @@ table {
 .grassflying {
   background: linear-gradient(to right, $grass 50%, $flying 50%);
 }
+.ghostground {
+  background: linear-gradient(to right, $ghost 50%, $ground 50%);
+}
 .groundghost {
   background: linear-gradient(to right, $ground 50%, $ghost 50%);
+}
+.dragonground {
+  background: linear-gradient(to right, $dragon 50%, $ground 50%);
 }
 .grounddragon {
   background: linear-gradient(to right, $ground 50%, $dragon 50%);
@@ -1370,6 +1395,9 @@ table {
 .buggrass {
   background: linear-gradient(to right, $bug 50%, $grass 50%);
 }
+.grassghost {
+  background: linear-gradient(to right, $grass 50%, $ghost 50%);
+}
 .ghostgrass {
   background: linear-gradient(to right, $ghost 50%, $grass 50%);
 }
@@ -1379,8 +1407,14 @@ table {
 .fireflying {
   background: linear-gradient(to right, $fire 50%, $flying 50%);
 }
+.poisonwater {
+  background: linear-gradient(to right, $poison 50%, $water 50%);
+}
 .waterpoison {
   background: linear-gradient(to right, $water 50%, $poison 50%);
+}
+.flyingdragon {
+  background: linear-gradient(to right, $flying 50%, $dragon 50%);
 }
 .dragonflying {
   background: linear-gradient(to right, $dragon 50%, $flying 50%);
@@ -1397,11 +1431,23 @@ table {
 .bugrock {
   background: linear-gradient(to right, $bug 50%, $rock 50%);
 }
+.rockbug {
+  background: linear-gradient(to right, $rock 50%, $bug 50%);
+}
+.waterbug {
+  background: linear-gradient(to right, $water 50%, $bug 50%);
+}
 .bugwater {
   background: linear-gradient(to right, $bug 50%, $water 50%);
 }
+.fireghost {
+  background: linear-gradient(to right, $fire 50%, $ghost 50%);
+}
 .ghostfire {
   background: linear-gradient(to right, $ghost 50%, $fire 50%);
+}
+.groundsteel {
+  background: linear-gradient(to right, $ground 50%, $steel 50%);
 }
 .steelground {
   background: linear-gradient(to right, $steel 50%, $ground 50%);
@@ -1429,6 +1475,9 @@ table {
 }
 .normalpsychic {
   background: linear-gradient(to right, $normal 50%, $psychic 50%);
+}
+.psychicfighting {
+  background: linear-gradient(to right, $psychic 50%, $fighting 50%);
 }
 .fightingpsychic {
   background: linear-gradient(to right, $fighting 50%, $psychic 50%);
@@ -1465,6 +1514,9 @@ table {
 }
 .darkdragon {
   background: linear-gradient(to right, $dark 50%, $dragon 50%);
+}
+.fightingdark {
+  background: linear-gradient(to right, $fighting 50%, $dark 50%);
 }
 .darkfighting {
   background: linear-gradient(to right, $dark 50%, $fighting 50%);
@@ -1529,13 +1581,19 @@ table {
 .psychicghost {
   background: linear-gradient(to right, $psychic 50%, $ghost 50%);
 }
+.firepsychic {
+  background: linear-gradient(to right, $fire 50%, $psychic 50%);
+}
 .psychicfire {
   background: linear-gradient(to right, $psychic 50%, $fire 50%);
 }
 .iceground {
   background: linear-gradient(to right, $ice 50%, $ground 50%);
 }
-.dragonfire {
+.firedragon {
+  background: linear-gradient(to right, $fire 50%, $dragon 50%);
+}
+.dragon {
   background: linear-gradient(to right, $dragon 50%, $fire 50%);
 }
 .dragonelectric {
@@ -1543,6 +1601,9 @@ table {
 }
 .dragonpsychic {
   background: linear-gradient(to right, $dragon 50%, $psychic 50%);
+}
+.firedark {
+  background: linear-gradient(to right, $fire 50%, $dark 50%);
 }
 .darkfire {
   background: linear-gradient(to right, $dark 50%, $fire 50%);
@@ -1630,6 +1691,9 @@ table {
 }
 .dragonfighting {
   background: linear-gradient(to right, $dragon 50%, $fighting 50%);
+}
+.ghostdark {
+  background: linear-gradient(to right, $ghost 50%, $dark 50%);
 }
 .darkghost {
   background: linear-gradient(to right, $dark 50%, $ghost 50%);
@@ -1765,3 +1829,4 @@ table {
     weight: $black !important;
   }
   }
+
