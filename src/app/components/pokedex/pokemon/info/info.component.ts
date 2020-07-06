@@ -18,6 +18,14 @@ export class InfoComponent implements OnInit {
   pokemon;
   height;
   weight;
+  hp;
+  attack;
+  defence;
+  spAttack;
+  spDefence;
+  speed;
+  stats;
+  maxStat;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.pokemonId = params['id'];
@@ -27,6 +35,25 @@ export class InfoComponent implements OnInit {
       this.pokemon = this.pokemonService.pokemons[this.pokemonId - 1];
       this.height = (this.pokemon.height * 0.1).toFixed(1);
       this.weight = (this.pokemon.weight * 0.1).toFixed(1);
+      this.height = (this.pokemon.height * 0.1).toFixed(1);
+      this.weight = (this.pokemon.weight * 0.1).toFixed(1);
+      this.stats = [
+        this.pokemon.stats[5]['base_stat'],
+        this.pokemon.stats[4]['base_stat'],
+        this.pokemon.stats[3]['base_stat'],
+        this.pokemon.stats[2]['base_stat'],
+        this.pokemon.stats[1]['base_stat'],
+        this.pokemon.stats[0]['base_stat'],
+      ];
+      this.maxStat = Math.max(...this.stats);
+
+      this.hp = (this.pokemon.stats[5]['base_stat'] / this.maxStat) * 100;
+      this.attack = (this.pokemon.stats[4]['base_stat'] / this.maxStat) * 100;
+      this.defence = (this.pokemon.stats[3]['base_stat'] / this.maxStat) * 100;
+      this.spAttack = (this.pokemon.stats[2]['base_stat'] / this.maxStat) * 100;
+      this.spDefence =
+        (this.pokemon.stats[1]['base_stat'] / this.maxStat) * 100;
+      this.speed = (this.pokemon.stats[0]['base_stat'] / this.maxStat) * 100;
     } else {
       this.pokemon = this.pokemonService
         .getPokemonById(this.pokemonId)
@@ -52,6 +79,27 @@ export class InfoComponent implements OnInit {
           );
           this.height = (this.pokemon.height * 0.1).toFixed(1);
           this.weight = (this.pokemon.weight * 0.1).toFixed(1);
+          this.stats = [
+            this.pokemon.stats[5]['base_stat'],
+            this.pokemon.stats[4]['base_stat'],
+            this.pokemon.stats[3]['base_stat'],
+            this.pokemon.stats[2]['base_stat'],
+            this.pokemon.stats[1]['base_stat'],
+            this.pokemon.stats[0]['base_stat'],
+          ];
+          this.maxStat = Math.max(...this.stats);
+
+          this.hp = (this.pokemon.stats[5]['base_stat'] / this.maxStat) * 100;
+          this.attack =
+            (this.pokemon.stats[4]['base_stat'] / this.maxStat) * 100;
+          this.defence =
+            (this.pokemon.stats[3]['base_stat'] / this.maxStat) * 100;
+          this.spAttack =
+            (this.pokemon.stats[2]['base_stat'] / this.maxStat) * 100;
+          this.spDefence =
+            (this.pokemon.stats[1]['base_stat'] / this.maxStat) * 100;
+          this.speed =
+            (this.pokemon.stats[0]['base_stat'] / this.maxStat) * 100;
         });
     }
   }

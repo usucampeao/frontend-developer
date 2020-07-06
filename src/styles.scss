@@ -25,7 +25,9 @@ body {
     weight: $black !important;
   }
 }
-
+.zaz{
+  display: inline;
+}
 .textinho.yellow {
   text-transform: uppercase !important;
   background: linear-gradient(
@@ -73,7 +75,7 @@ body {
 
 .main-content {
   font-family: $mainP;
-  color: $demiBlue;
+  color: $demiWhite;
   text-rendering: optimizeLegibility;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -1747,4 +1749,10 @@ table {
     filter: saturate(200%);
     transform: scale(1.1);
     cursor: pointer;
+  }
+
+
+  .poke-card-info{
+    text-align: center;
+    text-align: -webkit-center;
   }

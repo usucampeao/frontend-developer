@@ -14,8 +14,6 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss'],
 })
-
-
 export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -28,17 +26,22 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
   // busca obs
   searchItemSubscription;
   searchItem = '';
-  constructor(
-    private pokemonService: PokemonService,
-  ) {}
+
+  numbers = [];
+
+  constructor(private pokemonService: PokemonService) {}
   ngOnInit(): void {
+    this.pokemonService.searchItemSubject.subscribe((response) => {
+      this.searchItem = response;
+    });
+
     if (this.pokemonService.pokemons[0]) {
       this.pokemons = this.pokemonService.pokemons;
       this.nrPokesCarregados = this.pokemonService.totalCarregado;
     } else {
       this.pokemonListSubscription = this.pokemonService.listaPokeAtt.subscribe(
         (response) => {
-          this.pokemons = response.slice(0, 100);
+          this.pokemons = response.slice(0, this.nrPokesCarregados);
         }
       );
       this.nrPokesCarregadosSub = this.pokemonService.novosPokesCarregados.subscribe(
@@ -54,15 +57,14 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
     }
   }
 
-
-  
-
   ngDoCheck(): void {
     this.pokemonService.searchItemSubject.next(this.searchItem);
   }
 
   ngOnDestroy(): void {
     // n perder a lista carregada.
+    // this.pokemonService.searchItemSubject.next('');
+    // this.searchItemSubscription.unsubscribe();
   }
 
   testinho() {

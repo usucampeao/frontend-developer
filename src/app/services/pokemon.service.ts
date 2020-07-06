@@ -24,6 +24,10 @@ export class PokemonService {
     return this.http.get<any>('https://pokeapi.co/api/v2/pokemon');
   }
 
+  getAbility(url: string) {
+    return this.http.get(url);
+  }
+
   getAllPokemons(url: string) {
     this.spinner.show();
     this.http
@@ -47,7 +51,12 @@ export class PokemonService {
   }
 
   getPokemonById(id) {
-    let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    let url = 'https://pokeapi.co/api/v2/pokemon/' + id + '/';
+    return this.http.get(url);
+  }
+
+  getPokemonSpeciesById(id) {
+    const url = 'https://pokeapi.co/api/v2/pokemon-species/' + id + '/';
     return this.http.get(url);
   }
 
@@ -75,14 +84,16 @@ export class PokemonService {
       this.contadorResponse++;
       this.contadorTotal++;
       // t
-      if (this.contadorTotal === 100) {
-        this.totalCarregado = this.totalCarregado + 100;
-        this.novosPokesCarregados.next(this.totalCarregado);
-        this.listaPokeAtt.next(this.pokemons);
-        console.log(this.pokemons);
-        this.spinner.hide();
-        return;
-      }
+      // if (this.contadorTotal === 100) {
+      //   this.totalCarregado = this.totalCarregado + 100;
+      //   this.novosPokesCarregados.next(this.totalCarregado);
+      //   this.listaPokeAtt.next(this.pokemons);
+      //   console.log(this.pokemons);
+      //   this.spinner.hide();
+      //   return;
+      // }
+
+      
       // t
       if (this.contadorTotal === 807) {
         this.totalCarregado = this.totalCarregado + 7;

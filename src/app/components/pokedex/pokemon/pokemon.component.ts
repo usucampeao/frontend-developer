@@ -21,13 +21,10 @@ export class PokemonComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog(id) {
-    this.router.navigate(['pokedex/', id]);
+    // this.router.navigate(['pokedex/', id]);
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.pokemon;
-    // dialogConfig.panelClass = 'custom-modalbox';
-    // dialogConfig.backdropClass = 'dialoginho';
     dialogConfig.hasBackdrop = true;
     dialogConfig.disableClose = true;
     let backdrop = '';
@@ -43,8 +40,6 @@ export class PokemonComponent implements OnInit {
     dialogConfig.backdropClass = backdrop;
     dialogConfig.width = '80%';
     dialogConfig.height = '80%';
-
-    
 
     this.dialog.open(PokemonInfoComponent, dialogConfig);
   }
