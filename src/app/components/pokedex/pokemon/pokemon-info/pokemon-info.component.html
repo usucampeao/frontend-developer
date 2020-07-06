@@ -1,8 +1,7 @@
 <mat-dialog-content class="poke-card-info mat-typography">
   <h1 class="mat-display-1 textinho yellow zaz">#{{pokemon.id}} {{ pokemon.name }}</h1>
+  <br>
   <div>
-  <br>
-  <br>
 <img class="img-fluid" src="assets/icons/pokes/sprites/{{pokemon.id}}.png" alt="">
     <ng-container *ngFor="let type of pokemon.types">
       <ng-container [ngSwitch]="type['type']['name']">

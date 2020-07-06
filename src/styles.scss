@@ -875,7 +875,7 @@ nav li a:active {
     border-radius: 8px;
 
     /* começa aqui */
-    opacity: 0.3;
+    opacity: 0;
     -webkit-transform: translate3d(5%, 0, 0) scale(0.97);
     -moz-transform: translate3d(5%, 0, 0) scale(0.97);
     transform: translate3d(5%, 0, 0) scale(0.97);
@@ -1330,6 +1330,9 @@ table {
 }
 .rockground {
   background: linear-gradient(to right, $rock 50%, $ground 50%);
+}
+.groundrock {
+  background: linear-gradient(to right, $ground 50%, $rock 50%);
 }
 .waterground {
   background: linear-gradient(to right, $water 50%, $ground 50%);

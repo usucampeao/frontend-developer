@@ -68,24 +68,19 @@ export class PokemonService {
   private ouvirStatusConexao() {
     this.onlineOfflineService.statusConexao.subscribe((online) => {
       if (online) {
-        this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
+        if (this.pokemons.length === 807) {
+          return;
+        } else {
+          this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
+        }
       } else {
         this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
       }
     });
   }
 
-  async getIndexedDbCount() {
-    // console.log('passou aqui 1');
-    await this.table.count().then((x) => {
-      if (x > 0) {
-        // console.log('passou aqui 2');
-        this.getIndexedDbItens(x);
-      }
-    });
-  }
-
   async getIndexedDbItens(total: number) {
+    console.log('carregando do indexedDb');
     for (let i = 1; i < total + 1; i++) {
       const pokemon = await this.table.get(i);
       this.pokemons[+pokemon.id - 1] = new Pokemon(
@@ -135,12 +130,24 @@ export class PokemonService {
   async getAllPokemons(url: string) {
     console.log('items on indexeddb:', this.totalItensDb);
     this.spinner.show();
-    if (!this.onlineOfflineService.isOnline) {
-      this.getIndexedDbCount();
+    if (this.onlineOfflineService.isOnline === false) {
+      if (this.pokemons.length === 807) {
+        this.spinner.hide();
+        return;
+      } else {
+        this.getIndexedDbItens(this.totalItensDb);
+      }
     } else {
       if (this.totalItensDb === 807) {
-        this.getIndexedDbItens(807);
+        console.log(this.pokemons.length)
+        if (this.pokemons.length === 807) {
+          this.spinner.hide();
+          return;
+        } else {
+          this.getIndexedDbItens(807);
+        }
       } else {
+        console.log('carregando da API')
         this.http
           .get<{
             count: string;
