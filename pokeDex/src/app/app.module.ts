@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PokeDexViewComponent } from './views/poke-dex-view/poke-dex-view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PokeDexViewComponent
   ],
   imports: [
     BrowserModule,
