@@ -66,12 +66,14 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
     // this.pokemonService.searchItemSubject.next('');
     // this.searchItemSubscription.unsubscribe();
   }
-
+  
   testinho() {
+    
     // await this.pokemonService.getIndexedDbItens(0);
     // console.log('PokemonService.Pokemons: ', this.pokemonService.pokemons);
     console.log('Pokemons', this.pokemons);
-    this.pokemonService.getIndexedDbItens(1);
+    // this.pokemonService.getIndexedDbItens(1);
     // console.log('',this.pokemonService.pokemons);
   }
+
 }

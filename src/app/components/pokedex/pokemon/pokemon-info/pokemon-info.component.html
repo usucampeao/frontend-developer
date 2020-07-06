@@ -1,10 +1,9 @@
-<section class="mat-typography">
-
-<mat-dialog-content class="poke-card-info">
+<mat-dialog-content class="poke-card-info mat-typography">
   <h1 class="mat-display-1 textinho yellow zaz">#{{pokemon.id}} {{ pokemon.name }}</h1>
   <div>
-    
-<img class="img-fluid" src="{{pokemon.sprite}}" alt="">
+  <br>
+  <br>
+<img class="img-fluid" src="assets/icons/pokes/sprites/{{pokemon.id}}.png" alt="">
     <ng-container *ngFor="let type of pokemon.types">
       <ng-container [ngSwitch]="type['type']['name']">
         <div *ngSwitchCase="'bug'"><img class="icon bug"  src="../../../../assets/icons/pokes/types/bug.svg" title="INSETO"><div>BUG</div></div>
@@ -30,7 +29,7 @@
   
   </div>
   
-  
+
     <table >
         <tbody>
         <tr>
@@ -44,9 +43,9 @@
         <tr>
           <td>Abilities</td>
           <td>
-            <span class="text-capitalize ability"
+            <span 
             *ngFor="let ability of pokemon.abilities">
-              <ng-container >{{ability['ability']['name']}} </ng-container>
+              <ng-container >|{{ability['ability']['name']}} </ng-container>
           </span>
         </tr>
         <tr>
@@ -54,7 +53,7 @@
         <tr>
         <td>HP</td>
         <td>
-          <div class="progress">
+          <div >
             <mat-progress-bar mode="determinate" value="{{ hp }}"></mat-progress-bar>
           </div>
         </td>
@@ -62,7 +61,7 @@
       <tr>
         <td>Attack</td>
         <td>
-          <div class="progress">
+          <div >
             <mat-progress-bar mode="determinate" value="{{ attack }}"></mat-progress-bar>
           </div>
         </td>
@@ -70,13 +69,13 @@
       <tr>
         <td>Defence</td>
         
-          <div class="progress">
+          <div >
             <mat-progress-bar mode="determinate" value="{{ defence }}"></mat-progress-bar>
           </div>
           <tr>
             <td>Sp. Attack</td>
             <td>
-              <div class="progress">
+              <div >
                 <mat-progress-bar mode="determinate" value="{{ spAttack }}"></mat-progress-bar>
               </div>
             </td>
@@ -84,7 +83,7 @@
           <tr>
             <td>Sp. Defence</td>
             <td>
-              <div class="progress">
+              <div >
                 <mat-progress-bar mode="determinate" value="{{ spDefence }}"></mat-progress-bar>
               </div>
             </td>
@@ -92,7 +91,7 @@
           <tr>
             <td>Speed</td>
             <td>
-              <div class="progress">
+              <div >
                 <mat-progress-bar mode="determinate" value="{{ speed }}"></mat-progress-bar>
               </div>
             </td>
@@ -113,4 +112,3 @@
 <a href="javascript:void(0)" class="backinho" routerLink="pokedex" (click)="close()">
   <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
 </a>
-</section>

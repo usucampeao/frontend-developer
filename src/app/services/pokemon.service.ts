@@ -36,8 +36,15 @@ export class PokemonService {
       pokemon: 'id',
     });
     this.table = this.db.table('pokemon');
-    this.totalItensDb = await this.table.count();
-    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
+    this.table
+      .count()
+      .then((x) => {
+        this.totalItensDb = x;
+        this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   private async salvarIndexedDb(pokemon: Pokemon) {
     try {
@@ -69,19 +76,19 @@ export class PokemonService {
   }
 
   async getIndexedDbCount() {
-    console.log('passou aqui 1');
+    // console.log('passou aqui 1');
     await this.table.count().then((x) => {
       if (x > 0) {
-        console.log('passou aqui 2');
+        // console.log('passou aqui 2');
         this.getIndexedDbItens(x);
       }
     });
   }
 
   async getIndexedDbItens(total: number) {
-    for (let i = 1; i < total+1; i++) {
+    for (let i = 1; i < total + 1; i++) {
       const pokemon = await this.table.get(i);
-      this.pokemons[+pokemon.id -1] = new Pokemon(
+      this.pokemons[+pokemon.id - 1] = new Pokemon(
         pokemon.name,
         pokemon.id,
         pokemon['sprite'],
@@ -100,16 +107,11 @@ export class PokemonService {
         pokemon['stats'],
         pokemon['species']
       );
-      console.log(this.pokemons)
       this.contadorTotal++;
-      console.log(this.contadorTotal)
-
       // t
       if (this.contadorTotal === 807) {
         this.totalCarregado = this.totalCarregado + 807;
-        this.novosPokesCarregados.next(this.totalCarregado);
         this.listaPokeAtt.next(this.pokemons);
-        console.log(this.pokemons);
         this.spinner.hide();
         return;
       }
@@ -118,7 +120,6 @@ export class PokemonService {
       //   this.spinner.hide();
       // }
     }
-    
   }
 
   // IndexedDb related //
@@ -132,29 +133,33 @@ export class PokemonService {
   }
 
   async getAllPokemons(url: string) {
-    console.log(this.totalItensDb)
+    console.log('items on indexeddb:', this.totalItensDb);
     this.spinner.show();
     if (!this.onlineOfflineService.isOnline) {
       this.getIndexedDbCount();
     } else {
-      this.http
-        .get<{
-          count: string;
-          next: string;
-          previous: string;
-          results: { name: string; url: string }[];
-        }>(url)
-        .subscribe((response) => {
-          const pokemons: { name: string; url: string }[] = response.results;
-          for (const pokemon of pokemons) {
-            if (pokemon.url === 'https://pokeapi.co/api/v2/pokemon/807/') {
-              this.getPokemon(pokemon.url, null);
-              return;
-            } else {
-              this.getPokemon(pokemon.url, response.next);
+      if (this.totalItensDb === 807) {
+        this.getIndexedDbItens(807);
+      } else {
+        this.http
+          .get<{
+            count: string;
+            next: string;
+            previous: string;
+            results: { name: string; url: string }[];
+          }>(url)
+          .subscribe((response) => {
+            const pokemons: { name: string; url: string }[] = response.results;
+            for (const pokemon of pokemons) {
+              if (pokemon.url === 'https://pokeapi.co/api/v2/pokemon/807/') {
+                this.getPokemon(pokemon.url, null);
+                return;
+              } else {
+                this.getPokemon(pokemon.url, response.next);
+              }
             }
-          }
-        });
+          });
+      }
     }
   }
 
@@ -189,9 +194,9 @@ export class PokemonService {
         response['stats'],
         response['species']
       );
-      if (this.totalItensDb < 807){
-      this.salvarIndexedDb(this.pokemons[+response.id - 1]);
-    }
+      if (this.totalItensDb < 807) {
+        this.salvarIndexedDb(this.pokemons[+response.id - 1]);
+      }
       this.contadorResponse++;
       this.contadorTotal++;
       // t
