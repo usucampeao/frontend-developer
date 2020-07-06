@@ -41,7 +41,7 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
     } else {
       this.pokemonListSubscription = this.pokemonService.listaPokeAtt.subscribe(
         (response) => {
-          this.pokemons = response.slice(0, 20);
+          this.pokemons = response.slice(0, this.nrPokesCarregados);
         }
       );
       this.nrPokesCarregadosSub = this.pokemonService.novosPokesCarregados.subscribe(

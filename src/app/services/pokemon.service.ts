@@ -9,7 +9,7 @@ import Dexie from 'dexie';
   providedIn: 'root',
 })
 export class PokemonService {
-  pokemons: Pokemon[] = new Array<Pokemon>(20);
+  pokemons: Pokemon[] = new Array<Pokemon>(100);
   listaPokeAtt = new Subject<Pokemon[]>();
   contadorResponse = 0;
   totalCarregado = 0;
@@ -29,12 +29,15 @@ export class PokemonService {
     this.ouvirStatusConexao();
   }
   // IndexedDb related //
-  private iniciarIndexedDb() {
+  totalItensDb = 0;
+  private async iniciarIndexedDb() {
     this.db = new Dexie('db-pokedex');
     this.db.version(1).stores({
       pokemon: 'id',
     });
     this.table = this.db.table('pokemon');
+    this.totalItensDb = await this.table.count();
+    this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
   }
   private async salvarIndexedDb(pokemon: Pokemon) {
     try {
@@ -58,8 +61,9 @@ export class PokemonService {
   private ouvirStatusConexao() {
     this.onlineOfflineService.statusConexao.subscribe((online) => {
       if (online) {
+        this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
       } else {
-        this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=20');
+        this.getAllPokemons('https://pokeapi.co/api/v2/pokemon/?limit=100');
       }
     });
   }
@@ -101,8 +105,8 @@ export class PokemonService {
       console.log(this.contadorTotal)
 
       // t
-      if (this.contadorTotal === 20) {
-        this.totalCarregado = this.totalCarregado + 20;
+      if (this.contadorTotal === 807) {
+        this.totalCarregado = this.totalCarregado + 807;
         this.novosPokesCarregados.next(this.totalCarregado);
         this.listaPokeAtt.next(this.pokemons);
         console.log(this.pokemons);
@@ -128,6 +132,7 @@ export class PokemonService {
   }
 
   async getAllPokemons(url: string) {
+    console.log(this.totalItensDb)
     this.spinner.show();
     if (!this.onlineOfflineService.isOnline) {
       this.getIndexedDbCount();
@@ -184,18 +189,20 @@ export class PokemonService {
         response['stats'],
         response['species']
       );
+      if (this.totalItensDb < 807){
       this.salvarIndexedDb(this.pokemons[+response.id - 1]);
+    }
       this.contadorResponse++;
       this.contadorTotal++;
       // t
-      if (this.contadorTotal === 20) {
-        this.totalCarregado = this.totalCarregado + 20;
-        this.novosPokesCarregados.next(this.totalCarregado);
-        this.listaPokeAtt.next(this.pokemons);
-        console.log(this.pokemons);
-        this.spinner.hide();
-        return;
-      }
+      // if (this.contadorTotal === 20) {
+      //   this.totalCarregado = this.totalCarregado + 20;
+      //   this.novosPokesCarregados.next(this.totalCarregado);
+      //   this.listaPokeAtt.next(this.pokemons);
+      //   console.log(this.pokemons);
+      //   this.spinner.hide();
+      //   return;
+      // }
 
       // t
       if (this.contadorTotal === 807) {
@@ -205,8 +212,8 @@ export class PokemonService {
         this.spinner.hide();
         return;
       }
-      if (this.contadorResponse === 20) {
-        this.totalCarregado = this.totalCarregado + 20;
+      if (this.contadorResponse === 100) {
+        this.totalCarregado = this.totalCarregado + 100;
         this.novosPokesCarregados.next(this.totalCarregado);
         this.listaPokeAtt.next(this.pokemons);
         this.contadorResponse = 0;
