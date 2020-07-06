@@ -41,7 +41,7 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
     } else {
       this.pokemonListSubscription = this.pokemonService.listaPokeAtt.subscribe(
         (response) => {
-          this.pokemons = response.slice(0, this.nrPokesCarregados);
+          this.pokemons = response.slice(0, 20);
         }
       );
       this.nrPokesCarregadosSub = this.pokemonService.novosPokesCarregados.subscribe(
@@ -68,8 +68,10 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   testinho() {
-    console.log('PokemonService.Pokemons: ', this.pokemonService.pokemons);
+    // await this.pokemonService.getIndexedDbItens(0);
+    // console.log('PokemonService.Pokemons: ', this.pokemonService.pokemons);
     console.log('Pokemons', this.pokemons);
+    this.pokemonService.getIndexedDbItens(1);
     // console.log('',this.pokemonService.pokemons);
   }
 }

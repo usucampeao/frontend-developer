@@ -26,7 +26,7 @@ export class PokemonComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.pokemon;
     dialogConfig.hasBackdrop = true;
-    dialogConfig.disableClose = true;
+    // dialogConfig.disableClose = true;
     let backdrop = '';
     const qtdTipos = this.pokemon.types.length;
 
