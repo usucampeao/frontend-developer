@@ -1,59 +1,78 @@
 <mat-dialog-content class="poke-card-info mat-typography">
-  <h1 class="mat-display-1 textinho yellow zaz">#{{pokemon.id}} {{ pokemon.name }}</h1>
-  <br>
-  <div>
+  <div class="titlinho" >
+    <h1 class="mat-display-1 textinho yellow zaz" style="padding: 10px;">#{{pokemon.id}} {{ pokemon.name }}</h1>
+  </div>
+  
+  
+<div class="img-stats">
 <img class="img-fluid" src="assets/icons/pokes/sprites/{{pokemon.id}}.png" alt="">
     <ng-container *ngFor="let type of pokemon.types">
-      <ng-container [ngSwitch]="type['type']['name']">
-        <div *ngSwitchCase="'bug'"><img class="icon bug"  src="../../../../assets/icons/pokes/types/bug.svg" title="INSETO"><div>BUG</div></div>
-        <div *ngSwitchCase="'dark'"><img class="icon dark"  src="../../../../assets/icons/pokes/types/dark.svg" title="NOTURNO"><div>DARK</div></div>
-        <div *ngSwitchCase="'dragon'"><img class="icon dragon"  src="../../../../assets/icons/pokes/types/dragon.svg" title="DRAGÃO"><div>DRAGON</div></div>
-        <div *ngSwitchCase="'electric'"><img class="icon electric"  src="../../../../assets/icons/pokes/types/electric.svg" title="ELÉTRICO"><div>ELECTRIC</div></div>
-        <div *ngSwitchCase="'fire'"><img class="icon fire"  src="../../../../assets/icons/pokes/types/fire.svg" title="FOGO"><div>FIRE</div></div>
-        <div *ngSwitchCase="'fairy'"><img class="icon fairy"  src="../../../../assets/icons/pokes/types/fairy.svg" title="FADA"><div>FAIRY</div></div>
-        <div *ngSwitchCase="'fighting'"><img class="icon fighting"  src="../../../../assets/icons/pokes/types/fighting.svg" title="LUTADOR"><div>FIGHT</div></div>
-        <div *ngSwitchCase="'flying'"><img class="icon flying"  src="../../../../assets/icons/pokes/types/flying.svg" title="VOADOR"><div>FLYING</div></div>
-        <div *ngSwitchCase="'ghost'"><img class="icon ghost"  src="../../../../assets/icons/pokes/types/ghost.svg" title="FANTASMA"><div>GHOST</div></div>
-        <div *ngSwitchCase="'grass'"><img class="icon grass"  src="../../../../assets/icons/pokes/types/grass.svg" title="GRAMA"><div>GRASS</div></div>
-        <div *ngSwitchCase="'ground'"><img class="icon ground"  src="../../../../assets/icons/pokes/types/ground.svg" title="TERRESTRE"><div>GROUND</div></div>
-        <div *ngSwitchCase="'ice'"><img class="icon ice"  src="../../../../assets/icons/pokes/types/ice.svg" title="GELO"><div>ICE</div></div>
+      <ng-container [ngSwitch]="type['type']['name']" style="margin:15px;">
+        <div *ngSwitchCase="'bug'"><img class="icon bug"  src="../../../../assets/icons/pokes/types/bug.svg" title="BUG"><div>BUG</div></div>
+        <div *ngSwitchCase="'dark'"><img class="icon dark"  src="../../../../assets/icons/pokes/types/dark.svg" title="DARK"><div>DARK</div></div>
+        <div *ngSwitchCase="'dragon'"><img class="icon dragon"  src="../../../../assets/icons/pokes/types/dragon.svg" title="DRAGON"><div>DRAGON</div></div>
+        <div *ngSwitchCase="'electric'"><img class="icon electric"  src="../../../../assets/icons/pokes/types/electric.svg" title="ELECTRIC"><div>ELECTRIC</div></div>
+        <div *ngSwitchCase="'fire'"><img class="icon fire"  src="../../../../assets/icons/pokes/types/fire.svg" title="FIRE"><div>FIRE</div></div>
+        <div *ngSwitchCase="'fairy'"><img class="icon fairy"  src="../../../../assets/icons/pokes/types/fairy.svg" title="FAIRY"><div>FAIRY</div></div>
+        <div *ngSwitchCase="'fighting'"><img class="icon fighting"  src="../../../../assets/icons/pokes/types/fighting.svg" title="FIGHT"><div>FIGHT</div></div>
+        <div *ngSwitchCase="'flying'"><img class="icon flying"  src="../../../../assets/icons/pokes/types/flying.svg" title="FLYING"><div>FLYING</div></div>
+        <div *ngSwitchCase="'ghost'"><img class="icon ghost"  src="../../../../assets/icons/pokes/types/ghost.svg" title="GHOST"><div>GHOST</div></div>
+        <div *ngSwitchCase="'grass'"><img class="icon grass"  src="../../../../assets/icons/pokes/types/grass.svg" title="GRASS"><div>GRASS</div></div>
+        <div *ngSwitchCase="'ground'"><img class="icon ground"  src="../../../../assets/icons/pokes/types/ground.svg" title="GROUND"><div>GROUND</div></div>
+        <div *ngSwitchCase="'ice'"><img class="icon ice"  src="../../../../assets/icons/pokes/types/ice.svg" title="ICE"><div>ICE</div></div>
         <div *ngSwitchCase="'normal'"><img class="icon normal"  src="../../../../assets/icons/pokes/types/normal.svg" title="NORMAL"><div>NORMAL</div></div>
-        <div *ngSwitchCase="'poison'"><img class="icon poison"  src="../../../../assets/icons/pokes/types/poison.svg" title="VENENOSO"><div>POISON</div></div>
-        <div *ngSwitchCase="'psychic'"><img class="icon psychic"  src="../../../../assets/icons/pokes/types/psychic.svg" title="PSÍQUICO"><div>PSYCHIC</div></div>
-        <div *ngSwitchCase="'rock'"><img class="icon rock"  src="../../../../assets/icons/pokes/types/rock.svg" title="PEDRA"><div>ROCK</div></div>
-        <div *ngSwitchCase="'steel'"><img class="icon steel"  src="../../../../assets/icons/pokes/types/steel.svg" title="METÁLICO"><div>STEEL</div></div>
-        <div *ngSwitchCase="'water'"><img class="icon water"  src="../../../../assets/icons/pokes/types/water.svg" title="ÁGUA"><div>WATER</div></div>
+        <div *ngSwitchCase="'poison'"><img class="icon poison"  src="../../../../assets/icons/pokes/types/poison.svg" title="POISON"><div>POISON</div></div>
+        <div *ngSwitchCase="'psychic'"><img class="icon psychic"  src="../../../../assets/icons/pokes/types/psychic.svg" title="PSYCHIC"><div>PSYCHIC</div></div>
+        <div *ngSwitchCase="'rock'"><img class="icon rock"  src="../../../../assets/icons/pokes/types/rock.svg" title="ROCK"><div>ROCK</div></div>
+        <div *ngSwitchCase="'steel'"><img class="icon steel"  src="../../../../assets/icons/pokes/types/steel.svg" title="STEEL"><div>STEEL</div></div>
+        <div *ngSwitchCase="'water'"><img class="icon water"  src="../../../../assets/icons/pokes/types/water.svg" title="WATER"><div>WATER</div></div>
       </ng-container>
     </ng-container>
   
-  </div>
-  
+    <legend>Main Info</legend>
+    <table class="tabelinha">
+      <tbody>
+      <tr>
+        <td>Height :</td>
+        <td>{{pokemon.height + "m"}}</td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td>{{pokemon.weight + "kg"}}</td>
+      </tr>
+      <tr>
+        <a><tr>Abilities</tr></a>
+        
+        <td>
+          <mat-chip-list aria-label="Abilities" *ngFor="let ability of pokemon.abilities; let i=index">
+            <mat-chip [ngClass]="pokemon.color"  (click)="abilitySelect(i)"
+            data-toggle="modal" data-target="#abilityModal">{{ability['ability']['name']}}
+            </mat-chip>
+          </mat-chip-list>
+            
+            
+        </td>
+        
+      </tbody></table>
 
-    <table >
+</div>
+  
+<legend>STATUS</legend>
+    <table class="tabelinha">
         <tbody>
-        <tr>
-          <td>Height :</td>
-          <td>{{pokemon.height + "m"}}</td>
-        </tr>
-        <tr>
-          <td>Weight</td>
-          <td>{{pokemon.weight + "kg"}}</td>
-        </tr>
-        <tr>
-          <td>Abilities</td>
-          <td>
-            <span 
-            *ngFor="let ability of pokemon.abilities">
-              <ng-container >|{{ability['ability']['name']}} </ng-container>
-          </span>
-        </tr>
+        
+<!--          <tr><td></td><td><div class="collapse" id="collapseExample">-->
+<!--            <div class="card card-body small" style="max-width: 200px">-->
+<!--              This Pokémon cannot be paralyzed. If a Pokémon is paralyzed and acquires this ability, its paralysis is healed; this includes when regaining a lost ability upon leaving battle.-->
+<!--            </div>-->
+<!--          </div></td></tr>-->
         <tr>
         </tr>
         <tr>
         <td>HP</td>
         <td>
           <div >
-            <mat-progress-bar mode="determinate" value="{{ hp }}"></mat-progress-bar>
+            {{ pokemonStats[0] }}<mat-progress-bar mode="determinate" value="{{ pokemonStats[0] }}"></mat-progress-bar>
           </div>
         </td>
       </tr>
@@ -61,21 +80,22 @@
         <td>Attack</td>
         <td>
           <div >
-            <mat-progress-bar mode="determinate" value="{{ attack }}"></mat-progress-bar>
+            {{ pokemonStats[1] }}<mat-progress-bar mode="determinate" value="{{ pokemonStats[1] }}"></mat-progress-bar>
           </div>
         </td>
       </tr>
       <tr>
         <td>Defence</td>
-        
+        <td>
           <div >
-            <mat-progress-bar mode="determinate" value="{{ defence }}"></mat-progress-bar>
+            {{ pokemonStats[2] }}<mat-progress-bar mode="determinate" value="{{ pokemonStats[2] }}"></mat-progress-bar>
           </div>
+        </td>
           <tr>
             <td>Sp. Attack</td>
             <td>
               <div >
-                <mat-progress-bar mode="determinate" value="{{ spAttack }}"></mat-progress-bar>
+                {{ pokemonStats[3] }}<mat-progress-bar mode="determinate" value="{{ pokemonStats[3] }}"></mat-progress-bar>
               </div>
             </td>
           </tr>
@@ -83,7 +103,7 @@
             <td>Sp. Defence</td>
             <td>
               <div >
-                <mat-progress-bar mode="determinate" value="{{ spDefence }}"></mat-progress-bar>
+                {{ pokemonStats[4] }}<mat-progress-bar mode="determinate" value="{{ pokemonStats[4] }}"></mat-progress-bar>
               </div>
             </td>
           </tr>
@@ -91,11 +111,21 @@
             <td>Speed</td>
             <td>
               <div >
-                <mat-progress-bar mode="determinate" value="{{ speed }}"></mat-progress-bar>
+                {{ pokemonStats[5] }}<mat-progress-bar mode="determinate" value="{{ pokemonStats[5] }}"></mat-progress-bar>
               </div>
             </td>
           </tr>
-       
+          <tr>
+            <td class="text-right font-weight-bold" style="white-space:nowrap;">Total</td>
+            <td colspan="3">
+              {{totalBaseStats()}}
+<!--              <div class="progress">-->
+<!--                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm" role="progressbar"-->
+<!--                     aria-valuenow="" aria-valuemin="0" aria-valuemax="255" [ngClass]="pokemon.color"-->
+<!--                     style="width:{{stats[5]}}"><span>{{statsToShow[5]}}</span></div>-->
+<!--              </div>-->
+            </td>
+          </tr>
 
         </tbody>
       </table>

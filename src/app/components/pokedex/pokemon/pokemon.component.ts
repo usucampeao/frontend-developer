@@ -21,7 +21,6 @@ export class PokemonComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog(id) {
-    // this.router.navigate(['pokedex/', id]);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = this.pokemon;
@@ -42,5 +41,6 @@ export class PokemonComponent implements OnInit {
     dialogConfig.height = '80%';
 
     this.dialog.open(PokemonInfoComponent, dialogConfig);
+    // this.router.navigate(['pokedex/', id]);
   }
 }

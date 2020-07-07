@@ -1,7 +1,7 @@
 import { Injectable, Output } from '@angular/core';
 import { Pokemon } from '../models/Pokemon';
 import { Subject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { OnlineOfflineService } from './online-offline.service';
 import Dexie from 'dexie';
@@ -15,6 +15,7 @@ export class PokemonService {
   totalCarregado = 0;
   novosPokesCarregados = new Subject<number>();
   contadorTotal = 0;
+  activePokemon = new Subject<Pokemon>();
 
   private db: Dexie;
   private table: Dexie.Table<Pokemon, any> = null;
@@ -46,9 +47,9 @@ export class PokemonService {
         console.log(error);
       });
   }
-  private async salvarIndexedDb(pokemon: Pokemon) {
+  private async salvarIndexedDb(pokemons: Pokemon[]) {
     try {
-      await this.table.add(pokemon);
+      await this.table.bulkAdd(pokemons);
       const todosPokemon: Pokemon[] = await this.table.toArray();
       console.log('Pokemon foi salvo no IndexedDb', todosPokemon);
     } catch (error) {
@@ -81,39 +82,58 @@ export class PokemonService {
 
   async getIndexedDbItens(total: number) {
     console.log('carregando do indexedDb');
-    for (let i = 1; i < total + 1; i++) {
-      const pokemon = await this.table.get(i);
-      this.pokemons[+pokemon.id - 1] = new Pokemon(
-        pokemon.name,
-        pokemon.id,
-        pokemon['sprite'],
-        pokemon['types'],
-        pokemon['abilities'],
-        pokemon['height'],
-        pokemon['weight'],
-        pokemon['base_experience'],
-        pokemon['forms'],
-        pokemon['held_items'],
-        pokemon['game_indices'],
-        pokemon['is_default'],
-        pokemon['location'],
-        pokemon['moves'],
-        pokemon['order'],
-        pokemon['stats'],
-        pokemon['species']
-      );
-      this.contadorTotal++;
-      // t
-      if (this.contadorTotal === 807) {
-        this.totalCarregado = this.totalCarregado + 807;
-        this.listaPokeAtt.next(this.pokemons);
-        this.spinner.hide();
-        return;
+    console.log(this.pokemons);
+    if (total === 807) {
+      console.log('Tem todos os pokemons na local, carregando...');
+      const x = [];
+      for (let i = 1; i < total; i++){
+        x.push(i);
       }
-      // if (i === total){
-      //   this.listaPokeAtt.next(this.pokemons);
-      //   this.spinner.hide();
-      // }
+
+      const pokemons = await this.table.bulkGet(x);
+      this.totalCarregado = this.totalCarregado + 807;
+      this.listaPokeAtt.next(pokemons); // manda todos pra subscrb
+      this.spinner.hide();
+      return;
+    } else {
+      console.log('Não tem todos, carregando e se online, buscando + na API...');
+      for (let i = 1; i < total + 1; i++) {
+        const pokemon = await this.table.get(i);
+        this.pokemons[+pokemon.id - 1] = new Pokemon(
+          pokemon.name,
+          pokemon.id,
+          pokemon['sprite'],
+          pokemon['types'],
+          pokemon['abilities'],
+          pokemon['height'],
+          pokemon['weight'],
+          pokemon['base_experience'],
+          pokemon['forms'],
+          pokemon['held_items'],
+          pokemon['game_indices'],
+          pokemon['is_default'],
+          pokemon['location'],
+          pokemon['moves'],
+          pokemon['order'],
+          pokemon['stats'],
+          pokemon['species'],
+          null
+        );
+        console.log('pokemon x buscado do indexedDb:', this.pokemons[i]);
+        console.log('pokemons na lista pós busca:', this.pokemons);
+
+        if (i === total) {
+          this.totalCarregado = i;
+          this.listaPokeAtt.next(this.pokemons);
+          if (this.onlineOfflineService.isOnline) {
+            this.getAllPokemons(
+              'https://pokeapi.co/api/v2/pokemon/?offset=' + i + '&limit=100'
+            );
+          }
+          this.spinner.hide();
+          return;
+        }
+      } // fim for
     }
   }
 
@@ -124,10 +144,11 @@ export class PokemonService {
   }
 
   getAbility(url: string) {
+    const headers = new HttpHeaders().set('Accept-Language', ' pt-BR; en-US');
     return this.http.get(url);
   }
 
-  async getAllPokemons(url: string) {
+  async getAllPokemons(url: string, missing?: boolean) {
     console.log('items on indexeddb:', this.totalItensDb);
     this.spinner.show();
     if (this.onlineOfflineService.isOnline === false) {
@@ -139,7 +160,7 @@ export class PokemonService {
       }
     } else {
       if (this.totalItensDb === 807) {
-        console.log(this.pokemons.length)
+        console.log(this.pokemons.length);
         if (this.pokemons.length === 807) {
           this.spinner.hide();
           return;
@@ -147,7 +168,8 @@ export class PokemonService {
           this.getIndexedDbItens(807);
         }
       } else {
-        console.log('carregando da API')
+        console.log('carregando da API');
+
         this.http
           .get<{
             count: string;
@@ -199,11 +221,9 @@ export class PokemonService {
         response['moves'],
         response['order'],
         response['stats'],
-        response['species']
+        response['species'],
+        null
       );
-      if (this.totalItensDb < 807) {
-        this.salvarIndexedDb(this.pokemons[+response.id - 1]);
-      }
       this.contadorResponse++;
       this.contadorTotal++;
       // t
@@ -221,6 +241,10 @@ export class PokemonService {
         this.totalCarregado = this.totalCarregado + 7;
         this.novosPokesCarregados.next(this.totalCarregado);
         this.listaPokeAtt.next(this.pokemons);
+        if (this.totalItensDb < 807) {
+          console.log('salvando todos');
+          this.salvarIndexedDb(this.pokemons);
+        }
         this.spinner.hide();
         return;
       }

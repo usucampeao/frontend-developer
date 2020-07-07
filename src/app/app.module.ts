@@ -35,6 +35,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { InfoComponent } from './components/pokedex/pokemon/info/info.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { VirtualScrollerModule } from 'ngx-virtual-scroller';
     MatCheckboxModule,
     MatProgressBarModule,
     VirtualScrollerModule,
+    MatChipsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
