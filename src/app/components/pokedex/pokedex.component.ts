@@ -1,22 +1,13 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  DoCheck,
-  Input,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, DoCheck } from '@angular/core';
 import { Pokemon } from '../../models/Pokemon';
 import { PokemonService } from '../../services/pokemon.service';
-import { MatPaginator } from '@angular/material/paginator';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.scss'],
 })
-export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
+export class PokedexComponent implements OnInit, DoCheck {
   pokemons: Pokemon[] = [];
   nrPokesCarregados: number;
   // lista e carregados obs
@@ -27,10 +18,12 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
   searchItemSubscription;
   searchItem = '';
 
-  numbers = [];
   scrolled = true;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private http: HttpClient
+  ) {}
   ngOnInit(): void {
     this.pokemonService.searchItemSubject.subscribe((response) => {
       this.searchItem = response;
@@ -62,24 +55,7 @@ export class PokedexComponent implements OnInit, OnDestroy, DoCheck {
     this.pokemonService.searchItemSubject.next(this.searchItem);
   }
 
-  ngOnDestroy(): void {
-    // n perder a lista carregada.
-    // this.pokemonService.searchItemSubject.next('');
-    // this.searchItemSubscription.unsubscribe();
-  }
-  
-  testinho() {
-    
-    // await this.pokemonService.getIndexedDbItens(0);
-    // console.log('PokemonService.Pokemons: ', this.pokemonService.pokemons);
-    console.log('Pokemons', this.pokemons);
-    // this.pokemonService.getIndexedDbItens(1);
-    // console.log('',this.pokemonService.pokemons);
-  }
-
-
   public myTrackByFunction(index: number, pokemon: Pokemon): number {
     return pokemon.id;
   }
-
 }

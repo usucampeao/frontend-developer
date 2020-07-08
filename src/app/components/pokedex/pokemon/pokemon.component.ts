@@ -29,7 +29,7 @@ export class PokemonComponent implements OnInit {
     let backdrop = '';
     const qtdTipos = this.pokemon.types.length;
 
-    if (qtdTipos === 1 ) {
+    if (qtdTipos === 1) {
       backdrop = backdrop + this.pokemon.types[0]['type']['name'];
     } else if (qtdTipos >= 2) {
       for (const type of this.pokemon.types) {

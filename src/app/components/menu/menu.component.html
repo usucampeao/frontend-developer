@@ -1,23 +1,26 @@
 <div class="menu slide" #menuZao>
-    
-    <div id="navToggle" class="slide pokeball " #pokeBall (click)="toggleMenu()">
-        <div id="navToggleButton" class="pokeball__button">
+  <div id="navToggle" class="slide pokeball" #pokeBall (click)="toggleMenu()">
+    <div id="navToggleButton" class="pokeball__button"></div>
+  </div>
 
-        </div>
-    </div>
-    
-    
-    
-    <h1 class="textinho yellowIn font-lg">MatinhoDéx</h1>
+  <h1 class="textinho yellowIn font-lg">MatinhoDéx</h1>
 </div>
 
 <nav class="slide" #menuZin>
-    <ul #linkis  >
-        <li><a routerLink="./">LINKS</a></li>
-        <li><a routerLink="./">QUE</a></li>
-        <li><a routerLink="./">NADA</a></li>
-        <li><a routerLink="./">FAZEM</a></li>
-        <li class="pokedex-link"><a [routerLinkActive]="['active']" routerLink="/pokedex">POKEDÉX</a></li>
-        <li class="contatinho"><a [routerLinkActive]="['active']">ME CHAMA!</a></li>
-    </ul>
+  <ul #linkis>
+    <li><a routerLink="./">LINKS</a></li>
+    <li><a routerLink="./">QUE</a></li>
+    <li><a routerLink="./">NADA</a></li>
+    <li><a routerLink="./">FAZEM</a></li>
+    <li class="pokedex-link">
+      <a [routerLinkActive]="['active']" routerLink="/pokedex">POKEDÉX</a>
+    </li>
+    <li class="contatinho">
+      <a
+        href="mailto:matheulls@hotmail.com?Subject=Sobre seu APP lindo.&body=Amei Parabéns Bem Vindo!"
+        target="_top"
+        >ME CHAMA!</a
+      >
+    </li>
+  </ul>
 </nav>

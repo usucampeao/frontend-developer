@@ -36,6 +36,7 @@ import { InfoComponent } from './components/pokedex/pokemon/info/info.component'
 import { SearchFilterPipe } from './search-filter.pipe';
 import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 import { MatChipsModule } from '@angular/material/chips';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,9 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCheckboxModule,
     MatProgressBarModule,
     VirtualScrollerModule,
-    MatChipsModule
+    MatChipsModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],

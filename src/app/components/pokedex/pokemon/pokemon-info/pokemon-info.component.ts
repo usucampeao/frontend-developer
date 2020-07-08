@@ -27,13 +27,7 @@ export class PokemonInfoComponent implements OnInit {
   allAbilitiesReceived = false;
 
   pokemonStats;
-  maxPokemonStats = [];
-  minPokemonStats = [];
-  statsToShow = [];
   maxStat;
-  maxMaxStat;
-  maxMinStat;
-  selectedStat = 'base';
   stats: string[] = ['0%', '0%', '0%', '0%', '0%', '0%'];
 
   constructor(
@@ -46,7 +40,6 @@ export class PokemonInfoComponent implements OnInit {
     this.pokemon = data;
   }
   abilitySelect(no: number) {
-    console.log(this.moves);
     this.abilitySelected = no;
   }
   ngOnInit(): void {
@@ -55,10 +48,12 @@ export class PokemonInfoComponent implements OnInit {
     //   this.pokemon = this.pokemonService.pokemons[this.pokemonId - 1];
     // });
     this.loadMoves();
+    this.loadStats();
+  }
 
+  loadStats() {
     this.height = (this.pokemon.height * 0.1).toFixed(1);
     this.weight = (this.pokemon.weight * 0.1).toFixed(1);
-    console.log(this.pokemon.stats)
     this.pokemonStats = [
       this.pokemon.stats[0]['base_stat'],
       this.pokemon.stats[1]['base_stat'],
@@ -68,17 +63,6 @@ export class PokemonInfoComponent implements OnInit {
       this.pokemon.stats[5]['base_stat'],
     ];
     this.maxStat = Math.max(...this.pokemonStats);
-
-    this.pokemonService.getPokemonSpeciesById(this.pokemon.id).subscribe(
-      response => {
-        this.pokemon.color = response['color']['name'];
-        console.log(this.pokemon)
-        this.pokemonService.activePokemon.next(this.pokemon);
-        this.pokemon.genera = response['genera'];
-      }
-    );
-
-
   }
 
   loadMoves() {
@@ -86,7 +70,7 @@ export class PokemonInfoComponent implements OnInit {
     for (const ability of this.pokemon.abilities) {
       requests.push(this.pokemonService.getAbility(ability['ability']['url']));
     }
-    forkJoin(...requests).subscribe((responses) => {
+    forkJoin(requests).subscribe((responses) => {
       for (let i = 0; i < responses.length; i++) {
         this.moves[i] = responses[i];
       }
@@ -104,7 +88,6 @@ export class PokemonInfoComponent implements OnInit {
       this.pokemonStats[5]
     );
   }
-
   close() {
     this.dialogRef.close();
     // this.router.navigate(['pokedex']);
