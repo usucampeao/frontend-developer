@@ -1,5 +1,4 @@
 import { Component, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
-import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
 import { Subject, Subscription } from 'rxjs';
 import { PokemonService } from './services/pokemon.service';
 
@@ -12,8 +11,6 @@ export class AppComponent implements AfterViewInit {
   title = 'matinhu-pokedex';
   messages: any[] = [];
   subscription: Subscription;
-  @ViewChild(ToastContainerDirective, { static: true })
-  toastContainer: ToastContainerDirective;
   constructor(private pokemonService: PokemonService) {}
 
   ngAfterViewInit() {
