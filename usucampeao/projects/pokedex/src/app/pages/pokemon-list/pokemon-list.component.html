@@ -1,16 +1,11 @@
 <div id="pokemon-list">
+  <div>
+    <br>
+    <!-- <button (click)="sortList()" style="position: fixed;">Ordernar</button> -->
+  </div>
   <div fxLayout="row wrap" fxLayoutAlign="center">
-    <mat-card
-      *ngFor="let pokemon of pokemonList"
-      class="poke-card"
-      fxFlex="0 1 auto"
-    >
-      <img
-        mat-card-image
-        [src]="pokemon.sprites.front_default"
-        alt="Photo of a Shiba Inu"
-        class="sprite"
-      />
+    <mat-card *ngFor="let pokemon of pokemonList" class="poke-card" fxFlex="0 1 auto"  [routerLink]="pokemon.name + '/' + pokemon.id">
+      <img mat-card-image [src]="pokemon.sprites.front_default" alt="Photo of a Shiba Inu" class="sprite" />
       <mat-card-header>
         <mat-card-subtitle>Nº {{ pokemon.id }}</mat-card-subtitle>
         <mat-card-title>{{ pokemon.name }}</mat-card-title>
@@ -19,5 +14,9 @@
     </mat-card>
   </div>
 
-  <button (click)="requestPokemon()">Carregar mais</button>
+  <div fxLayoutAlign="center">
+    <button (click)="requestPokemon()">Carregar mais</button>
+  </div>
+
+
 </div>

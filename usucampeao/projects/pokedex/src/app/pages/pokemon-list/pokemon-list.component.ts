@@ -3,6 +3,7 @@ import { PokemonService } from '../../../services/pokemon.service'
 import { Pokedex, PokemonEntry } from 'projects/pokedex/models/pokedex';
 import { Pokemon } from 'projects/pokedex/models/pokemon';
 import { Page } from 'projects/pokedex/models/page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pokemon-list',
@@ -26,9 +27,10 @@ export class PokemonListComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
+    private router: Router
   ) {
     this.requestParams = {
-      limit: 50,
+      limit: 200,
       offset: 0
     }
   }
@@ -46,19 +48,39 @@ export class PokemonListComponent implements OnInit {
 
   requestPokemon() {
     if (this.page && this.page.next) {
-      this.pokemonService.getNextPokemonPage(this.page.next).subscribe(async (page) => {
+      this.pokemonService.getNextPokemonPage(this.page.next).subscribe((page) => {
         this.page = page;
-        await this.getPokemonList();
+        this.getPokemonList();
       })
     }
   }
 
   async getPokemonList() {
     if (this.page && this.page.results) {
-      this.page.results.forEach(async (pokemon) => {
-        this.pokemonList.push(await this.pokemonService.getPokemonByUrl(pokemon.url).toPromise())
-      });
+      await this.page.results.forEach(async (pokemon) => {
+        this.pokemonList.push(await this.pokemonService.getPokemonByUrl(pokemon.url).toPromise());
+      })
+      setTimeout(() => {
+        this.sortList();
+      }, 2000);
     }
   }
 
+  sortList() {
+    this.pokemonList = [...this.pokemonList].sort((a, b) => {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      return 0;
+    })
+  }
+
+  openDetails(pokemon: Pokemon){
+  console.log("PokemonListComponent -> openDetails -> pokemon", pokemon)
+
+    this.router.navigate([`${pokemon.name}/${pokemon.id}`,  {pokemon: pokemon}])
+  }
 }
