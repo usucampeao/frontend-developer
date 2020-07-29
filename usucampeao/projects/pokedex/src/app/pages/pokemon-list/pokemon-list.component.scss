@@ -1,0 +1,23 @@
+#pokemon-list {
+  padding: 5%;
+  .poke-card {
+    background: rgb(245, 245, 245);
+    width: 200px;
+    height: 285px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    .sprite {
+      width: 150px;
+      height: 150px;
+    }
+    img {
+      max-width: 150px;
+      max-height: 150px;
+      margin: auto;
+    }
+    mat-card-title {
+      text-transform: capitalize;
+    }
+  }
+}
+
