@@ -1,3 +1,5 @@
+@import "../../../core/layout/scss/type.scss";
+
 #pokemon-details {
   padding: 5%;
   height: 100%;
@@ -15,11 +17,17 @@
     margin: auto;
     transition: height 0.75s;
     max-width: 800px;
+
     .name-image {
       width: 100%;
       max-width: 350px;
+      @media (min-width: 600px) {
+        margin-right: 20px;
+      }
+      @media (max-width: 599px) {
+        margin-bottom: 20px;
+      }
       .sprite {
-        max-width: 300px;
         max-height: 300px;
         background: rgb(228, 228, 228);
         border-radius: 50px;
@@ -30,12 +38,13 @@
         }
       }
     }
+
     .info {
       border-radius: 15px;
       background: lightpink;
       padding: 16px;
       width: 400px;
-      height: 40%;
+      margin-bottom: 20px;
 
       .title {
         width: 160px;
@@ -45,12 +54,13 @@
         width: 100%;
         text-align: end;
       }
-      // .element {
-      //   text-align: end;
-      //  p span {
-      //     text-align: start;
-      //   }
-      // }
+    }
+
+    .status {
+      border-radius: 15px;
+      background: lightblue;
+      padding: 16px;
+      width: 400px;
     }
   }
 }

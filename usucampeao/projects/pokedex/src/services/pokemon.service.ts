@@ -23,7 +23,6 @@ export class PokemonService {
         }
       })
     };
-    // const path = id ? this.api_url + `/${id}` : this.api_url;
     const pokedexPath = `${this.api_url}/pokedex/${pokedexId}`
     return this.httpClient.get<Pokedex>(pokedexPath)
       .pipe(
@@ -41,21 +40,37 @@ export class PokemonService {
       })
     };
     const pokemonPath = `${this.api_url}/pokemon`
-    // const path = id ? this.api_url + `/${id}` : this.api_url;
     return this.httpClient.get<Page>(pokemonPath, options)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  getNextPokemonPage(nextPageUrl: string) {
-    // const path = id ? this.api_url + `/${id}` : this.api_url;
-    return this.httpClient.get<Page>(nextPageUrl)
+  
+  getPokemonById(pokemonId: number): Observable<Pokemon> {
+    
+    const pokemonPath = `${this.api_url}/pokemon/${pokemonId}`
+    return this.httpClient.get<Pokemon>(pokemonPath)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
+  getEntityById(pokemonId: number, entity: string): Observable<any> {
+    
+    const pokemonPath = `${this.api_url}/${entity}/${pokemonId}`
+    return this.httpClient.get<any>(pokemonPath)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
+  getNextPokemonPage(nextPageUrl: string) {
+    return this.httpClient.get<Page>(nextPageUrl)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
 
   getPokemonByUrl(pokemonUrl: string): Observable<Pokemon> {
     const options = {
@@ -64,12 +79,25 @@ export class PokemonService {
         }
       })
     };
-    // const path = id ? this.api_url + `/${id}` : this.api_url;
     return this.httpClient.get<Pokemon>(pokemonUrl)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
+
+  getEntityByUrl(entityUrl: string): Observable<any> {
+    const options = {
+      params: new HttpParams({
+        fromObject: {
+        }
+      })
+    };
+    return this.httpClient.get<any>(entityUrl)
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

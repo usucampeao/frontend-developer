@@ -1,2 +1,64 @@
 <div id="pokemon-details">
+
+    <div class="header">
+        <button mat-button routerLink="/pokemon">Voltar</button>
+    </div>
+
+    <div *ngIf="isLoading" fxLayoutAlign="center" class="gif">
+        <img src="assets/gif/pokeball.gif" />
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center" *ngIf="pokemon && !isLoading" class="pokemon-card ">
+
+
+        <div fxLayout="column" class="name-image">
+            <div fxLayout="row">
+                <h1 class="text-capitalize" style="margin-right: 4px;"> {{pokemon.name}} </h1>
+                <h2 class="text-grey"> Nº {{pokemon.id  | number:'3.0-0'}} </h2>
+            </div>
+            <div class="sprite" (mouseover)="viewFront = false" (mouseout)="viewFront = true">
+                <img [src]="pokemon.sprites.front_default" *ngIf="viewFront">
+                <img [src]="pokemon.sprites.back_default" *ngIf="!viewFront">
+            </div>
+
+            <h2>Type</h2>
+            <div fxLayout="row" class="type">
+                <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
+                    {{pokeType.type.name}}
+                </span>
+            </div>
+        </div>
+
+
+
+        <div fxLayout="column">
+            <div fxLayout="row" class="info">
+                <div fxLayout="column" class="title">
+                    <p>Height</p>
+                    <p>Weight</p>
+                    <p>Category</p>
+                    <p>Abilities</p>
+                </div>
+
+                <div fxlayout="column" class="value">
+                    <p> {{(pokemon.height / 10) | number:'1.0-2' }} m</p>
+                    <p> {{(pokemon.weight / 10 ) | number:'1.1-2'}} kg </p>
+                    <p> Sem categoria </p>
+                    <div *ngFor="let ability of pokemon.abilities">
+                        <p class="text-capitalize"> {{ability.ability.name}} </p>
+                    </div>
+                </div>
+            </div>
+
+            <h2> Stats </h2>
+            <div fxLayout="column" class="status">
+                <div *ngFor="let pokeStat of pokemon.stats">
+                    <span class="text-capitalize bold">{{pokeStat.stat.name}}</span>
+                    <mat-progress-bar mode="determinate" [value]="getStat(pokeStat.base_stat)"></mat-progress-bar>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

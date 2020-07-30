@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     MatCardModule,
     MatButtonModule,
+    MatProgressBarModule,
     FlexLayoutModule,
   ]
 })

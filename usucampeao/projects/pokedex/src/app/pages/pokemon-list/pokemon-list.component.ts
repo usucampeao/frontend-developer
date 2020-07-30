@@ -50,7 +50,7 @@ export class PokemonListComponent implements OnInit {
       setTimeout(()=> {
         this.pokemonList = JSON.parse(offList);
         this.isLoading = false;
-      }, 500)
+      }, 200)
     } else {
       this.getPokemonPage();
     }
@@ -76,13 +76,13 @@ export class PokemonListComponent implements OnInit {
     if (this.page && this.page.results) {
       await this.page.results.forEach(async (pokemon) => {
 
-        // this.pokemonList.push();
         let pokemonEntity = await this.pokemonService.getPokemonByUrl(pokemon.url).toPromise()
 
         let pokemonSimpleObj: any = {
           id: pokemonEntity.id,
           name: pokemonEntity.name,
-          sprites: pokemonEntity.sprites
+          sprites: pokemonEntity.sprites,
+          types: pokemonEntity.types
         }
         this.pokemonList.push(pokemonSimpleObj);
       })
