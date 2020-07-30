@@ -1,17 +1,23 @@
 export interface Pokemon {
   id: number;
   name: string;
-  order: number;
   sprites: {
     front_default: string
-    front_shiny: string
+    back_default: string
   };
-  types: {
+  types?: {
     slot: number;
     type: {
       name: string;
       url: string;
     }
   }[];
-
+  weight: number;
+  height: number;
+  abilities: {
+    ability: {
+      name: string;
+      url: string;
+    }
+  }[]
 }

@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button'
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [MainLayoutComponent],
@@ -16,6 +18,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule,
     MatToolbarModule,
     MatButtonModule,
+    MatMenuModule,
+    MatIconModule
   ],
   exports: [MainLayoutComponent]
 })

@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     RouterModule,
-    MatCardModule,
     FlexLayoutModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   exports: [
     CommonModule,
     RouterModule,
     MatCardModule,
+    MatButtonModule,
     FlexLayoutModule,
   ]
 })
