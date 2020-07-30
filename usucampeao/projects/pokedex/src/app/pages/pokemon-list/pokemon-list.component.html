@@ -1,22 +1,26 @@
 <div id="pokemon-list">
-  <div>
-    <br>
-    <!-- <button (click)="sortList()" style="position: fixed;">Ordernar</button> -->
-  </div>
-  <div fxLayout="row wrap" fxLayoutAlign="center">
+  <!-- <div>
+    <button (click)="sortList()" style="position: fixed;">Ordernar</button>
+  </div> -->
+  <div fxLayout="row wrap" fxLayoutAlign="center" *ngIf="!isLoading">
     <mat-card *ngFor="let pokemon of pokemonList" class="poke-card" fxFlex="0 1 auto"  [routerLink]="pokemon.name + '/' + pokemon.id">
       <img mat-card-image [src]="pokemon.sprites.front_default" alt="Photo of a Shiba Inu" class="sprite" />
       <mat-card-header>
-        <mat-card-subtitle>Nº {{ pokemon.id }}</mat-card-subtitle>
+        <mat-card-subtitle>Nº {{ pokemon.id  | number:'3.0-0' }}</mat-card-subtitle>
         <mat-card-title>{{ pokemon.name }}</mat-card-title>
       </mat-card-header>
       <mat-card-content> </mat-card-content>
     </mat-card>
   </div>
 
-  <div fxLayoutAlign="center">
-    <button (click)="requestPokemon()">Carregar mais</button>
+  <div *ngIf="isLoading" fxLayoutAlign="center" class="gif">
+    <img  *ngIf="theme == 'orange'" src="assets/gif/charmander-evo.gif" />
+    <img  *ngIf="theme == 'blue'" src="assets/gif/squirtle-evo.gif" />
+    <img  *ngIf="theme == 'green'" src="assets/gif/bulbasaur-evo.gif" />
   </div>
+  <!-- <div fxLayoutAlign="center">
+    <button (click)="requestPokemon()">Carregar mais</button>
+  </div> -->
 
 
 </div>

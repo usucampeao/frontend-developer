@@ -24,19 +24,36 @@ export class PokemonListComponent implements OnInit {
     name: string;
     url: string;
   }[] = [];
+  isLoading: boolean = true;
+
+  // todo - implementar theme por serviço ou diretiva
+  theme: string = 'red';
 
   constructor(
     private pokemonService: PokemonService,
     private router: Router
   ) {
+    // alterar limit caso seja preciso carregar os pokemons parcialmente
     this.requestParams = {
-      limit: 200,
+      limit: 800,
       offset: 0
     }
   }
 
   ngOnInit(): void {
-    this.getPokemonPage();
+    let theme = localStorage.getItem('theme');
+    theme ? this.theme = theme : false
+
+    let offList: any = localStorage.getItem('pokemonList');
+    this.isLoading = true;
+    if (offList) {
+      setTimeout(()=> {
+        this.pokemonList = JSON.parse(offList);
+        this.isLoading = false;
+      }, 500)
+    } else {
+      this.getPokemonPage();
+    }
   }
 
   getPokemonPage(): void {
@@ -58,11 +75,20 @@ export class PokemonListComponent implements OnInit {
   async getPokemonList() {
     if (this.page && this.page.results) {
       await this.page.results.forEach(async (pokemon) => {
-        this.pokemonList.push(await this.pokemonService.getPokemonByUrl(pokemon.url).toPromise());
+
+        // this.pokemonList.push();
+        let pokemonEntity = await this.pokemonService.getPokemonByUrl(pokemon.url).toPromise()
+
+        let pokemonSimpleObj: any = {
+          id: pokemonEntity.id,
+          name: pokemonEntity.name,
+          sprites: pokemonEntity.sprites
+        }
+        this.pokemonList.push(pokemonSimpleObj);
       })
       setTimeout(() => {
         this.sortList();
-      }, 2000);
+      }, 1500);
     }
   }
 
@@ -76,11 +102,11 @@ export class PokemonListComponent implements OnInit {
       }
       return 0;
     })
+    this.isLoading = false;
+    localStorage.setItem('pokemonList', JSON.stringify(this.pokemonList))
   }
 
-  openDetails(pokemon: Pokemon){
-  console.log("PokemonListComponent -> openDetails -> pokemon", pokemon)
-
-    this.router.navigate([`${pokemon.name}/${pokemon.id}`,  {pokemon: pokemon}])
+  openDetails(pokemon: Pokemon) {
+    this.router.navigate([`${pokemon.name}/${pokemon.id}`, { pokemon: pokemon }])
   }
 }
