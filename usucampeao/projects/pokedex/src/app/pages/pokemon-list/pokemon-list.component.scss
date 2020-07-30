@@ -1,5 +1,5 @@
 #pokemon-list {
-  padding: 5%;
+  padding: 10%;
   .poke-card {
     background: rgb(228, 228, 228);
     border: 1px solid grey;
@@ -14,8 +14,6 @@
       width: 150px;
       height: 150px;
       margin: auto;
- 
-    
     }
     img {
       max-width: 150px;
@@ -28,8 +26,12 @@
     }
     &:hover {
       // background-color: red;
-      border: 1px solid red;
+      border: 2px solid black;
       padding-top:0px
     } 
+  }
+
+  .gif{
+    max-height: 500px;
   }
 }

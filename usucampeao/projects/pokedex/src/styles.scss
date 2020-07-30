@@ -46,9 +46,46 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
- 
 }
 * ::-webkit-scrollbar {
   display: none;
 }
 
+// css compartilhados -> migrar para um scss como tema
+.text-grey {
+  color: grey;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// #F20800
+// #FA531B
+// #FF7700
+// #EBA82D
+// #FFD738
+
+/* Color Theme Swatches in Hex */
+.ct-1 {
+  color: #f20800;
+  .bg {
+    background: #f20800;
+  }
+}
+.ct2 {
+  color: #fa531b;
+}
+.ct3 {
+  color: #ff7700;
+}
+.ct4 {
+  color: #eba82d;
+}
+.ct5 {
+  color: #ffd738;
+}
+
+.material-icons.orange-theme { color: #FB8C00; }
+.material-icons.blue-theme { color: blue; }
+.material-icons.green-theme { color: green; }

@@ -1,3 +1,56 @@
-#pokemon-edit {
+#pokemon-details {
   padding: 5%;
+  height: 100%;
+  .header {
+    display: block;
+  }
+  .gif {
+    margin-top: 20vh;
+  }
+  .footer-btn {
+    position: 0;
+  }
+
+  .pokemon-card {
+    margin: auto;
+    transition: height 0.75s;
+    max-width: 800px;
+    .name-image {
+      width: 100%;
+      max-width: 350px;
+      .sprite {
+        max-width: 300px;
+        max-height: 300px;
+        background: rgb(228, 228, 228);
+        border-radius: 50px;
+        img {
+          width: 100%;
+          height: 100%;
+          margin: auto;
+        }
+      }
+    }
+    .info {
+      border-radius: 15px;
+      background: lightpink;
+      padding: 16px;
+      width: 400px;
+      height: 40%;
+
+      .title {
+        width: 160px;
+        font-weight: bold;
+      }
+      .value {
+        width: 100%;
+        text-align: end;
+      }
+      // .element {
+      //   text-align: end;
+      //  p span {
+      //     text-align: start;
+      //   }
+      // }
+    }
+  }
 }
