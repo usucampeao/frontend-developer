@@ -25,7 +25,8 @@
             "aot": true,
             "assets": [
               "projects/pokedex/src/favicon.ico",
-              "projects/pokedex/src/assets"
+              "projects/pokedex/src/assets",
+              "projects/pokedex/src/_redirects"
             ],
             "styles": [
               "projects/pokedex/src/styles.scss"
