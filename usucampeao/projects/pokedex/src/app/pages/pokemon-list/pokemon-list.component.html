@@ -3,13 +3,21 @@
     <button (click)="sortList()" style="position: fixed;">Ordernar</button>
   </div> -->
   <div fxLayout="row wrap" fxLayoutAlign="center" *ngIf="!isLoading">
-    <mat-card *ngFor="let pokemon of pokemonList" class="poke-card" fxFlex="0 1 auto"  [routerLink]="pokemon.name + '/' + pokemon.id">
-      <img mat-card-image [src]="pokemon.sprites.front_default" alt="Photo of a Shiba Inu" class="sprite" />
+    <mat-card *ngFor="let pokemon of pokemonList" class="pokemon-card" fxFlex="0 1 auto"  [routerLink]="pokemon.name + '/' + pokemon.id">
+     <div style="display: fixed;">
+       Nº {{ pokemon.id  | number:'3.0-0' }}
+     </div>
+      <img mat-card-image [src]="pokemon.sprites.front_default" alt="" class="sprite" />
       <mat-card-header>
-        <mat-card-subtitle>Nº {{ pokemon.id  | number:'3.0-0' }}</mat-card-subtitle>
         <mat-card-title>{{ pokemon.name }}</mat-card-title>
       </mat-card-header>
-      <mat-card-content> </mat-card-content>
+      <mat-card-content> 
+        <div fxLayout="row" class="type">
+          <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
+              {{pokeType.type.name}}
+          </span>
+      </div>
+      </mat-card-content>
     </mat-card>
   </div>
 

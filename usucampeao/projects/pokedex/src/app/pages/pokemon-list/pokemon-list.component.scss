@@ -1,10 +1,12 @@
-#pokemon-list {
+@import "../../core/layout/scss/type.scss";
+
+#pokemon-list { 
   padding: 10%;
-  .poke-card {
+  .pokemon-card {
     background: rgb(228, 228, 228);
     border: 1px solid grey;
     width: 200px;
-    height: 285px;
+    height: 250px;
     transition: padding 0.75s;
 
     margin-left: 16px;

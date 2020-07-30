@@ -19,5 +19,13 @@ export interface Pokemon {
       name: string;
       url: string;
     }
+  }[];
+
+  stats: {
+    base_stat: string;
+    stat: {
+      name: string;
+      url: string;
+    }
   }[]
 }
