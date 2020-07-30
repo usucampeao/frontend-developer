@@ -1,5 +1,25 @@
-<mat-toolbar color="warn">
+<mat-toolbar [ngClass]="theme">
   Pokedex
+
+  <div class="spacer"></div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>color_lens</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item  (click)="setTheme('green')">
+      <mat-icon class="material-icons green-theme">invert_colors</mat-icon>
+      <span>Bulbasaur</span>
+    </button>
+    <button mat-menu-item (click)="setTheme('orange')">
+      <mat-icon class="material-icons orange-theme">invert_colors</mat-icon>
+      <span>Charmander</span>
+    </button>
+    <button mat-menu-item (click)="setTheme('blue')">
+      <mat-icon class="material-icons blue-theme">invert_colors</mat-icon>
+      <span> Squirtle
+      </span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
