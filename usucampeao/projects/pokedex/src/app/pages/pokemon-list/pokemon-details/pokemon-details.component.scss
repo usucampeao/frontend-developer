@@ -15,7 +15,7 @@
     margin: auto;
     transition: height 0.75s;
     max-width: 770px;
-
+    width: 100%;
     .name-image {
       width: 100%;
       max-width: 350px;
@@ -38,101 +38,115 @@
       }
     }
 
-    .info {
-      border-radius: 15px;
-      padding: 16px;
+    .pokemon-info {
+      width: 100%;
       max-width: 400px;
-      margin-bottom: 20px;
-      &.orange {
-        background-color: #f2b705;
-      }
-      &.blue {
-        background-color: #537eff;
-      }
-      &.green {
-        background-color: #0ead00;
-      }
-      .title {
-        width: 160px;
-        font-weight: 400;
-        color: white;
-      }
-      .value {
+      .info {
+        border-radius: 15px;
+        padding: 16px;
         width: 100%;
-        text-align: end;
-      }
-    }
-
-    .status {
-      border-radius: 15px;
-      padding: 16px;
-      width: 400px;
-      color: white;
-      &.orange {
-        background-color: #f2a007;
-      }
-      &.blue {
-        background-color: #367dd9;
-      }
-      &.green {
-        background-color: #598b47;
-      }
-    }
-  }
-
-  .pokemon-evolutions {
-    margin-top: 16px;
-    width: 100%;
-
-    .evolutions {
-      border-radius: 12px;
-      padding: 20px;
-      overflow-y: auto;
-      &.orange {
-        background-color: #f28705;
-      }
-      &.blue {
-        background-color: #5c73f2;
-      }
-      &.green {
-        background-color: #598b47;
-      }
-
-      .card {
-        margin: auto;
         @media (max-width: 599px) {
-          width: 100%;
-          height: 250px;
+          max-width: 400px;
+          padding: 12px;
         }
-        .sprite {
-          margin: auto;
-          border: 2px solid white;
-          border-radius: 50%;
+
+        margin-bottom: 20px;
+        &.orange {
+          background-color: #f2b705;
+        }
+        &.blue {
+          background-color: #537eff;
+        }
+        &.green {
+          background-color: #0ead00;
+        }
+        .title {
           width: 160px;
-          height: 160px;
-          background-color: #e4e4ec;
-          cursor: pointer;
-          img {
+          font-weight: 400;
+          color: white;
+        }
+        .value {
+          width: 100%;
+          text-align: end;
+        }
+      }
+
+      .status {
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        color: white;
+        @media (max-width: 599px) {
+          max-width: 400px;
+          padding: 12px;
+        }
+        &.orange {
+          background-color: #f2a007;
+        }
+        &.blue {
+          background-color: #367dd9;
+        }
+        &.green {
+          background-color: #598b47;
+        }
+      }
+    }
+
+    .pokemon-evolutions {
+      margin-top: 16px;
+      width: 100%;
+
+      .evolutions {
+        border-radius: 12px;
+        padding: 20px;
+        overflow-y: auto;
+        &.orange {
+          background-color: #f28705;
+        }
+        &.blue {
+          background-color: #5c73f2;
+        }
+        &.green {
+          background-color: #598b47;
+        }
+
+        .card {
+          margin: auto;
+          @media (max-width: 599px) {
             width: 100%;
-            height: 100%;
+            height: 250px;
+          }
+          .sprite {
+            margin: auto;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            background-color: #e4e4ec;
+            cursor: pointer;
+            img {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
-      }
-      .arrow {
-        margin: auto;
-        align-items: center;
-        color: white;
-        mat-icon {
-          font-size: 30px;
+        .arrow {
+          margin: auto;
+          align-items: center;
+          color: white;
+          mat-icon {
+            font-size: 30px;
+          }
+        }
+
+        h2 {
+          color: white;
+          text-transform: capitalize;
+          text-align: center;
         }
       }
-
-      h2 {
-        color: white;
-        text-transform: capitalize;
-        text-align: center;
-      }
     }
+
     .no-evolution {
       color: white;
       font-size: 20px;
