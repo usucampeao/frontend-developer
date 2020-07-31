@@ -1,17 +1,31 @@
 @import "../../core/layout/scss/type.scss";
 
-#pokemon-list { 
-  padding: 10%;
+#pokemon-list {
+  padding: 20px;
+  padding-top: 64px;
+  .search {
+    position: fixed;
+    z-index: 99;
+    background-color: white;
+    width: 100%;
+  }
+  .list {
+    padding-top: 100px;
+  }
   .pokemon-card {
+  
     background: rgb(228, 228, 228);
     border: 1px solid grey;
     width: 200px;
     height: 250px;
     transition: padding 0.75s;
-
-    margin-left: 16px;
     margin-bottom: 16px;
+    margin-left: 16px;
 
+    @media (max-width: 599px) {
+      width: 100%;
+      height: 250px;
+    }
     .sprite {
       width: 150px;
       height: 150px;
@@ -20,20 +34,19 @@
     img {
       max-width: 150px;
       max-height: 150px;
-    
+      display: block;
     }
     mat-card-title {
       text-transform: capitalize;
-    
     }
     &:hover {
       // background-color: red;
       border: 2px solid black;
-      padding-top:0px
-    } 
+      padding-top: 0px;
+    }
   }
 
-  .gif{
+  .gif {
     max-height: 500px;
   }
 }
