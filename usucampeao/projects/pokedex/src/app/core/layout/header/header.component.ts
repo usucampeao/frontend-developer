@@ -17,5 +17,6 @@ export class HeaderComponent implements OnInit {
   setTheme(theme: string) {
     this.theme = theme;
     localStorage.setItem("theme", theme)
+    location.reload();
   }
 }

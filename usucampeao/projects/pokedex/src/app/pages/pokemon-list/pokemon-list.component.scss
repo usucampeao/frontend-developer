@@ -13,8 +13,7 @@
     padding-top: 140px;
   }
   .pokemon-card {
-  
-    background: rgb(228, 228, 228);
+    background-color: #e4e4ec;
     border: 1px solid grey;
     width: 200px;
     height: 250px;
@@ -47,6 +46,7 @@
   }
 
   .gif {
-    max-height: 500px;
+    margin-top: 15vh;
+    max-height: 450px;
   }
 }

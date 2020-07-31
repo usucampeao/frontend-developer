@@ -1,11 +1,9 @@
 @import "../../../core/layout/scss/type.scss";
 
 #pokemon-details {
-  padding: 60px;
+  padding-top: 84px;
   height: 100%;
-  .header {
-    display: block;
-  }
+
   .gif {
     margin-top: 20vh;
   }
@@ -30,7 +28,7 @@
       }
       .sprite {
         max-height: 300px;
-        background: rgb(228, 228, 228);
+        background-color: #e4e4ec;
         border-radius: 50px;
         img {
           width: 100%;
@@ -42,14 +40,22 @@
 
     .info {
       border-radius: 15px;
-      background: lightpink;
-      padding: 16px; 
+      padding: 16px;
       max-width: 400px;
       margin-bottom: 20px;
-
+      &.orange {
+        background-color: #f2b705;
+      }
+      &.blue {
+        background-color: #537eff;
+      }
+      &.green {
+        background-color: #0ead00;
+      }
       .title {
         width: 160px;
-        font-weight: bold;
+        font-weight: 400;
+        color: white;
       }
       .value {
         width: 100%;
@@ -59,53 +65,79 @@
 
     .status {
       border-radius: 15px;
-      background: lightblue;
       padding: 16px;
       width: 400px;
+      color: white;
+      &.orange {
+        background-color: #f2a007;
+      }
+      &.blue {
+        background-color: #367dd9;
+      }
+      &.green {
+        background-color: #598b47;
+      }
     }
   }
 
-  .pokemon-evolutions{
+  .pokemon-evolutions {
     margin-top: 16px;
-    border-radius: 12px;
-    padding: 20px;
     width: 100%;
-    overflow-y: auto;
-    background-color: rgb(17, 17, 170);
 
-    .card{
-      margin: auto;
-      @media (max-width: 599px) {
-        width: 100%;
-        height: 250px;
+    .evolutions {
+      border-radius: 12px;
+      padding: 20px;
+      overflow-y: auto;
+      &.orange {
+        background-color: #f28705;
       }
-      .sprite{ 
+      &.blue {
+        background-color: #5c73f2;
+      }
+      &.green {
+        background-color: #598b47;
+      }
+
+      .card {
         margin: auto;
-        border: 2px solid white;
-        border-radius: 50%;
-        width: 160px;
-        height: 160px;
-        background: rgb(228, 228, 228);
-        img{
+        @media (max-width: 599px) {
           width: 100%;
-          height: 100%;
+          height: 250px;
+        }
+        .sprite {
+          margin: auto;
+          border: 2px solid white;
+          border-radius: 50%;
+          width: 160px;
+          height: 160px;
+          background-color: #e4e4ec;
+          cursor: pointer;
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
-    }
-    .arrow{
-      margin: auto;
-      align-items: center;
-      color: white;
-      mat-icon{
-        font-size: 30px;
+      .arrow {
+        margin: auto;
+        align-items: center;
+        color: white;
+        mat-icon {
+          font-size: 30px;
+        }
+      }
+
+      h2 {
+        color: white;
+        text-transform: capitalize;
+        text-align: center;
       }
     }
-
-    h2{
+    .no-evolution {
       color: white;
-      text-transform: capitalize;
+      font-size: 20px;
       text-align: center;
+      width: 100%;
     }
-
   }
 }

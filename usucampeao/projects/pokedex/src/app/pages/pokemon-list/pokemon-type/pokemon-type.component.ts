@@ -10,9 +10,4 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class PokemonTypeComponent {
   @Input('types') pokemonTypeList: any;
-
-  constructor(
-  ) {
-
-  }
 }

@@ -55,7 +55,7 @@ export class PokemonListComponent implements OnInit {
         this.pokemonList = JSON.parse(offList);
         this.filteredPokemonList = this.pokemonList;
         this.isLoading = false;
-      }, 200)
+      }, 600)
     } else {
       this.getPokemonPage();
     }
@@ -94,7 +94,7 @@ export class PokemonListComponent implements OnInit {
       })
       setTimeout(() => {
         this.sortList();
-      }, 6000);
+      }, 3000);
     }
   }
 
@@ -127,7 +127,6 @@ export class PokemonListComponent implements OnInit {
   }
 
   openDetails(pokemon: Pokemon) {
-    console.log("PokemonListComponent -> openDetails -> pokemon", pokemon)
     this.router.navigate([pokemon.name])
   }
 }
