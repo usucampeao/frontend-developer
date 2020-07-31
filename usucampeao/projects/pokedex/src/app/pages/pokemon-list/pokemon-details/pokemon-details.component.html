@@ -22,11 +22,7 @@
             </div>
 
             <h2>Type</h2>
-            <div fxLayout="row" class="type">
-                <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
-                    {{pokeType.type.name}}
-                </span>
-            </div>
+            <pokemon-type [types]="pokemon.types"></pokemon-type>
         </div>
 
 
@@ -79,11 +75,7 @@
                     <mat-icon>keyboard_arrow_down
                     </mat-icon>
                 </div>
-                <div fxLayout="row" class="type">
-                    <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
-                        {{pokeType.type.name}}
-                    </span>
-                </div>
+                <pokemon-type [types]="pokemon.types"></pokemon-type>
             </div>
         </div>
     </div>
