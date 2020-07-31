@@ -2,29 +2,45 @@
   <!-- <div>
     <button (click)="sortList()" style="position: fixed;">Ordernar</button>
   </div> -->
-  <div fxLayout="row wrap" fxLayoutAlign="center" *ngIf="!isLoading">
-    <mat-card *ngFor="let pokemon of pokemonList" class="pokemon-card" fxFlex="0 1 auto"  [routerLink]="pokemon.name + '/' + pokemon.id">
-     <div style="display: fixed;">
-       Nº {{ pokemon.id  | number:'3.0-0' }}
-     </div>
+
+  <div class="search" fxLayout="row">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput type="text" [formControl]="search">
+    </mat-form-field>
+
+    <button mat-button (click)="sort()">
+      <mat-icon *ngIf="ascDirection">arrow_upward</mat-icon>
+      <mat-icon *ngIf="!ascDirection">arrow_downward</mat-icon>
+    </button>
+  </div>
+
+
+  <div fxLayout="row wrap" fxLayoutAlign="center" *ngIf="!isLoading" class="list">
+    <mat-card *ngFor="let pokemon of filteredPokemonList " class="pokemon-card" fxFlex="0 1 auto"
+      [routerLink]="pokemon.name + '/' + pokemon.id">
+      <div style="display: fixed;">
+        Nº {{ pokemon.id  | number:'3.0-0' }}
+      </div>
       <img mat-card-image [src]="pokemon.sprites.front_default" alt="" class="sprite" />
       <mat-card-header>
         <mat-card-title>{{ pokemon.name }}</mat-card-title>
       </mat-card-header>
-      <mat-card-content> 
+      <mat-card-content>
         <div fxLayout="row" class="type">
           <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
-              {{pokeType.type.name}}
+            {{pokeType.type.name}}
           </span>
-      </div>
+        </div>
       </mat-card-content>
     </mat-card>
+
   </div>
 
   <div *ngIf="isLoading" fxLayoutAlign="center" class="gif">
-    <img  *ngIf="theme == 'orange'" src="assets/gif/charmander-evo.gif" />
-    <img  *ngIf="theme == 'blue'" src="assets/gif/squirtle-evo.gif" />
-    <img  *ngIf="theme == 'green'" src="assets/gif/bulbasaur-evo.gif" />
+    <img *ngIf="theme == 'orange'" src="assets/gif/charmander-evo.gif" />
+    <img *ngIf="theme == 'blue'" src="assets/gif/squirtle-evo.gif" />
+    <img *ngIf="theme == 'green'" src="assets/gif/bulbasaur-evo.gif" />
   </div>
   <!-- <div fxLayoutAlign="center">
     <button (click)="requestPokemon()">Carregar mais</button>

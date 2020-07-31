@@ -4,6 +4,7 @@ import { Pokedex, PokemonEntry } from 'projects/pokedex/models/pokedex';
 import { Pokemon } from 'projects/pokedex/models/pokemon';
 import { Page } from 'projects/pokedex/models/page';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'pokemon-list',
@@ -14,7 +15,10 @@ export class PokemonListComponent implements OnInit {
   pokemonLimit: number = 50;
   pokedex: Pokedex | undefined;
   pokemonEntry: PokemonEntry[] | undefined;
+
   pokemonList: Pokemon[] = [];
+  filteredPokemonList: Pokemon[] = [];
+
   page: Page | undefined;
   requestParams: {
     limit: number;
@@ -27,15 +31,21 @@ export class PokemonListComponent implements OnInit {
   isLoading: boolean = true;
 
   // todo - implementar theme por serviço ou diretiva
-  theme: string = 'red';
+  theme: string = 'orange';
+
+  search: FormControl;
+  searchMode: boolean = true;
+  ascDirection: boolean = true;
 
   constructor(
     private pokemonService: PokemonService,
     private router: Router
   ) {
+    this.search = new FormControl('');
+    console.log("PokemonListComponent ->  this.value", this.search)
     // alterar limit caso seja preciso carregar os pokemons parcialmente
     this.requestParams = {
-      limit: 800,
+      limit: 807,
       offset: 0
     }
   }
@@ -47,13 +57,15 @@ export class PokemonListComponent implements OnInit {
     let offList: any = localStorage.getItem('pokemonList');
     this.isLoading = true;
     if (offList) {
-      setTimeout(()=> {
+      setTimeout(() => {
         this.pokemonList = JSON.parse(offList);
+        this.filteredPokemonList = this.pokemonList;
         this.isLoading = false;
       }, 200)
     } else {
       this.getPokemonPage();
     }
+    this.searchEngine();
   }
 
   getPokemonPage(): void {
@@ -88,8 +100,20 @@ export class PokemonListComponent implements OnInit {
       })
       setTimeout(() => {
         this.sortList();
-      }, 1500);
+      }, 6000);
     }
+  }
+
+  searchEngine() {
+    this.search.valueChanges.subscribe(name => {
+      if (name) {
+        this.filteredPokemonList = this.pokemonList.filter((pokemon: Pokemon) =>
+          pokemon.name.startsWith(name)
+        )
+      } else {
+        this.filteredPokemonList = this.pokemonList;
+      }
+    })
   }
 
   sortList() {
@@ -104,6 +128,19 @@ export class PokemonListComponent implements OnInit {
     })
     this.isLoading = false;
     localStorage.setItem('pokemonList', JSON.stringify(this.pokemonList))
+  }
+
+  sort() {
+    this.filteredPokemonList = [...this.filteredPokemonList].sort((a, b) => {
+      if ((a.id < b.id && this.ascDirection) || (a.id > b.id && !this.ascDirection)) {
+        return 1;
+      }
+      if ((a.id > b.id && this.ascDirection) || (a.id < b.id && !this.ascDirection)) {
+        return -1;
+      }
+      return 0;
+    })
+    this.ascDirection = !this.ascDirection;
   }
 
   openDetails(pokemon: Pokemon) {
