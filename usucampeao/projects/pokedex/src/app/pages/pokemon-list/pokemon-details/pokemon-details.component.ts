@@ -25,8 +25,8 @@ export class PokemonDetailsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     window.scroll(0,0);
     this.route.params.subscribe(async (params: Params) => {
-      let pokemonId = params.id;
-      this.pokemon = await this.pokemonService.getPokemonById(pokemonId).toPromise();
+      let pokemonName = params.name;
+      this.pokemon = await this.pokemonService.getPokemonByName(pokemonName).toPromise();
       setTimeout(() => {
         this.isLoading = false;
       }, 1000)
@@ -36,8 +36,8 @@ export class PokemonDetailsComponent implements OnInit {
 
   getEvolutions() {
     this.route.params.subscribe(async (params: Params) => {
-      let pokemonId = params.id;
-      let pokemonSpecies = await this.pokemonService.getEntityById(pokemonId, 'pokemon-species').toPromise();
+      let pokemonName = params.name;
+      let pokemonSpecies = await this.pokemonService.getEntityByName(pokemonName, 'pokemon-species').toPromise();
       if (pokemonSpecies.evolution_chain) {
         let evolutionChain = await this.pokemonService.getEntityByUrl(pokemonSpecies.evolution_chain.url).toPromise();
         if (evolutionChain) {

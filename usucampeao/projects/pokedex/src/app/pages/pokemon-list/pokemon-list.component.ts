@@ -127,6 +127,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   openDetails(pokemon: Pokemon) {
-    this.router.navigate([`${pokemon.name}/${pokemon.id}`, { pokemon: pokemon }])
+    console.log("PokemonListComponent -> openDetails -> pokemon", pokemon)
+    this.router.navigate([pokemon.name])
   }
 }

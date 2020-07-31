@@ -18,7 +18,7 @@
 
   <div fxLayout="row wrap" fxLayoutAlign="center" *ngIf="!isLoading" class="list">
     <mat-card *ngFor="let pokemon of filteredPokemonList " class="pokemon-card" fxFlex="0 1 auto"
-      [routerLink]="pokemon.name + '/' + pokemon.id">
+      [routerLink]="pokemon.name">
       <div style="display: fixed;">
         Nº {{ pokemon.id  | number:'3.0-0' }}
       </div>

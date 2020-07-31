@@ -30,14 +30,12 @@
                 <div fxLayout="column" class="title">
                     <p>Height</p>
                     <p>Weight</p>
-                    <p>Category</p>
                     <p>Abilities</p>
                 </div>
 
                 <div fxlayout="column" class="value">
                     <p> {{(pokemon.height / 10) | number:'1.0-2' }} m</p>
                     <p> {{(pokemon.weight / 10 ) | number:'1.1-2'}} kg </p>
-                    <p> Sem categoria </p>
                     <div *ngFor="let ability of pokemon.abilities">
                         <p class="text-capitalize"> {{ability.ability.name}} </p>
                     </div>
