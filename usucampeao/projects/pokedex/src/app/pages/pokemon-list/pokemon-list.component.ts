@@ -107,7 +107,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   sortList() {
-    this.pokemonList = SortEngineService.sort(this.pokemonList);
+    this.filteredPokemonList = SortEngineService.sort(this.pokemonList);
     this.isLoading = false;
     localStorage.setItem('pokemonList', JSON.stringify(this.pokemonList))
   }
