@@ -9,5 +9,5 @@ Aproveitando o espaço, sugiro que você use o tema do charmander, pois é o mel
 
 ## Instruções:
 
-Caso queira usar a pokedex de forma local, navegue até a pasta usucampeão através do terminal e execute o comando 'npm install' após a conclusão, levante o servidor usando 'npm start', quando estiver tudo finalizado, é só abrir seu navegador e acessar localhost:4200
+Caso queira usar a pokedex de forma local, navegue até a pasta usucampeão através do terminal e execute o comando 'npm install' após a conclusão, inicie o servidor usando 'npm start', quando estiver tudo finalizado, é só abrir seu navegador e acessar localhost:4200
 
