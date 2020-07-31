@@ -17,8 +17,8 @@
                 <h2 class="text-grey"> Nº {{pokemon.id  | number:'3.0-0'}} </h2>
             </div>
             <div class="sprite" (mouseover)="viewFront = false" (mouseout)="viewFront = true">
-                <img [src]="pokemon.sprites.front_default" *ngIf="viewFront">
-                <img [src]="pokemon.sprites.back_default" *ngIf="!viewFront">
+                <img *ngIf="viewFront" [src]="pokemon.sprites.front_default" >
+                <img  *ngIf="!viewFront" [src]="pokemon.sprites.back_default? pokemon.sprites.back_default :pokemon.sprites.front_default ">
             </div>
 
             <h2>Type</h2>
@@ -74,6 +74,8 @@
                 </div>
                 <pokemon-type [types]="pokemon.types"></pokemon-type>
             </div>
+
+            <p *ngIf="!pokemonEvolution.length">Esse pokemon não possui evolução</p>
         </div>
     </div>
 
