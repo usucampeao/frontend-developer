@@ -59,6 +59,33 @@
                 </div>
             </div>
         </div>
+
+        <div class="pokemon-evolutions" fxLayout="row wrap">
+
+            <div *ngFor="let evolution of pokemonEvolution; let last = last" class="card">
+                <div fxLayout="row">
+                    <div class="sprite" fxLayout="column">
+                        <img [src]="evolution.sprites.front_default" />
+                    </div>
+                    <div *ngIf="!last"   fxShow fxHide.lt-sm fxLayout="column" class="arrow">
+                        <mat-icon>arrow_forward_ios
+                        </mat-icon>
+                    </div>
+                </div>
+                <h2 >
+                    {{evolution.name}} <span style="color: grey;">#{{evolution.id  | number:'3.0-0'}}</span>
+                </h2>
+                <div *ngIf="!last"  fxHide fxShow.lt-sm  fxLayout="column" class="arrow">
+                    <mat-icon>keyboard_arrow_down
+                    </mat-icon>
+                </div>
+                <div fxLayout="row" class="type">
+                    <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
+                        {{pokeType.type.name}}
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
