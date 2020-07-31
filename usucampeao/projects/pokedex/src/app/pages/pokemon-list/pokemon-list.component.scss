@@ -2,15 +2,15 @@
 
 #pokemon-list {
   padding: 20px;
-  padding-top: 64px;
   .search {
+    padding-top: 64px;
     position: fixed;
-    z-index: 99;
+    z-index: 98;
     background-color: white;
     width: 100%;
   }
   .list {
-    padding-top: 100px;
+    padding-top: 140px;
   }
   .pokemon-card {
   

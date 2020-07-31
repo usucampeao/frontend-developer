@@ -25,6 +25,7 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    window.scroll(0,0);
     this.route.params.subscribe(async (params: Params) => {
       let pokemonId = params.id;
       this.pokemon = await this.pokemonService.getPokemonById(pokemonId).toPromise();

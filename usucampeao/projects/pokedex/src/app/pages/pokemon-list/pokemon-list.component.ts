@@ -42,7 +42,6 @@ export class PokemonListComponent implements OnInit {
     private router: Router
   ) {
     this.search = new FormControl('');
-    console.log("PokemonListComponent ->  this.value", this.search)
     // alterar limit caso seja preciso carregar os pokemons parcialmente
     this.requestParams = {
       limit: 807,
