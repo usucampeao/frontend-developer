@@ -14,7 +14,7 @@ export class PokemonDetailsComponent implements OnInit {
   viewFront: boolean = true;
 
   pokemonEvolution: any[] = [];
-
+  theme: string = 'orange';
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
@@ -23,7 +23,10 @@ export class PokemonDetailsComponent implements OnInit {
 
   }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
+    let theme = localStorage.getItem('theme');
+    theme ? this.theme = theme : false
+
     window.scroll(0, 0);
     this.route.params.subscribe(async (params: Params) => {
       let pokemonName = params.name;
@@ -69,17 +72,16 @@ export class PokemonDetailsComponent implements OnInit {
       pokemonList = JSON.parse(pokemonList)
 
       this.pokemonEvolution = pokemonList.filter((itemX: Pokemon) => pokemonEvolutionList.map(itemY => { return itemY.name; }).includes(itemX.name));
+      console.log("PokemonDetailsComponent -> formatPokemonEvolution -> this.pokemonEvolution", this.pokemonEvolution)
     }
   }
 
   pokemonNavigation(pokemon: any) {
-    console.log("PokemonDetailsComponent -> pokemonNavigation -> pokemon", pokemon)
-    // window.scroll(0,0)
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-    this.router.navigateByUrl('pokemon/' + pokemon.name)
+    this.router.navigate(['pokemon/' + pokemon.name])
   }
 
   // metodo para realizar uma proporção nos status
