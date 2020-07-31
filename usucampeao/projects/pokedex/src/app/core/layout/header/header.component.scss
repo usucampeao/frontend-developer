@@ -1,0 +1,17 @@
+mat-toolbar {
+  position: fixed;
+  z-index: 99;
+  color: white;
+  &.orange {
+    background: #f20800;
+  }
+  &.blue {
+    background: blue;
+  }
+  &.green {
+    background: green;
+  }
+}
+.spacer {
+  flex: 1 1 auto;
+}

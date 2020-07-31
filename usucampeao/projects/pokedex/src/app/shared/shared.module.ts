@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   exports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FlexLayoutModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }

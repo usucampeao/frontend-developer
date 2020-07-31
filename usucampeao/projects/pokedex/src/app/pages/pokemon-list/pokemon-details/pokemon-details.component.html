@@ -17,33 +17,25 @@
                 <h2 class="text-grey"> Nº {{pokemon.id  | number:'3.0-0'}} </h2>
             </div>
             <div class="sprite" (mouseover)="viewFront = false" (mouseout)="viewFront = true">
-                <img [src]="pokemon.sprites.front_default" *ngIf="viewFront">
-                <img [src]="pokemon.sprites.back_default" *ngIf="!viewFront">
+                <img *ngIf="viewFront" [src]="pokemon.sprites.front_default" >
+                <img  *ngIf="!viewFront" [src]="pokemon.sprites.back_default? pokemon.sprites.back_default :pokemon.sprites.front_default ">
             </div>
 
             <h2>Type</h2>
-            <div fxLayout="row" class="type">
-                <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
-                    {{pokeType.type.name}}
-                </span>
-            </div>
+            <pokemon-type [types]="pokemon.types"></pokemon-type>
         </div>
-
-
 
         <div fxLayout="column">
             <div fxLayout="row" class="info">
                 <div fxLayout="column" class="title">
                     <p>Height</p>
                     <p>Weight</p>
-                    <p>Category</p>
                     <p>Abilities</p>
                 </div>
 
                 <div fxlayout="column" class="value">
                     <p> {{(pokemon.height / 10) | number:'1.0-2' }} m</p>
                     <p> {{(pokemon.weight / 10 ) | number:'1.1-2'}} kg </p>
-                    <p> Sem categoria </p>
                     <div *ngFor="let ability of pokemon.abilities">
                         <p class="text-capitalize"> {{ability.ability.name}} </p>
                     </div>
@@ -61,30 +53,27 @@
         </div>
 
         <div class="pokemon-evolutions" fxLayout="row wrap">
-
             <div *ngFor="let evolution of pokemonEvolution; let last = last" class="card">
                 <div fxLayout="row">
-                    <div class="sprite" fxLayout="column">
+                    <div class="sprite" fxLayout="column" (click)="pokemonNavigation(evolution)">
                         <img [src]="evolution.sprites.front_default" />
                     </div>
-                    <div *ngIf="!last"   fxShow fxHide.lt-sm fxLayout="column" class="arrow">
+                    <div *ngIf="!last" fxShow fxHide.lt-sm fxLayout="column" class="arrow">
                         <mat-icon>arrow_forward_ios
                         </mat-icon>
                     </div>
                 </div>
-                <h2 >
+                <h2>
                     {{evolution.name}} <span style="color: grey;">#{{evolution.id  | number:'3.0-0'}}</span>
                 </h2>
-                <div *ngIf="!last"  fxHide fxShow.lt-sm  fxLayout="column" class="arrow">
+                <div *ngIf="!last" fxHide fxShow.lt-sm fxLayout="column" class="arrow">
                     <mat-icon>keyboard_arrow_down
                     </mat-icon>
                 </div>
-                <div fxLayout="row" class="type">
-                    <span *ngFor="let pokeType of pokemon.types" [ngClass]="pokeType.type.name">
-                        {{pokeType.type.name}}
-                    </span>
-                </div>
+                <pokemon-type [types]="pokemon.types"></pokemon-type>
             </div>
+
+            <p *ngIf="!pokemonEvolution.length">Esse pokemon não possui evolução</p>
         </div>
     </div>
 

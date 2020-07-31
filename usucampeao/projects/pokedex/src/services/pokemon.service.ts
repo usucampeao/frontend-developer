@@ -47,18 +47,19 @@ export class PokemonService {
   }
 
   
-  getPokemonById(pokemonId: number): Observable<Pokemon> {
+  getPokemonByName(pokemonName: string): Observable<Pokemon> {
     
-    const pokemonPath = `${this.api_url}/pokemon/${pokemonId}`
+    const pokemonPath = `${this.api_url}/pokemon/${pokemonName}/`
+    console.log("PokemonService -> pokemonPath", pokemonPath)
     return this.httpClient.get<Pokemon>(pokemonPath)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  getEntityById(pokemonId: number, entity: string): Observable<any> {
+  getEntityByName(pokemonName: string, entity: string): Observable<any> {
     
-    const pokemonPath = `${this.api_url}/${entity}/${pokemonId}`
+    const pokemonPath = `${this.api_url}/${entity}/${pokemonName}`
     return this.httpClient.get<any>(pokemonPath)
       .pipe(
         retry(2),
@@ -100,13 +101,14 @@ export class PokemonService {
 
 
   handleError(error: HttpErrorResponse) {
+    console.log("PokemonService -> handleError -> error", error)
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
       errorMessage = `Erro: ${error.status}, ` + `Message: ${error.message}`;
-      if (error.status === 404)
-        window.location.href = 'herois';
+      // if (error.status === 404)
+      //   window.location.href = 'pokemon';
     }
     return throwError(errorMessage);
   };
