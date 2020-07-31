@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../../services/pokemon.service'
+import { SortEngineService } from '../../../services/sort-engine.service'
 import { Pokedex, PokemonEntry } from 'projects/pokedex/models/pokedex';
 import { Pokemon } from 'projects/pokedex/models/pokemon';
 import { Page } from 'projects/pokedex/models/page';
@@ -116,29 +117,13 @@ export class PokemonListComponent implements OnInit {
   }
 
   sortList() {
-    this.pokemonList = [...this.pokemonList].sort((a, b) => {
-      if (a.id > b.id) {
-        return 1;
-      }
-      if (a.id < b.id) {
-        return -1;
-      }
-      return 0;
-    })
+    this.pokemonList = SortEngineService.sort(this.pokemonList);
     this.isLoading = false;
     localStorage.setItem('pokemonList', JSON.stringify(this.pokemonList))
   }
 
   sort() {
-    this.filteredPokemonList = [...this.filteredPokemonList].sort((a, b) => {
-      if ((a.id < b.id && this.ascDirection) || (a.id > b.id && !this.ascDirection)) {
-        return 1;
-      }
-      if ((a.id > b.id && this.ascDirection) || (a.id < b.id && !this.ascDirection)) {
-        return -1;
-      }
-      return 0;
-    })
+    this.filteredPokemonList = SortEngineService.sortDirection(this.pokemonList, this.ascDirection)
     this.ascDirection = !this.ascDirection;
   }
 
