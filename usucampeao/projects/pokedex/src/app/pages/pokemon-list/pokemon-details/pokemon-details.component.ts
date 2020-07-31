@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from './../../../../../models/pokemon';
 import { PokemonService } from '../../../../services/pokemon.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'pokemon-details',
@@ -17,13 +17,14 @@ export class PokemonDetailsComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
 
   async ngOnInit(): Promise<void> {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.route.params.subscribe(async (params: Params) => {
       let pokemonName = params.name;
       this.pokemon = await this.pokemonService.getPokemonByName(pokemonName).toPromise();
@@ -69,6 +70,16 @@ export class PokemonDetailsComponent implements OnInit {
 
       this.pokemonEvolution = pokemonList.filter((itemX: Pokemon) => pokemonEvolutionList.map(itemY => { return itemY.name; }).includes(itemX.name));
     }
+  }
+
+  pokemonNavigation(pokemon: any) {
+    console.log("PokemonDetailsComponent -> pokemonNavigation -> pokemon", pokemon)
+    // window.scroll(0,0)
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    this.router.navigateByUrl('pokemon/' + pokemon.name)
   }
 
   // metodo para realizar uma proporção nos status

@@ -55,7 +55,7 @@
         <div class="pokemon-evolutions" fxLayout="row wrap">
             <div *ngFor="let evolution of pokemonEvolution; let last = last" class="card">
                 <div fxLayout="row">
-                    <div class="sprite" fxLayout="column">
+                    <div class="sprite" fxLayout="column" (click)="pokemonNavigation(evolution)">
                         <img [src]="evolution.sprites.front_default" />
                     </div>
                     <div *ngIf="!last" fxShow fxHide.lt-sm fxLayout="column" class="arrow">
