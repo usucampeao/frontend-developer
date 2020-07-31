@@ -13,8 +13,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pokedex: Pokedex | undefined;
+  isLoading: boolean = true;
+  theme: string = 'orange';
 
+  pokedex: Pokedex | undefined;
   pokemonList: Pokemon[] = [];
   filteredPokemonList: Pokemon[] = [];
 
@@ -23,10 +25,6 @@ export class PokemonListComponent implements OnInit {
     limit: number;
     offset: number;
   };
-  isLoading: boolean = true;
-
-  // todo - implementar theme por serviço ou diretiva
-  theme: string = 'orange';
 
   search: FormControl;
   searchMode: boolean = true;
@@ -37,7 +35,6 @@ export class PokemonListComponent implements OnInit {
     private router: Router
   ) {
     this.search = new FormControl('');
-    // alterar limit caso seja preciso carregar os pokemons parcialmente
     this.requestParams = {
       limit: 807,
       offset: 0
@@ -48,8 +45,14 @@ export class PokemonListComponent implements OnInit {
     let theme = localStorage.getItem('theme');
     theme ? this.theme = theme : false
 
+    this.getPokemon();
+    this.searchEngine();
+  }
+
+  getPokemon() {
     let offList: any = localStorage.getItem('pokemonList');
     this.isLoading = true;
+
     if (offList) {
       setTimeout(() => {
         this.pokemonList = JSON.parse(offList);
@@ -59,7 +62,6 @@ export class PokemonListComponent implements OnInit {
     } else {
       this.getPokemonPage();
     }
-    this.searchEngine();
   }
 
   getPokemonPage(): void {
@@ -69,21 +71,11 @@ export class PokemonListComponent implements OnInit {
     })
   }
 
-  requestPokemon() {
-    if (this.page && this.page.next) {
-      this.pokemonService.getNextPokemonPage(this.page.next).subscribe((page) => {
-        this.page = page;
-        this.getPokemonList();
-      })
-    }
-  }
-
   async getPokemonList() {
     if (this.page && this.page.results) {
       await this.page.results.forEach(async (pokemon) => {
 
         let pokemonEntity = await this.pokemonService.getPokemonByUrl(pokemon.url).toPromise()
-
         let pokemonSimpleObj: any = {
           id: pokemonEntity.id,
           name: pokemonEntity.name,
@@ -94,8 +86,12 @@ export class PokemonListComponent implements OnInit {
       })
       setTimeout(() => {
         this.sortList();
-      }, 3000);
+      }, 5000);
     }
+  }
+
+  openDetails(pokemon: Pokemon) {
+    this.router.navigate([pokemon.name])
   }
 
   searchEngine() {
@@ -126,7 +122,5 @@ export class PokemonListComponent implements OnInit {
     this.ascDirection = !this.ascDirection;
   }
 
-  openDetails(pokemon: Pokemon) {
-    this.router.navigate([pokemon.name])
-  }
+
 }

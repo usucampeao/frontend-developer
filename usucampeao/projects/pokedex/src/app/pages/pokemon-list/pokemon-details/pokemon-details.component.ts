@@ -9,12 +9,13 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./pokemon-details.component.scss']
 })
 export class PokemonDetailsComponent implements OnInit {
-  pokemon!: Pokemon;
+  theme: string = 'orange';
   isLoading: boolean = true;
   viewFront: boolean = true;
 
+  pokemon!: Pokemon;
   pokemonEvolution: any[] = [];
-  theme: string = 'orange';
+
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
@@ -26,7 +27,7 @@ export class PokemonDetailsComponent implements OnInit {
   ngOnInit() {
     let theme = localStorage.getItem('theme');
     theme ? this.theme = theme : false
-
+    
     window.scroll(0, 0);
     this.route.params.subscribe(async (params: Params) => {
       let pokemonName = params.name;
@@ -49,9 +50,9 @@ export class PokemonDetailsComponent implements OnInit {
         }
       }
     })
+
   }
 
-  // implementar recurssão
   async formatPokemonEvolution(evolutionChain: any) {
     let pokemonEvolutionList = new Array();
     let first = evolutionChain.chain;
@@ -70,9 +71,7 @@ export class PokemonDetailsComponent implements OnInit {
     let pokemonList: any = (localStorage.getItem('pokemonList'));
     if (pokemonList) {
       pokemonList = JSON.parse(pokemonList)
-
       this.pokemonEvolution = pokemonList.filter((itemX: Pokemon) => pokemonEvolutionList.map(itemY => { return itemY.name; }).includes(itemX.name));
-      console.log("PokemonDetailsComponent -> formatPokemonEvolution -> this.pokemonEvolution", this.pokemonEvolution)
     }
   }
 
@@ -84,7 +83,6 @@ export class PokemonDetailsComponent implements OnInit {
     this.router.navigate(['pokemon/' + pokemon.name])
   }
 
-  // metodo para realizar uma proporção nos status
   getStat(stat: any): number {
     return stat / 1.25;
   }
