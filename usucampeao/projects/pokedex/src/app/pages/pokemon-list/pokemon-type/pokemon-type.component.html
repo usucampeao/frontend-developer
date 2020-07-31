@@ -1,0 +1,5 @@
+<div fxLayout="row" class="type">
+    <span *ngFor="let pokemonType of pokemonTypeList" [ngClass]="pokemonType.type.name">
+        {{pokemonType.type.name}}
+    </span>
+</div>

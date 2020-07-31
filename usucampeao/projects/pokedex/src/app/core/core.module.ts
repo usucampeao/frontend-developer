@@ -6,11 +6,13 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button'
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './layout/header/header.component'
 @NgModule({
-  declarations: [MainLayoutComponent],
+  declarations: [
+    MainLayoutComponent,
+    HeaderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -21,6 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatMenuModule,
     MatIconModule
   ],
-  exports: [MainLayoutComponent]
+  exports: [MainLayoutComponent,
+    HeaderComponent]
 })
 export class CoreModule { }
