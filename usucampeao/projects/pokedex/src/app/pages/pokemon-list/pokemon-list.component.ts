@@ -13,9 +13,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pokemonLimit: number = 50;
   pokedex: Pokedex | undefined;
-  pokemonEntry: PokemonEntry[] | undefined;
 
   pokemonList: Pokemon[] = [];
   filteredPokemonList: Pokemon[] = [];
@@ -25,10 +23,6 @@ export class PokemonListComponent implements OnInit {
     limit: number;
     offset: number;
   };
-  results: {
-    name: string;
-    url: string;
-  }[] = [];
   isLoading: boolean = true;
 
   // todo - implementar theme por serviço ou diretiva
@@ -124,6 +118,11 @@ export class PokemonListComponent implements OnInit {
 
   sort() {
     this.filteredPokemonList = SortEngineService.sortDirection(this.pokemonList, this.ascDirection)
+    if (this.search.value) {
+      this.filteredPokemonList = this.filteredPokemonList.filter((pokemon: Pokemon) =>
+        pokemon.name.startsWith(this.search.value)
+      )
+    }
     this.ascDirection = !this.ascDirection;
   }
 

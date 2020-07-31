@@ -10,10 +10,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class PokemonDetailsComponent implements OnInit {
   pokemon!: Pokemon;
-  pokemonId: number | undefined;
   isLoading: boolean = true;
   viewFront: boolean = true;
-  canLoad: boolean = true;
 
   pokemonEvolution: any[] = [];
 
@@ -64,29 +62,14 @@ export class PokemonDetailsComponent implements OnInit {
       thirth = second.evolves_to[0];
       pokemonEvolutionList.push(thirth.species)
     }
-    console.log("PokemonDetailsComponent -> formatPokemonEvolution -> pokemonEvolutionList", pokemonEvolutionList)
-
 
     let pokemonList: any = (localStorage.getItem('pokemonList'));
     if (pokemonList) {
       pokemonList = JSON.parse(pokemonList)
-      console.log("PokemonDetailsComponent -> formatPokemonEvolution -> pokemonList", pokemonList)
 
-
-      var filteredArray = pokemonList.filter(function (pokemon: any) {
-        return pokemonEvolutionList.filter(function (pokemonEvolution) {
-          return pokemon.name == pokemonEvolution.name;
-        }).length == 0
-      });
-      console.log("PokemonDetailsComponent -> formatPokemonEvolution -> pokemonInfo", filteredArray)
-
-
-      // let yFilter = pokemonEvolutionList.map(itemY => { return itemY.name; });
       this.pokemonEvolution = pokemonList.filter((itemX: Pokemon) => pokemonEvolutionList.map(itemY => { return itemY.name; }).includes(itemX.name));
-      console.log("PokemonDetailsComponent -> formatPokemonEvolution -> filteredX", this.pokemonEvolution)
     }
   }
-
 
   // metodo para realizar uma proporção nos status
   getStat(stat: any): number {
