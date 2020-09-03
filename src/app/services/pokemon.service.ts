@@ -12,8 +12,8 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemons() {
+  getPokemons(index) {
     console.log(this.baseUrl);
-    return this.http.get<any>(`${this.baseUrl}/pokemon`);
+    return this.http.get<any>(`${this.baseUrl}/pokemon/${index}`);
   }
 }

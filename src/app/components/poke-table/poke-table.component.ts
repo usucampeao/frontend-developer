@@ -7,22 +7,20 @@ import { PokemonService } from './../../services/pokemon.service';
   styleUrls: ['./poke-table.component.scss']
 })
 export class PokeTableComponent implements OnInit {
-
-  constructor(private pokeService: PokemonService) { }
+  constructor(private pokeService: PokemonService) {}
 
   ngOnInit(): void {
     this.getPokemons();
   }
 
   getPokemons() {
-    this.pokeService.getPokemons().subscribe(
-      res => {
-        console.log(res);
-      },
-      err=>{
-
-      }
-    );
+    for (let i = 1; i <= 150; i++) {
+      this.pokeService.getPokemons(i).subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {}
+      );
+    }
   }
-
 }
