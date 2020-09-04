@@ -1,9 +1,46 @@
-@import "../../../assets/styles/variables.scss";
+// @import "../../../assets/styles/variables.scss";
 
-.mat-toolbar {
-    background-color: $black;
+// .mat-toolbar {
+//     background-color: $black;
+// }
+
+// img:hover {
+//     cursor: pointer;
+// }
+
+body {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-img:hover {
-    cursor: pointer;
+div#topo {
+  padding-top: 10px;
+}
+
+img {
+  padding-top: 8px;
+  float: right;
+}
+
+.mat-form {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.app-panel{
+  position: absolute;
+  width: 100%;
+  &-red.mat-select-panel {
+    background: rgba(255, 0, 0, 0.5);
+    &:hover {
+      background: rgba(255, 0, 0, 0.5);
+    }
+  }
+  &-green.mat-select-panel {
+    background: rgba(0, 255, 0, 0.5);
+  }
+  &-blue.mat-select-panel {
+    background: rgba(0, 0, 255, 0.5);
+  }
 }

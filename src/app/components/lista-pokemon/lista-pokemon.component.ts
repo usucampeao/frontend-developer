@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Pokemons } from './../../models/placeholder.model';
 import { PokemonService } from './../../services/pokemon.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ export class ListaPokemonComponent implements OnInit {
   pokemons = new Pokemons;
   erro: any;
 
-  constructor(private pokeService: PokemonService) {
+  constructor(private pokeService: PokemonService, private router: Router) {
     this.getter();
   }
 
@@ -28,5 +29,9 @@ export class ListaPokemonComponent implements OnInit {
         this.erro = error;
       }
     );
+  }
+
+  getRow(row) {
+    this.router.navigateByUrl(`pokeDetail/${row.position}`);
   }
 }
