@@ -1,11 +1,9 @@
-import { PokeTableComponent } from './components/poke-table/poke-table.component';
-import { PokeDetailComponent } from './components/poke-detail/poke-detail.component';
+import { ListaPokemonComponent } from './components/lista-pokemon/lista-pokemon.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'home', component: PokeTableComponent},
-  {path: 'pokeDetail/:id', component: PokeDetailComponent},
+  {path: 'home', component: ListaPokemonComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
