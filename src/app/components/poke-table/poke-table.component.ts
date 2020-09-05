@@ -1,39 +1,52 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { PokemonService } from './../../services/pokemon.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-poke-table',
   templateUrl: './poke-table.component.html',
   styleUrls: ['./poke-table.component.scss']
 })
-export class PokeTableComponent implements OnInit {
+export class PokeTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'image', 'name'];
   data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
   pokemons = [];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private pokeService: PokemonService, private router: Router) {}
+  
+  constructor(private pokeService: PokemonService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     this.getPokemons();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
+
+  // ngOnInit(): void {
+  //   this.getPokemons();
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
+
   getPokemons() {
-    let pokemonData;
+    let pokemonData: { position: number; image: any; name: any; };
 
     for (let i = 1; i <= 151; i++) {
       this.pokeService.getPokemons(i).subscribe(
         res => {
           pokemonData = {
-            position: i,
-            image: res.sprites.front_default,
-            name: res.name
+            position: res.id,
+            name: res.name,
+            image: res.sprites.front_default
           };
+          console.log(pokemonData);
           this.data.push(pokemonData);
           this.dataSource = new MatTableDataSource<any>(this.data);
           this.dataSource.paginator = this.paginator;
@@ -54,7 +67,8 @@ export class PokeTableComponent implements OnInit {
     }
   }
 
-  getRow(row) {
+  getRow(row: { position: any; }) {
     this.router.navigateByUrl(`pokeDetail/${row.position}`);
   }
+  
 }
