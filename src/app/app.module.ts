@@ -9,9 +9,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { ListaPokemonComponent } from './components/lista-pokemon/lista-pokemon.component';
 import { MatSelectModule } from '@angular/material/select';
 import { DetalhesPokemonsComponent } from './components/detalhes-pokemons/detalhes-pokemons.component';
+import { CapitalizePipe } from './pipe/capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { DetalhesPokemonsComponent } from './components/detalhes-pokemons/detalh
     HeaderComponent,
     FooterComponent,
     ListaPokemonComponent,
-    DetalhesPokemonsComponent
+    DetalhesPokemonsComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { DetalhesPokemonsComponent } from './components/detalhes-pokemons/detalh
     BrowserAnimationsModule,
     MatSelectModule,
     HttpClientModule,
+    HttpModule,
     ReactiveFormsModule,
     MaterialModule
   ],
