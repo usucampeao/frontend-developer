@@ -5,24 +5,20 @@
 </mat-toolbar> -->
 
 <div id="topo">
-  <div>
-    <img
-      src="../../../assets/images/pokedex.png"
-      alt="pokedexed"
-      width="40"
-      height="40"
-      (click)="home()"
-    />
+  <div id="icone">
+    <img src="../../../assets/images/pokedex.png" alt="pokedexed" width="40" height="40" (click)="home()"/>
   </div>
-  <mat-form-field appearance="fill">
-    <mat-label>Panel color</mat-label>
-    <mat-select
-      [formControl]="panelColor"
-      panelClass="app-panel-{{ panelColor.value }}"
-    >
-      <mat-option value="red">Charizard</mat-option>
-      <mat-option value="green">Venusaur</mat-option>
-      <mat-option value="blue">Blastoise</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div id="FormControlClass">
+    <mat-form-field appearance="fill">
+      <mat-label>Panel color</mat-label>
+      <mat-select
+        [formControl]="panelColor"
+        panelClass="app-panel-{{ panelColor.value }}"
+      >
+        <mat-option value="red">Charizard</mat-option>
+        <mat-option value="green">Venusaur</mat-option>
+        <mat-option value="blue">Blastoise</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>

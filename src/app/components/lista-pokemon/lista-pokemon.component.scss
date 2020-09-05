@@ -1,24 +1,5 @@
-a {
-    color:white;
-    &:active {
-        color:gray;
-    }
-    &:hover {
-        color: red;
-    }
+.load-button {
+  margin-right: 8px;
+  float: right;
 }
 
-.mat-card {
-    max-width: 100%;
-    min-width: 80%;
-    background: rgb(202, 121, 121);
-    color: black;
-}
-
-div#exCard {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}

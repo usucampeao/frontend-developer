@@ -1,12 +1,12 @@
-// @import "../../../assets/styles/variables.scss";
+@import "../../../assets/styles/variables.scss";
 
-// .mat-toolbar {
-//     background-color: $black;
-// }
+.mat-toolbar {
+    background-color: $black;
+}
 
-// img:hover {
-//     cursor: pointer;
-// }
+img:hover {
+    cursor: pointer;
+}
 
 body {
   padding-top: 10px;
@@ -14,11 +14,11 @@ body {
   padding-right: 10px;
 }
 
-div#topo {
+#topo {
   padding-top: 10px;
 }
 
-img {
+#icone {
   padding-top: 8px;
   float: right;
 }
