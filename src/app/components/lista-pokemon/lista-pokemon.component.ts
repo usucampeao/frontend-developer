@@ -12,6 +12,7 @@ export class ListaPokemonComponent implements OnInit {
   pokemons = new Pokemons;
   erro: any;
 
+
   constructor(private pokeService: PokemonService, private router: Router) {
     this.getter();
   }
@@ -24,6 +25,7 @@ export class ListaPokemonComponent implements OnInit {
         this.pokemons = data;
         // console.log('Varável recebida',data);
         console.log('Varável preenchida',this.pokemons);
+        console.log(this.pokemons.results.length);
       },
       (error: any) => {
         this.erro = error;
@@ -34,4 +36,5 @@ export class ListaPokemonComponent implements OnInit {
   getRow(row) {
     this.router.navigateByUrl(`pokeDetail/${row.position}`);
   }
+
 }

@@ -7,3 +7,18 @@ a {
         color: red;
     }
 }
+
+.mat-card {
+    max-width: 100%;
+    min-width: 80%;
+    background: rgb(202, 121, 121);
+    color: black;
+}
+
+div#exCard {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

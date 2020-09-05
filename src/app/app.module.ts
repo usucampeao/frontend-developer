@@ -1,3 +1,4 @@
+import { PokemonService } from './services/pokemon.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +30,7 @@ import { DetalhesPokemonsComponent } from './components/detalhes-pokemons/detalh
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
