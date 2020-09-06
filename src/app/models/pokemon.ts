@@ -1,5 +1,9 @@
 export class Pokemon {
   id: number;
-  sprite: string;
+  sprite: any;
   name: string;
+  types: any;
+  sprites: any;
+  front_default: string;
+  lenght: any;
 }

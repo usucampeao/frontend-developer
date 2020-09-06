@@ -17,8 +17,12 @@ export class DetalhesPokemonsComponent implements OnInit {
     private http: Http
   ) {}
 
+  panelOpenState = false;
   pokemon = {} as Pokemon;
-  pokemons: any;
+  viewFront: boolean = true;
+  viewShiny: boolean = true;
+  pokemons: any = '';
+  pokemonType: [];
 
   ngOnInit(): void {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -29,9 +33,11 @@ export class DetalhesPokemonsComponent implements OnInit {
   // public baseUrl = `https://pokeapi.co/api/v2/pokemon/`;
 
   getPokemons(id) {
-    this.typesService.getPokemons(id).subscribe((pokemons: Pokemon[]) => {
+    this.typesService.getPokemons(id).subscribe(
+      (pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
       console.log('Oie',pokemons);
+      // this.pokemonType = pokemons.types[0].type.name;
     });
   }
   

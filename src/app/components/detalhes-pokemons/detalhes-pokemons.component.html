@@ -1,16 +1,84 @@
-<h3>
-    Você selecionou o pokemon de número = {{pokemonId}}
-    Nome {{pokemons.name | titlecase}}
-</h3>
+<mat-card class="card" *ngIf="pokemons ? pokemons : ''">
+  <div (mouseover)="viewShiny = false" (mouseout)="viewShiny = true">
+    <mat-card-header>
+      <img
+        mat-card-avatar
+        *ngIf="viewShiny"
+        class="header-image"
+        [src]="pokemons.sprites.front_default"
+      />
+      <img
+        mat-card-avatar
+        *ngIf="!viewShiny"
+        class="header-image"
+        [src]="
+          pokemons.sprites.front_shiny
+            ? pokemons.sprites.front_shiny
+            : pokemons.sprites.front_default
+        "
+      />
 
-<div>
-    {{pokemonId}}
-</div>
+      <mat-card-title>{{ pokemons.name | titlecase }}</mat-card-title>
+      <mat-card-subtitle>#{{ pokemonId | number: "3.0-1"}}</mat-card-subtitle>
+    </mat-card-header>
+  </div>
+  <div (mouseover)="viewFront = false" (mouseout)="viewFront = true">
+    <img
+      mat-card-image
+      *ngIf="viewFront"
+      [src]="pokemons.sprites.other['official-artwork'].front_default"
+    />
+    <img
+      mat-card-image
+      *ngIf="!viewFront"
+      [src]="
+        pokemons.sprites.other.dream_world.front_default
+          ? pokemons.sprites.other.dream_world.front_default
+          : pokemons.sprites.other['official-artwork'].front_default
+      "
+    />
+  </div>
+  <mat-card-content>
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip
+        id="{{ i.type.name }}"
+        selected
+        *ngFor="let i of pokemons.types"
+      >
+        {{ i.type.name | capitalize }}
+      </mat-chip>
 
-<div>
-    {{pokemons.name | titlecase}}
-</div>
+      <mat-chip id="typeH" selected
+        >Height: {{ pokemons.height / 10 | number: "1.0-2" }} m</mat-chip
+      >
+      <mat-chip id="typeW" selected
+        >Weight: {{ pokemons.weight / 10 | number: "1.0-2" }} kg</mat-chip
+      >
+    </mat-chip-list>
+  </mat-card-content>
 
-<div>
-    <img class="pokedex-pokemon-sprite" [attr.src]="pokemons.sprites.front_default" />
-</div>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Status Base </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p *ngFor="let i of pokemons.stats">
+          {{ i.stat.name | capitalize }} {{ i.base_stat }}
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Golpes: </mat-panel-title>
+        <mat-panel-description
+          ><b>{{ pokemons.moves.length }}</b></mat-panel-description
+        >
+      </mat-expansion-panel-header>
+      <p *ngFor="let i of pokemons.moves">{{ i.move.name | capitalize }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
