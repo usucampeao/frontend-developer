@@ -1,4 +1,5 @@
 import { PokemonService } from './services/pokemon.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +33,8 @@ import { CapitalizePipe } from './pipe/capitalize.pipe';
     HttpClientModule,
     HttpModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

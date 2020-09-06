@@ -1,5 +1,13 @@
 .load-button {
   margin-right: 8px;
   float: right;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  
 }
 
+.mat-card {
+  background-color: rgb(245, 171, 171);
+}

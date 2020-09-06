@@ -25,6 +25,7 @@ export class PokemonService {
    * the Pokémon API.
    */
   getPokemon(offset: number, limit: number) {
+    
     return this.http.get(`${this.baseUrl}?offset=${offset}&limit=${limit}`)
       /**
        * The `get()` method returns
@@ -40,7 +41,6 @@ export class PokemonService {
          * structure.
          */
         const id: number = idx + offset + 1;
-
         return {
           name: item.name,
           sprite: `${this.baseSpriteUrl}${id}.png`,
@@ -48,4 +48,29 @@ export class PokemonService {
         };
       }));
   }
+
+  // getTypes() {
+  //   fetch(this.baseUrl).then(function(response) {
+  //     response.json().then(function(data){
+  //       console.log(data);
+  //     })
+  //   })
+
+  // }
+
+  
 }
+// const idPokemon = 1;
+// const url = `https://pokeapi.co/api/v2/pokemon/`;
+
+// fetch(`${url}${idPokemon}`)
+// .then(function(response) {
+// response.json()
+// .then(function(data){
+//     console.log('Eu sou o teste',data);
+//     return {
+//       data
+//     };
+//   });
+// }). catch(function(err) {
+//   console.error(err); });

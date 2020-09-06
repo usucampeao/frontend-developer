@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Pokemon } from './../../models/pokemon';
 import { PokemonService } from './../../services/pokemon.service';
 import { Component, OnInit } from '@angular/core';
@@ -38,7 +39,7 @@ export class ListaPokemonComponent implements OnInit {
    */
   error: boolean = false;
 
-  constructor(private pokeService: PokemonService) {
+  constructor(private pokeService: PokemonService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -46,6 +47,11 @@ export class ListaPokemonComponent implements OnInit {
      * Load the initial data.
      */
     this.loadMore();
+  }
+
+  onSelect(id) {
+    console.log(id);
+    this.router.navigate(['/detalhesPokemon',id])
   }
   
   loadMore() {
@@ -55,7 +61,7 @@ export class ListaPokemonComponent implements OnInit {
      * Use the Pokedex service
      * to load the next 9 Pokemon.
      */
-    this.pokeService.getPokemon(this.pokemon.length, 25)
+    this.pokeService.getPokemon(this.pokemon.length, 151)
     .then(pokemon => {
       pokemon = pokemon.map(p => {
         p.imageLoaded = false;
@@ -68,14 +74,12 @@ export class ListaPokemonComponent implements OnInit {
       this.pokemon = this.pokemon.concat(pokemon);
       this.isLoading = false;
       this.error = false;
-      })
-      .catch(() => {
-        this.error = true;
-        this.isLoading = false;
-      });
-  }
-
-  
+    })
+    .catch(() => {
+      this.error = true;
+      this.isLoading = false;
+    });
+  }  
 
   // getter() {
   //   this.pokeService.getPkmn().subscribe(

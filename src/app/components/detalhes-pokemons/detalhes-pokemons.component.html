@@ -1,0 +1,16 @@
+<h3>
+    Você selecionou o pokemon de número = {{pokemonId}}
+    Nome {{pokemons.name | titlecase}}
+</h3>
+
+<div>
+    {{pokemonId}}
+</div>
+
+<div>
+    {{pokemons.name | titlecase}}
+</div>
+
+<div>
+    <img class="pokedex-pokemon-sprite" [attr.src]="pokemons.sprites.front_default" />
+</div>

@@ -1,7 +1,11 @@
 @import "../../../assets/styles/variables.scss";
 
 .mat-toolbar {
-    background-color: $black;
+//    background-color: rgb(236, 233, 233);
+    background-color: $white;
+    border-radius: 4px;
+    position: sticky;
+
 }
 
 img:hover {

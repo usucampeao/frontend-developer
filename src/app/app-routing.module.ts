@@ -5,9 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path: 'home', component: ListaPokemonComponent},
-  //{path: 'detalhesPokemon/:id', component: DetalhesPokemonsComponent},
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: '**', pathMatch: 'full', redirectTo: 'home'}
+  {path: 'detalhesPokemon/:id', component: DetalhesPokemonsComponent},
+  // {path: '', pathMatch: 'full', redirectTo: 'home'},
+  // {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
 @NgModule({
@@ -15,3 +15,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+export const routingComponents = [DetalhesPokemonsComponent]
