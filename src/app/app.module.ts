@@ -15,6 +15,12 @@ import { ListaPokemonComponent } from './components/lista-pokemon/lista-pokemon.
 import { MatSelectModule } from '@angular/material/select';
 import { DetalhesPokemonsComponent } from './components/detalhes-pokemons/detalhes-pokemons.component';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +37,9 @@ import { CapitalizePipe } from './pipe/capitalize.pipe';
     BrowserAnimationsModule,
     MatSelectModule,
     HttpClientModule,
+    MatExpansionModule,
+    MatListModule,
+    MatPaginatorModule,
     HttpModule,
     ReactiveFormsModule,
     MaterialModule,
