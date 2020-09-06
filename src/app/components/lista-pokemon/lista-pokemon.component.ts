@@ -50,7 +50,6 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   onSelect(id) {
-    console.log(id);
     this.router.navigate(['/detalhesPokemon',id])
   }
   
