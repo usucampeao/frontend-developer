@@ -27,7 +27,6 @@ export class PokemonService {
         .then(items =>
           items.map((item, idx) => {
             // Mapeia os objetos para facilitar o uso
-
             const id: number = idx + offset + 1;
             // Transforma o index no array no id que será utilizado na aplicação
             return {
@@ -39,5 +38,4 @@ export class PokemonService {
           })
         )
     );
-  }
 }
