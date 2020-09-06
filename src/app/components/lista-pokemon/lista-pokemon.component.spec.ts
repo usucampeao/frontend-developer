@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { ListaPokemonComponent } from './lista-pokemon.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('ListaPokemonComponent', () => {
+  let component: ListaPokemonComponent;
+  let fixture: ComponentFixture<ListaPokemonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      declarations: [ListaPokemonComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(ListaPokemonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

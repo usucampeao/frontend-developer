@@ -1,0 +1,72 @@
+<mat-card class="card" *ngIf="pokemons ? pokemons : ''">
+  <!-- ngIf evita que a request seja feito pelo HTML antes dos dados propriamente ditos -->
+  <div (mouseover)="shinyPokemon = false" (mouseout)="shinyPokemon = true">
+    <!-- Ao passar o mouse sobre o ícone do Pokemon, a sprite é alterada para a versão Shiny -->
+    <mat-card-header>
+      <img mat-card-avatar *ngIf="shinyPokemon" class="header-image" [src]="pokemons.sprites.front_default"/>
+      
+      <img mat-card-avatar *ngIf="!shinyPokemon" class="header-image" [src]="pokemons.sprites.front_shiny
+            ? pokemons.sprites.front_shiny : pokemons.sprites.front_default"/>
+
+      <mat-card-title>{{ pokemons.name | titlecase }}</mat-card-title>
+      <!-- Buscao o nome do pokemon e deixa a primeia letra maiúscula -->
+      <mat-card-subtitle>#{{ pokemonId | number: "3.0-1" }}</mat-card-subtitle>
+      <!-- Retorna o id estilizado no com um pipe 'number' portando 3 algarismos -->
+    
+    </mat-card-header>
+  </div>
+  
+  <div (mouseover)="frentePokemon = false" (mouseout)="frentePokemon = true">
+    <!-- Troca a imagem ao passar o mouse no sprite -->
+    <img mat-card-image *ngIf="frentePokemon" [src]="pokemons.sprites.other['official-artwork'].front_default"/>
+    <img mat-card-image *ngIf="!frentePokemon" [src]=" pokemons.sprites.other.dream_world.front_default
+          ? pokemons.sprites.other.dream_world.front_default
+          : pokemons.sprites.other['official-artwork'].front_default "/>
+  </div>
+
+  <mat-card-content>
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip id="{{ i.type.name }}" selected *ngFor="let i of pokemons.types" >
+        <!-- A id deste chip tem o mesmo nome do tipo que, dentro do Scss,
+            compara com o nome das imagens na pasta assetes e imprime a imagem -->
+        {{ i.type.name | capitalize }}
+        <!-- Faz uma busca dentro do array 'types' e retorna um valor ordenado e estilizado pelo pipe -->
+      </mat-chip>
+      <mat-chip id="typeH" selected >
+        Height: {{ pokemons.height / 10 | number: "1.0-2" }} m
+        </mat-chip>
+      <mat-chip id="typeW" selected>
+        Weight: {{ pokemons.weight / 10 | number: "1.0-2" }} kg
+      </mat-chip>
+      <!-- Em 'chips' retorna a altura e o peso do pokemon já ajustado pelo pipe 'number' -->
+    </mat-chip-list>
+  </mat-card-content>
+
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <!-- Tabela que tem expansão automática para facilitar a visualização dos dados -->
+        <mat-expansion-panel-header>
+          <mat-panel-title> Status Base </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p *ngFor="let i of pokemons.stats">
+          {{ i.stat.name | capitalize }} {{ i.base_stat }}
+        </p>
+        <!-- Como o pokemon tem vários valores de Status, essa iteração busca o nome e o valor base -->
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Golpes: </mat-panel-title>
+        <mat-panel-description>
+          <b>{{ pokemons.moves.length }}</b>
+          </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p *ngFor="let i of pokemons.moves">{{ i.move.name | capitalize }}</p>
+      <!-- Busca quais golpes o pokemon pode ter e imprime uma lista ordenada, estilizada com o capitalize -->
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

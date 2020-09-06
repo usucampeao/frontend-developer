@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="flex-container">
+    <mat-card class="child-1" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+    <!-- fxLayou possibilita usar grid pelo Material Angular -->
+      <div class="pokedex-pokemon" fxLayoutGap="30px" *ngFor="let p of pokemon">
+        <div class="pokedex-pokemon-id">
+          #{{ p.id }} {{ p.name | capitalize }}
+          <!-- Faz a varredura de 'pokemon' e imprime o que for necessário deixando a primeira letra grande no pipeline capitalize -->
+        </div>
+        <img class="pokedex-pokemon-sprite" (load)="p.imageLoaded = true" [attr.src]="p.sprite" (click)="onSelect(p.id)"/>
+        <!-- Trás a imagem da api e cria um link pelo route para visualizar mais detalhes -->
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<button mat-raised-button class="load-button" (click)="carregaMais()" [disabled]="carregando">
+<!-- Botão flutuante que chama a função 'carregaMais' que basicamente gera um novo ciclo de iteração com a API -->
+  <span *ngIf="!error">
+    <span *ngIf="carregando">Carregando</span>
+    <span *ngIf="!carregando">Mais Pokemons</span>
+  </span>
+  <span *ngIf="error">
+    Mais Pokemons
+  </span>
+</button>
