@@ -7,40 +7,36 @@
   background-color: $red;
 }
 
-
 .mat-card-avatar {
   pointer-events: none;
-}
-
-.mat-card-image {
-  pointer-events: none;
+  &-image {
+    pointer-events: none;
+  }
+  &-header {
+    background-color: $white;
+    padding-top: 20px;
+    padding-left: 10px;
+    border-radius: 5px;
+    justify-content: start;
+  }
+  &-title {
+    text-transform: uppercase;
+    color: $black;
+  }
+  &-subtitle {
+    color: $black;
+  }
 }
 
 .header-image {
   background-size: cover;
 }
 
-.mat-card-header {
-  background-color: $white;
-  padding-top: 20px;
-  padding-left: 10px;
-  border-radius: 5px;
-  justify-content: start;
-}
-
-.mat-card-title {
-  text-transform: uppercase;
-  color: $black;
-}
-
-.mat-card-subtitle {
-  color: $black;
-}
-
 .mat-chip {
+  // Desntro deste chip, o tipo é recuperado e impresso de acordo com o arquivo png do mesmo
   background-color: $black;
   &#bug {
-    background: transparent url('../../../assets/images/bug.png') no-repeat;
+    background: transparent url("../../../assets/images/bug.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -48,7 +44,7 @@
     padding-bottom: 10px;
   }
   &#dark {
-    background: transparent url('../../../assets/images/dark.png') no-repeat;
+    background: transparent url("../../../assets/images/dark.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -56,7 +52,7 @@
     padding-bottom: 10px;
   }
   &#dragon {
-    background: transparent url('../../../assets/images/dragon.png') no-repeat;
+    background: transparent url("../../../assets/images/dragon.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -64,7 +60,7 @@
     padding-bottom: 10px;
   }
   &#electric {
-    background: transparent url('../../../assets/images/electric.png') no-repeat;
+    background: transparent url("../../../assets/images/electric.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -72,7 +68,7 @@
     padding-bottom: 10px;
   }
   &#fairy {
-    background: transparent url('../../../assets/images/fairy.png') no-repeat;
+    background: transparent url("../../../assets/images/fairy.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -80,7 +76,7 @@
     padding-bottom: 10px;
   }
   &#fighting {
-    background: transparent url('../../../assets/images/fighting.png') no-repeat;
+    background: transparent url("../../../assets/images/fighting.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -88,7 +84,7 @@
     padding-bottom: 10px;
   }
   &#fire {
-    background: transparent url('../../../assets/images/fire.png') no-repeat;
+    background: transparent url("../../../assets/images/fire.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -96,7 +92,7 @@
     padding-bottom: 10px;
   }
   &#flying {
-    background: transparent url('../../../assets/images/flying.png') no-repeat;
+    background: transparent url("../../../assets/images/flying.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -104,7 +100,7 @@
     padding-bottom: 10px;
   }
   &#ghost {
-    background: transparent url('../../../assets/images/ghost.png') no-repeat;
+    background: transparent url("../../../assets/images/ghost.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -112,7 +108,7 @@
     padding-bottom: 10px;
   }
   &#grass {
-    background: transparent url('../../../assets/images/grass.png') no-repeat;
+    background: transparent url("../../../assets/images/grass.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -120,7 +116,7 @@
     padding-bottom: 10px;
   }
   &#ground {
-    background: transparent url('../../../assets/images/ground.png') no-repeat;
+    background: transparent url("../../../assets/images/ground.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -128,7 +124,7 @@
     padding-bottom: 10px;
   }
   &#ice {
-    background: transparent url('../../../assets/images/ice.png') no-repeat;
+    background: transparent url("../../../assets/images/ice.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -136,7 +132,7 @@
     padding-bottom: 10px;
   }
   &#normal {
-    background: transparent url('../../../assets/images/normal.png') no-repeat;
+    background: transparent url("../../../assets/images/normal.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -144,7 +140,7 @@
     padding-bottom: 10px;
   }
   &#poison {
-    background: transparent url('../../../assets/images/poison.png') no-repeat;
+    background: transparent url("../../../assets/images/poison.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -152,7 +148,7 @@
     padding-bottom: 10px;
   }
   &#psychic {
-    background: transparent url('../../../assets/images/psychic.png') no-repeat;
+    background: transparent url("../../../assets/images/psychic.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -160,7 +156,7 @@
     padding-bottom: 10px;
   }
   &#rock {
-    background: transparent url('../../../assets/images/rock.png') no-repeat;
+    background: transparent url("../../../assets/images/rock.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -168,7 +164,7 @@
     padding-bottom: 10px;
   }
   &#steel {
-    background: transparent url('../../../assets/images/steel.png') no-repeat;
+    background: transparent url("../../../assets/images/steel.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -176,7 +172,7 @@
     padding-bottom: 10px;
   }
   &#water {
-    background: transparent url('../../../assets/images/water.png') no-repeat;
+    background: transparent url("../../../assets/images/water.png") no-repeat;
     background-size: cover;
     color: transparent;
     width: 90px;
@@ -200,4 +196,3 @@
     color: rgb(34, 34, 34);
   }
 }
-

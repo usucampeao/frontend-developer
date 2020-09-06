@@ -1,15 +1,12 @@
 @import "../../../assets/styles/variables.scss";
 
 .mat-toolbar {
-//    background-color: rgb(236, 233, 233);
-    background-color: $white;
-    border-radius: 4px;
-    position: sticky;
-
+  background-color: $white;
+  border-radius: 4px;
 }
 
 img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 body {
@@ -32,7 +29,7 @@ body {
   padding-top: 10px;
 }
 
-.app-panel{
+.app-panel {
   position: absolute;
   width: 100%;
   &-red.mat-select-panel {

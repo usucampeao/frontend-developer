@@ -1,6 +1,6 @@
 import { PokemonService } from './services/pokemon.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,12 +15,9 @@ import { ListaPokemonComponent } from './components/lista-pokemon/lista-pokemon.
 import { MatSelectModule } from '@angular/material/select';
 import { DetalhesPokemonsComponent } from './components/detalhes-pokemons/detalhes-pokemons.component';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatListModule} from '@angular/material/list';
-import {MatPaginatorModule} from '@angular/material/paginator';
-
-
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -48,4 +45,4 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   providers: [PokemonService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

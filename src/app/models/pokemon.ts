@@ -7,3 +7,5 @@ export class Pokemon {
   front_default: string;
   lenght: any;
 }
+
+// Classe para tratar os dados dos Pokemons

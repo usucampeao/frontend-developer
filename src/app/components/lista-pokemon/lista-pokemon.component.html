@@ -1,94 +1,26 @@
-<!-- 
-
-<mat-card fxLayout="row wrap" fxLayoutGap="30px" *ngFor="let p of pokemon">
-  <mat-card class="child-1">
-    <div class="pokedex-pokemon" *ngFor="let p of pokemon">
-      <div class="pokedex-pokemon-id">#{{ p.id }}</div>
-      <img
-        class="pokedex-pokemon-sprite"
-        (load)="p.imageLoaded = true"
-        [attr.src]="p.sprite"
-      />
-      <div class="pokedex-pokemon-name">
-        {{ p.name | capitalize }}
-      </div>
-    </div>
-  </mat-card>
-</mat-card> -->
-
-<div class="container" >
-
-  <div class="flex-container" >
+<div class="container">
+  <div class="flex-container">
     <mat-card class="child-1" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+    <!-- fxLayou possibilita usar grid pelo Material Angular -->
       <div class="pokedex-pokemon" fxLayoutGap="30px" *ngFor="let p of pokemon">
-        <div class="pokedex-pokemon-id" >#{{ p.id }} {{ p.name | capitalize }}</div>
+        <div class="pokedex-pokemon-id">
+          #{{ p.id }} {{ p.name | capitalize }}
+          <!-- Faz a varredura de 'pokemon' e imprime o que for necessário deixando a primeira letra grande no pipeline capitalize -->
+        </div>
         <img class="pokedex-pokemon-sprite" (load)="p.imageLoaded = true" [attr.src]="p.sprite" (click)="onSelect(p.id)"/>
+        <!-- Trás a imagem da api e cria um link pelo route para visualizar mais detalhes -->
       </div>
     </mat-card>
   </div>
 </div>
 
-<button mat-raised-button class="load-button" (click)="loadMore()" [disabled]="isLoading">
+<button mat-raised-button class="load-button" (click)="carregaMais()" [disabled]="carregando">
+<!-- Botão flutuante que chama a função 'carregaMais' que basicamente gera um novo ciclo de iteração com a API -->
   <span *ngIf="!error">
-    <span *ngIf="isLoading">Carregando</span>
-    <span *ngIf="!isLoading">Mais Pokemons</span>
+    <span *ngIf="carregando">Carregando</span>
+    <span *ngIf="!carregando">Mais Pokemons</span>
   </span>
   <span *ngIf="error">
     Mais Pokemons
   </span>
 </button>
-
-<!-- <div class="pokedex">
-  <div class="pokedex-pokemon" *ngFor="let p of pokemon">
-    <div class="pokedex-pokemon-id">#{{ p.id }}</div>
-    <img
-      class="pokedex-pokemon-sprite"
-      (load)="p.imageLoaded = true"
-      [attr.src]="p.sprite"
-    />
-    <div class="pokedex-pokemon-name">
-      {{ p.name | capitalize }}
-    </div>
-  </div>
-</div>
-<hr />
-<button class="load-button" (click)="loadMore()" [disabled]="isLoading">
-  <span *ngIf="!error">
-    <span *ngIf="isLoading">Loading...</span>
-    <span *ngIf="!isLoading">Load more</span>
-  </span>
-  <span *ngIf="error">
-    Loading failed
-  </span>
-</button>
-<hr /> -->
-
-
-<!-- <div *ngFor="let p of pokemon">
-
-  <mat-grid-list cols="1" rowHeight="1:1">
-    <mat-grid-tile>
-      <div class="pokedex">
-        <div class="pokedex-pokemon" >
-          <div class="pokedex-pokemon-id">
-            #{{ p.id }}
-          </div>
-            <img class="pokedex-pokemon-sprite" (load)="p.imageLoaded = true" [attr.src]="p.sprite">
-          <div class="pokedex-pokemon-name">
-            {{ p.name | capitalize }}
-          </div>
-        </div>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
-<button mat-raised-button class="load-button" (click)="loadMore()" [disabled]="isLoading">
-  <span *ngIf="!error">
-    <span *ngIf="isLoading">Loading...</span>
-    <span *ngIf="!isLoading">Load more</span>
-  </span>
-  <span *ngIf="error">
-    Loading failed
-  </span>
-</button> -->
-
