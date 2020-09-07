@@ -15,7 +15,8 @@ ng build --prod && cd dist/pokedex/ && npx serve
 
 > Para qualquer coisa eu estou à disposição! Muito obrigado pela oportunidade ^_^
 
-> ###### PS.: Só não entendi a pergunta entre Bulbassauro, Charmander e Squirtle... Todo mundo sabe que a úncica escolha é Charmander. <img src="src/assets/images/charmander.png" alt="Char char" style="width:20px">
+> ###### PS.: Só não entendi a pergunta entre Bulbassauro, Charmander e Squirtle... Todo mundo sabe que a úncica escolha é Charmander.
+ <img src="src/assets/images/charmander.png" alt="Char char" style="width:20px">
 ---
 
 
