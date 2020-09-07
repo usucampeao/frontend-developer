@@ -11,6 +11,7 @@ ou
 ```
 ng build --prod && cd dist/pokedex/ && npx serve
 ```
+[Projeto hospedado na Netliify](https://pokeappmcabral.netlify.app)
 
 > Para qualquer coisa eu estou à disposição! Muito obrigado pela oportunidade ^_^
 
