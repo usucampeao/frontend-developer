@@ -5,9 +5,9 @@ export interface PokemonDetails {
 	abilities?: Array<any>;
 	types?: Array<any>;
 	count?: number;
-	species: Results;
+	species?: Results;
 	base_experience?: any;
-	stats: any;
+	stats?: any;
 	next?: string;
 	results?: Results[];
 	weight?: number;

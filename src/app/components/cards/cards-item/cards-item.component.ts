@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PokemonDetails } from 'src/app/services/api-pokedex/interface/pokemon';
 
 @Component({
 	selector: 'app-cards-item',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 	styleUrls: ['./cards-item.component.scss'],
 })
 export class CardsItemComponent implements OnInit {
-	@Input() value: { id: number; name: string; image: string; url: string };
+	@Input() value: PokemonDetails = { id: null, name: null, image: null, url: null };
 
 	constructor() {}
 
