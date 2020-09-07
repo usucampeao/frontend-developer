@@ -26,5 +26,19 @@
         ]
       }
     }
+  ], "dataGroups": [
+    {
+      "name": "pokemon-api",
+      "urls": [
+        "https://pokeapi.co/api/v2/pokemon",
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 10000,
+        "maxAge": "10h",
+        "timeout": "5s"
+      }
+    }
   ]
 }
