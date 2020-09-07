@@ -1,3 +1,24 @@
+# Entrega de projeto FrontEnd Developer
+
+Para rodar o projeto, tendo o Node atualizado, entra na pasta dele e digita no terminal:
+
+```
+npm run mcabral
+```
+
+ou
+
+```
+ng build --prod && cd dist/pokedex/ && npx serve
+```
+
+> Para qualquer coisa eu estou à disposição! Muito obrigado pela oportunidade ^_^
+
+> ###### PS.: Só não entendi a pergunta entre Bulbassauro, Charmander e Squirtle... Todo mundo sabe que a úncica escolha é Charmander. <img src="src/assets/images/charmander.png" alt="Char char" style="width:20px">
+---
+
+
+
 ![UsuCampeão](logo.png)
 
 # USUCAMPEÃO Tecnologia em Regularização Imobiliária
@@ -94,7 +115,7 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 12. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
     > Injeção de dependepências é a capacidade conversar entre classes, enviando e buscando métodos. É útil porque podemos setorizar o código e rodar apenas o que é necessário, melhorando as iterações. Utilizamos essas injeções por meio do implemento de classe, e métodos `getters` e `setters` na sua maioria. Mas também podemos fazer injeções com base no que precisamos buscar de outra classe. 
 
-Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
+Ah, e a mais importante de todas: Bulbassauro, <b>Charmander</b> ou Squirtle? =)
 
 ### Projeto: Criando uma Pokédex usando a PokéAPI
 
