@@ -18,7 +18,6 @@ export class ListaPokemonComponent implements OnInit {
   // Imprimir erros
 
   constructor(private pokeService: PokemonService, private router: Router) {
-    
   }
 
   ngOnInit(): void {
