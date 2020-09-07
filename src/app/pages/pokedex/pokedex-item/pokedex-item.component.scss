@@ -1,16 +1,16 @@
-@import '../../../../styles.theme.scss';
+@import "../../../../theme.scss";
 
 img {
-  height: 3.5rem;
-  object-fit: cover;
-  margin-bottom: .5rem;
+	height: 3.5rem;
+	object-fit: cover;
+	margin-bottom: 0.5rem;
 }
 p {
-  color: #6752B7;
-  font-weight: 500;
-  margin-bottom: 0;
+	color: #6752b7;
+	font-weight: 500;
+	margin-bottom: 0;
 }
 span {
-  font-size: .75rem;
-  color: $color-text;
+	font-size: 0.75rem;
+	color: $color-text;
 }

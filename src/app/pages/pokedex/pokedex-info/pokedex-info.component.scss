@@ -1,4 +1,4 @@
-@import "../../../../theme.scss";
+@import '../../../../theme.scss';
 
 .in-pokedex {
 	width: 100%;
@@ -219,10 +219,7 @@
 }
 
 @media (min-width: 767.98px) {
-	.in-pokedex-background {
-		height: 20rem !important;
-	}
-	.in-pokedex-content-tl-pkm > img {
+	.in-pokedex-background .in-pokedex-content-tl-pkm > img {
 		height: 20rem !important;
 	}
 }

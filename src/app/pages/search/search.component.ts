@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
-import { PokemonDetails } from 'src/app/services/interface/pokemon';
-import { PokemonService } from '../../services/pokedex.service';
+import { PokemonDetails } from '../../services/api-pokedex/interface/pokemon';
+import { PokemonService } from '../../services/api-pokedex/pokedex.service';
 @Component({
 	selector: 'app-search',
 	templateUrl: './search.component.html',
