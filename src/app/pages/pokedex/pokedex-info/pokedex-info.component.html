@@ -1,0 +1,86 @@
+<div class="in-pokedex">
+	<div class="in-pokedex-background">
+		<div class="in-pokedex-background-gamb"></div>
+	</div>
+
+	<div class="in-pokedex-content">
+		<div class="in-pokedex-content-tl">
+			<div class="in-pokedex-content-tl-header">
+				<div [routerLink]="['/search']" style="cursor: pointer;">
+					<mat-icon aria-hidden="false" aria-label="Icon back">chevron_left</mat-icon>
+					<span>Voltar</span>
+				</div>
+				<div>
+					<mat-icon aria-hidden="false" aria-label="Icon back">star_outline</mat-icon>
+				</div>
+				<div>
+					<p>{{data?.name||''}}</p>
+				</div>
+				<div>
+					<p>#00{{data?.id}}</p>
+				</div>
+			</div>
+			<div class="in-pokedex-content-tl-pkm">
+				<img [src]="data?.sprites.other.dream_world.front_default" alt="">
+			</div>
+			<div class="in-pokedex-content-tl-description">
+
+				<p> Me chamo {{data?.name}}.</p>
+
+			</div>
+		</div>
+
+		<div class="in-pokedex-content-rb">
+			<div class="in-pokedex-content-rb-type">
+				<button mat-raised-button *ngFor="let pokemon of data?.types">{{pokemon.type.name}}</button>
+			</div>
+			<div class="in-pokedex-content-rb-info">
+				<div class="in-pokedex-content-rb-info-grid5">
+					<app-pokedex-item [title]="data?.base_experience" subtitle="Experiência">
+					</app-pokedex-item>
+					<div></div>
+					<app-pokedex-item title="{{data?.height}}m" subtitle="Altura">
+					</app-pokedex-item>
+					<div></div>
+					<app-pokedex-item title="{{data?.weight}}kg" subtitle="Peso">
+					</app-pokedex-item>
+				</div>
+
+			</div>
+			<div class="in-pokedex-content-rb-evolution">
+				<p>Evolução</p>
+				<div class="in-pokedex-content-rb-evolution-grid5">
+					<app-pokedex-item [url]="data?.sprites.back_default" title="Costa">
+					</app-pokedex-item>
+					<div></div>
+					<app-pokedex-item [url]="data?.sprites.back_shiny" title="Esquerda">
+					</app-pokedex-item>
+					<div></div>
+					<app-pokedex-item [url]="data?.sprites.front_shiny" title="Fontal">
+					</app-pokedex-item>
+					<div></div>
+				</div>
+			</div>
+
+			<div class="in-pokedex-content-rb-stats">
+				<p>Estatísticas</p>
+				<div class="in-pokedex-content-rb-stats-grid4">
+					<div>
+						<p *ngFor="let stats of data?.stats">{{stats?.stat.name}}</p>
+
+					</div>
+					<div></div>
+					<div>
+						<p *ngFor="let stats of data?.stats">{{stats?.base_stat}}</p>
+					</div>
+					<div>
+						<mat-progress-bar mode="determinate" *ngFor="let stats of data?.stats"
+							[value]="stats?.base_stat"></mat-progress-bar>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

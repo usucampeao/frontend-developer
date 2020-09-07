@@ -1,0 +1,113 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-primary: mat-palette($mat-indigo);
+$angular-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$angular-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$angular-theme: mat-light-theme($angular-primary, $angular-accent, $angular-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($angular-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@import "theme.scss";
+
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: inherit;
+	text-decoration: none;
+	list-style-type: none;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 100vw !important;
+	font-size: 14px !important;
+	min-height: 100vh !important;
+	font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+a {
+	color: inherit;
+	text-decoration: none !important;
+	&:hover,
+	&:visited {
+		color: inherit;
+	}
+}
+
+i:hover {
+	cursor: pointer;
+	transition: 300ms ease-in;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 3rem white inset !important;
+}
+
+/* Media */
+/*Dispositivos grandes (desktops com menos de 1440px)*/
+@media (min-width: 1439.98px) {
+}
+/*Dispositivos grandes (desktops com menos de 1200px)*/
+@media (min-width: 1199.98px) {
+}
+/*Dispositivos médios (tablets, menos de 992px)*/
+@media (min-width: 991.98px) {
+}
+/*Pequenos dispositivos (telefones de paisagem, menos de 768px)*/
+@media (min-width: 767.98px) {
+}
+/*Dispositivos extras pequenos (telefones de retrato, menos de 576px)*/
+@media (min-width: 575.98px) {
+}
+
+/* mat-progress-bar */
+.mat-progress-bar {
+	height: 0.5rem !important;
+	border-radius: 0.5rem !important;
+}
+.mat-progress-bar-fill::after {
+	background-color: #6752b7 !important;
+}
+
+/* mat-form-field */
+.mat-form-field {
+	border-radius: 0.25rem;
+	width: 100% !important;
+	border: 0.1rem solid $color-border;
+}
+.mat-form-field-flex {
+	padding: 0 0.75rem 0.5rem !important;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+	background-color: #6752b7 !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+	background-color: inherit !important;
+}
+/* mat-raised-button */
+.mat-raised-button {
+	box-shadow: inherit !important;
+}

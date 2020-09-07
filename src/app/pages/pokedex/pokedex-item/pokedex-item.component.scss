@@ -1,0 +1,16 @@
+@import '../../../../styles.theme.scss';
+
+img {
+  height: 3.5rem;
+  object-fit: cover;
+  margin-bottom: .5rem;
+}
+p {
+  color: #6752B7;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+span {
+  font-size: .75rem;
+  color: $color-text;
+}

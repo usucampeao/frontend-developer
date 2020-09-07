@@ -1,0 +1,58 @@
+@import "../../../../theme.scss";
+
+.in-cards-content-grid-item {
+	display: flex;
+	position: relative;
+	border-radius: 0.5rem;
+	flex-direction: column;
+	border: 0.1rem solid $color-border;
+
+	& > div:first-child {
+		padding: 0.75rem 0.75rem 0;
+		& > p {
+			color: #6752b7;
+			font-weight: 500;
+			margin-bottom: 0;
+			font-size: 1.25rem;
+			margin-bottom: 0;
+		}
+		& > span {
+			font-weight: 500;
+			font-size: 0.75rem;
+			color: $color-text;
+		}
+	}
+	& > div:last-child {
+		display: flex;
+		align-items: center;
+
+		& > div:first-child {
+			padding: 0.75rem;
+			& > button {
+				display: block;
+				color: white;
+				font-size: 0.75rem;
+				border-radius: 0.5rem;
+				padding: 0.25rem 0.75rem;
+			}
+			& > button:first-child {
+				margin-bottom: 0.25rem;
+				background: #6752b7;
+			}
+			& > button:last-child {
+				background: #a069e0;
+			}
+		}
+		& > div:last-child {
+			right: -1rem;
+			bottom: -1rem;
+			display: flex;
+			position: absolute;
+			justify-content: flex-end;
+			& > img {
+				height: 5.5rem;
+				object-fit: cover;
+			}
+		}
+	}
+}

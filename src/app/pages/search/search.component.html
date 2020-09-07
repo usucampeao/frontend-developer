@@ -1,0 +1,28 @@
+<div class="in-cards">
+	<div class="in-cards-filter">
+		<div>
+			<p>Procure pelo seu Pokémon Favorito</p>
+			<p>Realize a busca por <span>Pokémon pelo nome</span> ou usando o <span>número do Pokédex Nacional</span>.
+			</p>
+		</div>
+		<div>
+			<mat-form-field class="example-full-width">
+				<input matInput [formControl]="search" placeholder=" Digite o nome ou o id do  pokemon">
+			</mat-form-field>
+
+		</div>
+	</div>
+	<div class="in-cards-content">
+
+		<div class="in-cards-content-grid">
+
+			<ng-container *ngIf="data; else loadingTemplate">
+				<app-cards-item *ngFor="let pokemon of data" [value]="pokemon"></app-cards-item>
+			</ng-container>
+
+			<ng-template #loadingTemplate>
+				<p>{{loading && data===null ?'Não foi encontrado nenhum pokemon':'Carregando...'}}</p>
+			</ng-template>
+		</div>
+	</div>
+</div>

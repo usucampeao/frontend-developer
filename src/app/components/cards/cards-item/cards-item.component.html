@@ -1,0 +1,17 @@
+<div class="in-cards-content-grid-item">
+	<div>
+		<p>#00{{value.id}}</p>
+		<span>{{value.name}}</span>
+	</div>
+	<div>
+		<div>
+
+			<button [routerLink]="['/profile',value.id]">
+				Ver
+			</button>
+		</div>
+		<div>
+			<img [src]="value.image" alt="">
+		</div>
+	</div>
+</div>
