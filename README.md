@@ -72,9 +72,9 @@ O usuário ao clicar no botão, dispara a função funcList() dentro da Model.
 10.  O que são *guards de rota* e para que são úteis?
 >São serviços que fazem um gerenciamento de rotas e trata os acessos com autenticação. Sua função principal está na capacidade de proteger informações essenciais para integridade da aplicação.
 11. O que é ``NgZone``? Em que momento deve ser utilizada?
->É um método que consegue rodar um bloco de código "fora" da aplicação principal do Angular. Deve ser utilizada quando algum trabalho não precisar atualizações para o usuário ou o tratamento de erro pelo Angular.
+>É um método que consegue rodar um bloco de código "fora" da aplicação principal do Angular. Deve ser utilizada quando algum trabalho não precisar de atualizações para o usuário ou de tratamento de erro pelo Angular.
 12. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
->Injeção de dependepências é a capacidade de conversar entre classes, enviando métodos e buscando. É útil pois, podemos separar o código e rodar apenas o que é necessário. Utilizamos essas injeções por meio do implemento de classes.
+>Injeção de dependepências é a capacidade de conversar entre classes, enviando métodos e buscando. É útil pois, podemos separar o código e rodar apenas o que é necessário. Utilizamos essas injeções por meio do implemento das classes.
 
 Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
 >Bulbassauro é claro...
