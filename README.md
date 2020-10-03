@@ -77,7 +77,7 @@ O usuário ao clicar no botão, dispara a função funcList() dentro da Model.
 >Injeção de dependepências é a capacidade de conversar entre classes, enviando métodos e buscando. É útil pois, podemos separar o código e rodar apenas o que é necessário. Utilizamos essas injeções por meio do implemento das classes.
 
 Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
->Bulbassauro é claro...
+>Bulbassauro é claro, sempre sendo um pokemon muito versátil em suas habilidades...
 
 ### Projeto: Criando uma Pokédex usando a PokéAPI
 
