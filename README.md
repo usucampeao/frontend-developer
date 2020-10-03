@@ -38,13 +38,13 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 ### Questionário
 
 1. O que são ``components`` e ``directives`` e quais as difenças entre eles? Dê alguns exemplos de utilização.
->Components e Directives são usadas para o reuso de códigos e a forma de passar comportamentos para o HTML, neste caso usando a linguagem JavaScript. Considerando que são >"tradutoras" de comportamentos, elas se diferenciam quanto ao uso. Directives passam comportamentos diretos para a aplicação, mas não possui uma view, isso implica num tempo >menor de resposta para as solicitações da aplicação, diferentemente de components, várias directives podem ser passadas em um mesmo elemento. Já o components apresenta ao usuário uma página para a visualização das ações.
+>Components e Directives são usadas para o reuso de códigos e a forma de passar comportamentos para o HTML, neste caso usando a linguagem JavaScript. Considerando que são "tradutoras" de comportamentos, elas se diferenciam quanto ao uso. Directives passam comportamentos diretos para a aplicação, mas não possui uma view, isso implica num tempo menor de resposta para as solicitações da aplicação, diferentemente de components, várias directives podem ser passadas em um mesmo elemento. Já o components apresenta ao usuário uma página para a visualização das ações.
 2. O que são ``services``? Dê alguns exemplos de utilização.
-Uma Classe da aplicação que pode ser acessado por quaisquer componentes descritos no projeto, utilizado sempre que é necessário criar uma estrutura lógica que precisará ser acessada em outras partes do projeto. Um exemplo direto é este projeto 'PokeApp', projeto o qual fazemos requests para uma API. Considerando que esses dados devem estar disponíveis em toda a aplicação, a função é criada dentro de uma service.
+>Uma Classe da aplicação que pode ser acessado por quaisquer componentes descritos no projeto, utilizado sempre que é necessário criar uma estrutura lógica que precisará ser acessada em outras partes do projeto. Um exemplo direto é este projeto 'PokeApp', projeto o qual fazemos requests para uma API. Considerando que esses dados devem estar disponíveis em toda a aplicação, a função é criada dentro de uma service.
 3. O que são ``pipes``? Dê alguns exemplos de utilização.
 >Pipes são funções que tem o propósito de formatar ou filtrar dados da aplicação de forma simples e rápida. Exemplos comuns são {{ qualquerCoisa | lowercase }} - transforma a string em minúscula, {{ qualquerCoisa | titlecase }} - transforma o primeiro carácter em maiúscula. É possível também criar pipes para formatar dados de qualquer maneira.
 4. O que é ``data-binding`` e quais os tipos que o Angular dá suporte?
-Data binding é a capacidade de conectar os dados de uma view com uma Classe ou um Model. Basicamente feito em duas formas: 'One-Way data-binding' que apenas recebe informações e 'Two-Way data-binding' que interage e altera as propriedades do objeto. Ex:
+>Data binding é a capacidade de conectar os dados de uma view com uma Classe ou um Model. Basicamente feito em duas formas: 'One-Way data-binding' que apenas recebe informações e 'Two-Way data-binding' que interage e altera as propriedades do objeto. Ex:
 
 Interpolation {{ }};
 Usa a propriedade de uma Classe na View. Logo, quando alguma propriedade é alterada, a view é atualizada.
@@ -58,11 +58,11 @@ Passa dado de um componente filho para um pai.
 Banana in the Box [()].
 Usa tanto a conexão de propriedades quanto a conexão de eventos para criar uma "conversa" da model com o template.
 5. Como se adiciona um *listener* de eventos do usuário em um componente? Por exemplo, como adicionar uma função que responde a um clique de usuário?
-``Usa um 'Event Binder' dentro do componente e associa este a um evento, ex:
+>Usa um 'Event Binder' dentro do componente e associa este a um evento, ex:
 <button (click)="funcList()">
-O usuário ao clicar no botão, dispara a função funcList() dentro da Model.``
+O usuário ao clicar no botão, dispara a função funcList() dentro da Model.
 6. Quais as diferenças entre ``constructor`` e ``ngOnInit``, e quando devemos usar cada um?
-``O constructor é o primeiro módulo a ser carregado. Ele estrutura os comportamentos antes do ngOnInit. Este segundo faz parte do ciclo de vida do componente. Como o constructor será iniciado primeiro, nele deve conter apenas o essencial da aplicação e com a utilização do ngOnInit não necessita inicializar variáveis ou outros componentes. Isso aumenta a performance da aplicação.``
+>O constructor é o primeiro módulo a ser carregado. Ele estrutura os comportamentos antes do ngOnInit. Este segundo faz parte do ciclo de vida do componente. Como o constructor será iniciado primeiro, nele deve conter apenas o essencial da aplicação e com a utilização do ngOnInit não necessita inicializar variáveis ou outros componentes. Isso aumenta a performance da aplicação.
 7. Quais as diferenças entre ``Observables`` e ``Promises``? Como você o utilizaria cada um em um ``template``?
 8. Quais as diferenças entre ``template-driven forms`` e ``reactive forms``? Como fazer validação de dados de formulário em cada caso?
 9.  Como se utiliza o ``angular router``? Quais são as formas de enviar parâmetros para uma rota?
