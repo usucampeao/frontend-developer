@@ -1,12 +1,16 @@
-<input [value]="">
-<!-- <button (click)="getById()">Search</button> -->
+<input [value]="" />
+<button (click)="getById()">Search</button>
 
-
-<div *ngFor="let pokemon of pokemonsInfos">
-  <p>Nome: {{pokemon.name | titlecase}}</p>
-  <p>{{pokemon.abilities}}</p>
-  <p>{{pokemon.types.name}}</p>
-  <p>Peso: {{pokemon.weight/10}} kg </p>
-  <img src="{{pokemon.sprites.front_default}}">
+<div>
+  <ul>
+    <li *ngFor="let pokemon of pokemonsInfos">
+      <p>Nome: {{ pokemon.name | titlecase }}</p>
+      <!-- <p>{{ pokemon.abilities }}</p>
+      <p>{{ pokemon.types.name }}</p> -->
+      <!-- <p>Peso: {{ pokemon.weight / 10 }} kg</p> -->
+      <button>
+        <img src="{{ pokemon.sprites.front_default }}" />
+      </button>
+    </li>
+  </ul>
 </div>
-
