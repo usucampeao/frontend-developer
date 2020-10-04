@@ -2,6 +2,7 @@ import { Pokemon } from './../../models/pokemon';
 import { Component, OnInit } from '@angular/core';
 import { PokedexService } from './../../services/pokedex.service';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
