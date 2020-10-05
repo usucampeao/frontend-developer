@@ -1,0 +1,196 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>pokeapi documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">pokeapi documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>AppRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/app-routing.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { chainedInstruction } from &#x27;@angular/compiler/src/render3/view/util&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+import { BeedrilComponent } from &#x27;./beedril/beedril.component&#x27;;
+import { BlastoiseComponent } from &#x27;./blastoise/blastoise.component&#x27;;
+import { BulbasaurComponent } from &#x27;./bulbasaur/bulbasaur.component&#x27;;
+import { ButterfreeComponent } from &#x27;./butterfree/butterfree.component&#x27;;
+import { CaterpieComponent } from &#x27;./caterpie/caterpie.component&#x27;;
+import { ChamanderComponent } from &#x27;./chamander/chamander.component&#x27;;
+import { CharizardComponent } from &#x27;./charizard/charizard.component&#x27;;
+import { CharmeleonComponent } from &#x27;./charmeleon/charmeleon.component&#x27;;
+import { HomeComponent } from &#x27;./home/home.component&#x27;;
+import { IvysaurComponent } from &#x27;./ivysaur/ivysaur.component&#x27;;
+import { KakunaComponent } from &#x27;./kakuna/kakuna.component&#x27;;
+import { MetapoidComponent } from &#x27;./metapoid/metapoid.component&#x27;;
+import { PidgeotComponent } from &#x27;./pidgeot/pidgeot.component&#x27;;
+import { PidgeottoComponent } from &#x27;./pidgeotto/pidgeotto.component&#x27;;
+import { PidgeyComponent } from &#x27;./pidgey/pidgey.component&#x27;;
+import { RaticateComponent } from &#x27;./raticate/raticate.component&#x27;;
+import { RattataComponent } from &#x27;./rattata/rattata.component&#x27;;
+import { SquitleComponent } from &#x27;./squitle/squitle.component&#x27;;
+import { VenusaurComponent } from &#x27;./venusaur/venusaur.component&#x27;;
+import { WatortleComponent } from &#x27;./watortle/watortle.component&#x27;;
+import { WeedleComponent } from &#x27;./weedle/weedle.component&#x27;;
+
+
+const routes: Routes &#x3D; [
+  {path:&#x27;&#x27;, redirectTo: &#x27;home&#x27;, pathMatch: &#x27;full&#x27;},
+  { path: &#x27;home&#x27;, component:HomeComponent},
+  {path: &#x27;bendril&#x27;, component: BeedrilComponent},
+  {path:&#x27;blastoise&#x27;, component:BlastoiseComponent},
+  {path:&#x27;bulbasaur&#x27;, component:BulbasaurComponent},
+  {path:&#x27;butterfree&#x27;, component:ButterfreeComponent},
+  {path: &#x27;caterpie&#x27;, component:CaterpieComponent},
+  {path: &#x27;chamander&#x27;, component:ChamanderComponent},
+  {path: &#x27;charizard&#x27;, component:CharizardComponent},
+  {path: &#x27;charmeleon&#x27;, component:CharmeleonComponent},
+  {path: &#x27;ivysaur&#x27;, component:IvysaurComponent},
+  {path: &#x27;kakuna&#x27;, component:KakunaComponent},
+  {path: &#x27;metapoid&#x27;, component: MetapoidComponent},
+  {path: &#x27;pidgey&#x27;, component:PidgeyComponent},
+  {path: &#x27;squile&#x27;, component:SquitleComponent},
+  {path: &#x27;venusaur&#x27;, component:VenusaurComponent},
+  {path: &#x27;watortle&#x27;, component: WatortleComponent},
+  {path: &#x27;weedle&#x27;, component:WeedleComponent},
+  {path: &#x27;pidgeot&#x27;, component: PidgeotComponent},
+  {path: &#x27;pidgeotto&#x27;, component:PidgeottoComponent},
+  {path: &#x27;raticate&#x27;, component:RaticateComponent},
+  {path: &#x27;rattata&#x27;, component: RattataComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

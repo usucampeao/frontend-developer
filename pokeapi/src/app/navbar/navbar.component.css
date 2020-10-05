@@ -1,0 +1,15 @@
+.texto{
+    letter-spacing: .2rem;
+    font-size: 14pt;
+    color: white ;
+    }
+
+
+
+.tdNav{
+    background-color: #B4BDEE;
+}
+
+.hoverNav :hover{
+    color: black; 
+}
