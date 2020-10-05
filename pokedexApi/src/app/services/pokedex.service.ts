@@ -44,4 +44,9 @@ export class PokedexService {
       catchError((error) => this.handleError(error))
     );
   }
+
+
+  // searchPokemonById(id: number) {
+  //   return this._http.get<Pokemon>(`${environment.baseUrl}/${id}`);
+  //  }
 }
