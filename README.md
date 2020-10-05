@@ -1,3 +1,8 @@
+
+ [Confira a documentação deste projeto](https://angeladeodato.github.io/Doc-PokeApi/.)
+
+ [Confira as respostas ao questionário](https://docs.google.com/document/d/1GTPYUm02SvaPufs7awmVsJiyxkZ-AwWQ6bGnVijaqNE/edit?usp=sharing)
+
 ![UsuCampeão](logo.png)
 
 # USUCAMPEÃO Tecnologia em Regularização Imobiliária
@@ -104,8 +109,5 @@ E não se esqueça, bugs e exceções são como Pokémons: *Gotta catch 'em all!
 
 
 
- [Confira a documentação deste projeto](https://angeladeodato.github.io/Doc-PokeApi/.)
-
- [Confira as respostas ao questionário](https://docs.google.com/document/d/1GTPYUm02SvaPufs7awmVsJiyxkZ-AwWQ6bGnVijaqNE/edit?usp=sharing)
 
 **Boa sorte! =)**
