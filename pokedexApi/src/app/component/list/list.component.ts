@@ -1,21 +1,18 @@
-import { Pokemon } from "./../../models/pokemon";
-import { Component, OnInit } from "@angular/core";
-import { PokedexService } from "./../../services/pokedex.service";
+import { Pokemon } from './../../models/pokemon';
+import { Component, OnInit } from '@angular/core';
+import { PokedexService } from './../../services/pokedex.service';
 
 // import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: "app-list",
-  templateUrl: "./list.component.html",
-  styleUrls: ["./list.component.scss"],
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
   pokemons: any[];
   pokemonsInfos: Pokemon[] = [];
 
-  // pokeInfo: any;
-  // pokemonPicture: any;
-  // pokemonType: any;
 
   constructor(private _pokedexService: PokedexService) {}
 
@@ -50,5 +47,19 @@ export class ListComponent implements OnInit {
   //       console.log(error);
   //     }
   //   );
+  // }
+
+  // setFilteredItems() {
+  //   this.referencesFilter = this.pokemonsInfos.filter((reference) => {
+  //     return (
+  //       Pokemon.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) >
+  //         -1 ||
+  //       Pokemon.occupationArea
+  //         .toLowerCase()
+  //         .indexOf(this.searchTerm.toLowerCase()) > -1 ||
+  //       Pokemon.company.toLowerCase().indexOf(this.searchTerm.toLowerCase()) >
+  //         -1
+  //     );
+  //   });
   // }
 }
