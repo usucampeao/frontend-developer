@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class PokedexService {
+
   baseUrl: string = environment.baseUrl;
 
   constructor(private _snackBar: MatSnackBar, private _http: HttpClient) {}
@@ -29,22 +30,10 @@ export class PokedexService {
     return EMPTY;
   }
 
-  // getAll(): Observable<Pokemon[]> {
-  //   return this._http.get<Pokemon[]>(environment.baseUrl).pipe(
-  //     map(obj => obj),
-  //     catchError((error) => this.handleError(error))
-  //   );
-  // }
-
-  // get(id: string): Observable<Pokemon> {
-  //   const url = `${environment.baseUrl}/${id}`;
-  //   return this._http.get<Pokemon>(url).pipe(
-  //     map(obj => obj),
-  //     catchError((error) => this.handleError(error))
-  //   );
-  // }
-
-  getPokemons(index) {
-    return this._http.get<any>(`${this.baseUrl}/pokemon/${index}`);
+  getPokemons(index): any {
+    return this._http.get<any>(`${this.baseUrl}/pokemon/${index}`).pipe(
+    map(obj => obj),
+    catchError((error) => this.handleError(error))
+    );
   }
 }

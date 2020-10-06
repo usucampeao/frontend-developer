@@ -7,17 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-// import { ListComponent } from './component/list/list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PokeDetailComponent } from './components/poke-detail/poke-detail.component';
 import { PokeTableComponent } from './components/poke-table/poke-table.component';
 import { MaterialModule } from './../shared/material.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // ListComponent,
     HeaderComponent,
     FooterComponent,
     PokeDetailComponent,
@@ -29,7 +28,8 @@ import { MaterialModule } from './../shared/material.module';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

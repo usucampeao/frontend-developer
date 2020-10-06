@@ -1,10 +1,11 @@
 @import "../../../assets/styles/var.scss";
 
 .card {
-    width: 300px;
+    width: 18.75rem;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 1.3rem;
     background-color: $red;
+    margin-bottom: 3.3rem;
 }
 
 .header-image {
@@ -13,8 +14,8 @@
 
 .mat-card-header{
     background-color: $white;
-    padding-top: 10px;
-    border-radius: 10px;
+    padding-top: 0.8rem;
+    border-radius: 0.8rem;
 }
 
 .mat-card-title{

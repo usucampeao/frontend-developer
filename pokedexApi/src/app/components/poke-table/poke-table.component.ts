@@ -1,3 +1,4 @@
+import { Pokemon } from './../../models/pokemon';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PokedexService } from 'src/app/services/pokedex.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -14,7 +15,7 @@ export class PokeTableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'image', 'name'];
   data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
-  pokemons = [];
+  pokemons: Pokemon[] = [];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -28,7 +29,7 @@ export class PokeTableComponent implements OnInit {
   getPokemons() {
     let pokemonData;
 
-    for (let i = 1; i <= 150; i++) {
+    for (let i = 1; i <= 893; i++) {
       this.pokedexService.getPokemons(i).subscribe(
         (res) => {
           pokemonData = {

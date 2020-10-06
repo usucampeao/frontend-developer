@@ -19,14 +19,10 @@ table {
   font-size: 15px;
 }
 
-//even
-//Representa elementos cuya posición numérica en una serie de hermanos es par: 2, 4, 6, etc.
 .mat-row:nth-child(even) {
   background-color: $white;
 }
 
-//odd
-//Representa elementos cuya posición numérica en una serie de hermanos es impar: 1, 3, 5, etc.
 .mat-row:nth-child(odd) {
   background-color: $red;
   & .mat-cell {
@@ -64,5 +60,5 @@ table {
 }
 
 input {
-  color: $white !important;
+  color: $black;
 }

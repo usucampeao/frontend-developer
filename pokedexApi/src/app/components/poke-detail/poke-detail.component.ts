@@ -1,3 +1,4 @@
+import { Ability } from './../../models/ability';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokedexService } from 'src/app/services/pokedex.service';
@@ -13,6 +14,7 @@ export class PokeDetailComponent implements OnInit {
   pokemon: any = '';
   pokemonImg = '';
   pokemonType = [];
+  pokemonAbility = [];
 
   constructor(
     private activatedRouter: ActivatedRoute,
@@ -32,10 +34,10 @@ export class PokeDetailComponent implements OnInit {
   getPokemon(id) {
     this.pokedexService.getPokemons(id).subscribe(
       res => {
-        console.log(res);
         this.pokemon = res;
         this.pokemonImg = this.pokemon.sprites.front_default;
         this.pokemonType = res.types[0].type.name;
+        this.pokemonAbility = res.abilities[0].ability.name;
       },
       err => {
         console.log(err);
