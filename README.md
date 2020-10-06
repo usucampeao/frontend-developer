@@ -35,6 +35,9 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 
 **PS:** Utilizamos este mesmo testes para os níveis (**júnior**, **pleno** ou **sênior**), apenas adequando o nível de exigência na avaliação de acordo com o perfil da vaga.
 
+### Como rodar o projeto!
+Baixe o projeto, entre nele pelo cmd ou git, utilize o npm install e após um ng serve, se diverta com sua nova pokedex.
+
 ### Questionário
 
 1. O que são ``components`` e ``directives`` e quais as difenças entre eles? Dê alguns exemplos de utilização.
