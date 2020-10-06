@@ -18,14 +18,13 @@ export class PokeDetailComponent implements OnInit {
 
   constructor(
     private activatedRouter: ActivatedRoute,
-    private pokedexService: PokedexService)
-    {
+    private pokedexService: PokedexService) {
 
     this.activatedRouter.params.subscribe(
       params => {
         this.getPokemon(params['id']);
       }
-    )
+    );
   }
 
   ngOnInit(): void {
