@@ -38,7 +38,7 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 
 
 ### Como rodar o projeto!
-Baixe o projeto, entre nele pelo cmd ou git, utilize o npm install e após use o ng serve, e agora se divirta com sua nova pokedex.
+Baixe o projeto, entre nele pelo cmd ou git, utilize o npm install e após use o ng serve, agora se divirta com sua nova pokedex.
 
 
 ### Questionário
