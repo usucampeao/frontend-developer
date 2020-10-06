@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { ListComponent } from './component/list/list.component';
+// import { ListComponent } from './component/list/list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PokeDetailComponent } from './components/poke-detail/poke-detail.component';
@@ -17,7 +17,7 @@ import { MaterialModule } from './../shared/material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
+    // ListComponent,
     HeaderComponent,
     FooterComponent,
     PokeDetailComponent,

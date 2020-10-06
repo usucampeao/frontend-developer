@@ -7,19 +7,19 @@ import { Pokemon } from './../models/pokemon';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PokedexService {
+  baseUrl: string = environment.baseUrl;
 
-  constructor(private _snackBar: MatSnackBar, private _http: HttpClient) { }
+  constructor(private _snackBar: MatSnackBar, private _http: HttpClient) {}
 
   showMessage(msg: string, isError: boolean = false): void {
     this._snackBar.open(msg, 'x', {
       duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
-      panelClass: isError ? ['msg-error'] : ['msg-success']
+      panelClass: isError ? ['msg-error'] : ['msg-success'],
     });
   }
 
@@ -29,24 +29,22 @@ export class PokedexService {
     return EMPTY;
   }
 
+  // getAll(): Observable<Pokemon[]> {
+  //   return this._http.get<Pokemon[]>(environment.baseUrl).pipe(
+  //     map(obj => obj),
+  //     catchError((error) => this.handleError(error))
+  //   );
+  // }
 
-  getAll(): Observable<Pokemon[]> {
-    return this._http.get<Pokemon[]>(environment.baseUrl).pipe(
-      map(obj => obj),
-      catchError((error) => this.handleError(error))
-    );
+  // get(id: string): Observable<Pokemon> {
+  //   const url = `${environment.baseUrl}/${id}`;
+  //   return this._http.get<Pokemon>(url).pipe(
+  //     map(obj => obj),
+  //     catchError((error) => this.handleError(error))
+  //   );
+  // }
+
+  getPokemons(index) {
+    return this._http.get<any>(`${this.baseUrl}/pokemon/${index}`);
   }
-
-  get(id: string): Observable<Pokemon> {
-    const url = `${environment.baseUrl}/${id}`;
-    return this._http.get<Pokemon>(url).pipe(
-      map(obj => obj),
-      catchError((error) => this.handleError(error))
-    );
-  }
-
-
-  // searchPokemonById(id: number) {
-  //   return this._http.get<Pokemon>(`${environment.baseUrl}/${id}`);
-  //  }
 }
