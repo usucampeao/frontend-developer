@@ -1,0 +1,16 @@
+import { Component, ViewChild, AfterViewInit, } from '@angular/core';
+import {HeaderComponent} from './components/header/header.component';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements AfterViewInit {
+  @ViewChild('header') headerComponent: HeaderComponent;
+
+
+  ngAfterViewInit() {
+
+  }
+}

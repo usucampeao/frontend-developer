@@ -1,0 +1,63 @@
+@import "../../../scss/variables";
+
+.pokemon-info{
+  display: flex;
+  justify-content: center;
+  .container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    @media(max-width: 1200px) {grid-template-columns: 50% 50%;}
+    @media(max-width: 767px) {grid-template-columns: 100%;}
+    margin: 36px 0;
+    padding: 36px;
+    background: #FFF;
+    img{
+      margin: 0 auto;
+      padding: 48px;
+      width: 100%;
+      @media(max-width: 767px){
+        max-width: 300px;
+      }
+    }
+
+    .pokemon-types{
+      h1{
+        color: $primary;
+        text-transform: capitalize;
+        font-weight: bold;
+        font-size: 2.4rem;
+      }
+      span{
+        background: #3977A7;
+        padding: 3px 12px;
+        border-radius: 5px;
+        margin: 0 3px;
+        color: #FFF;
+      }
+    }
+  }
+
+  .pokemon-stats{
+    display: flex;
+    width: 100;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin: 12px 0;
+    label{
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $blue;
+      width: 100%;
+    }
+    .stat-chart{
+      width: 100%;
+      color: $yellow;
+    }
+  }
+  @media(max-width: 1360px){
+    padding: 0 36px;
+  }
+  @media(max-width: 1040px){
+    padding: 0 18px;
+  }
+}
