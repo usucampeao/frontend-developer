@@ -2,7 +2,7 @@
 
   <div class="tool-box">
     <div class="container">
-    <input type="search" #search placeholder="Pesquisar" type="text" [(ngModel)]="search.value" (keyup)="searchPokemon(search.value)" />
+    <input type="search" #search placeholder="Pesquisar" type="text" [(ngModel)]="search.value" />
     <mat-form-field class="select" appearance="fill">
     <mat-label>Exibir como</mat-label>
     <mat-select [(ngModel)]="sortSelected" [name]="sortSelected">
