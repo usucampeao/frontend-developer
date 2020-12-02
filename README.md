@@ -38,49 +38,61 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 ### Questionário
 
 1. O que são ``components`` e ``directives`` e quais as difenças entre eles? Dê alguns exemplos de utilização.
+
 R: Diretivas são uma forma do Angular manipular o comportamento e/ou aparencia de um elemento. Por exemplo, o *ngIf é uma diretiva estrutural que elimina um elemento da DOM dependendo da condição passada a ele, já o NgClass é uma diretiva de atributo que pode ser utilizada de varias formas para adicionar uma classe a um elemento.
 Um componente é uma diretiva, porém é usada para construir a aplicação, sem ela não temos uma aplicação propriamente dita. Talvez a maior diferença são os requisitos de um componente pra uma diretiva estrutural ou de atributo, como por exemplo a necessidade de um template e uma classe
 
 2. O que são ``services``? Dê alguns exemplos de utilização.
+
 R: Serviços são classes injetaveis que tem como as principais funções cuidar a lógica de negócio e compartilhar informação com a aplicação. Como os componentes devem apenas apresentar dados e tratar do que é referente ao template dele, os services são utilizados para fazer comunicação.
 Dois exemplos de serviços que posso dar são: o serviço de HTTPClient que serve para disponibilizar os metodos para chamadas HTTP para a aplicação toda e um serviço de usuarios, por exemplo, criado pelo próprio desenvolvedor e que teria a função de carregar dados de usuarios, criar, deletar, editar e disponibilizar esses dados para os componentes.
 
 3. O que são ``pipes``? Dê alguns exemplos de utilização.
+
 R: Pipes são classes que tem como intuito manipular dados e devolver esse dado alterado de acordo com as opções que forem atribuidas no uso, ou da forma que foi escrita pelo desenvolvedor. Um exemplo é o DatePipe, que recebe um objeto de data e, a partir das opções concatenadas, devolve uma data formatada.
 
 4. O que é ``data-binding`` e quais os tipos que o Angular dá suporte?
+
 R: Data Binding é a forma que o Angular tem de fazer a comunicação entre o template é a classe que controla o componente. Temos o binding de eventos que é caracterizado pelo () e serve para comunicar para a classe eventos que tenham sido disparados no template. Temos o binding de atributo, caracterizado por [] e que faz com que atributos envolvidos em colchetes recebam dados da classe. E também temos o two way data binding, que era conhecido (não sei se é mais) por "banana in a box" pelo seu formato, pois se usa com [()]. Esse binding recebe e envia dados entre o template e componente, por isso "two way";
 Não sei se entra como binding, mas talvez a interpolação com {{}} possa ser também, já que recebe dados que são exibidos no template.
 
 5. Como se adiciona um *listener* de eventos do usuário em um componente? Por exemplo, como adicionar uma função que responde a um clique de usuário?
+
 R: Bom, como está com o *listener* dessa forma não creio que entra aqui escutar um evento pelo binding de (). Mas caso seja valido, podemos ter um binding de evento, como por exemplo o (click), ou então utilizar o decorador de @HostListener para adicionar um listener de evento á uma diretiva.
 
 6. Quais as diferenças entre ``constructor`` e ``ngOnInit``, e quando devemos usar cada um?
+
 R: O construtor faz parte da classe do JavaScript e o ngOnInit é um lifecycle hook do Angular, eles são metodos executados em tempos diferentes durante a criação de um componente. O constructor é mais utilizado para injetar as dependencias de uma classe na sua construção. O NgOnInit é utilizado para executar metodos e popular propriedades da classe assim que o angular já tiver feito o minimo para que a classe seja utilizada, mas não o suficiente para ter algo concreto na view.
 
 7. Quais as diferenças entre ``Observables`` e ``Promises``? Como você o utilizaria cada um em um ``template``?
+
 R: Promises são um conceito de programação asincrona no JavaScript onde você espera que um metodo execute e devolva um resultado ou um erro antes de continuar a execução do código, normalmente se usam high order functions e async/await com promises e é algo nativo do JS. Observables são um outro conceito, porém não é nativo e no Angular utilizamos a lib RXJS pra isso. Nos observaveis você tem basicamente um objeto que dispara valores e que pode ser assinado por outros objetos, ao assinar um observavel você fica """"observando"""" até ele disparar um valor que você possa utilizar.
 
 Quanto a utilização em templates não vou mentir aqui que nunca usei uma promise direto num template, não sei se da pra fazer isso com o pipe de async, mas o observável é possível fazer isso. Você utilizar um observavel e passa o pipe de async, com isso o pipe da um subscribe automaticamente e devolve os itens para a diretiva que está utilizando. Além do subscribe automatico, quando acontecer o lyfecycle de onDestroy, o unsubscribe é executado automaticamente.
 
 8. Quais as diferenças entre ``template-driven forms`` e ``reactive forms``? Como fazer validação de dados de formulário em cada caso?
+
 R:Bom, template driven são forms criados no template e que você utiliza uma referencia ao form para manipulá-los na classe, já Reactive Forms são formulários criados pela classe e que são atribuidos como propriedade no formulário. Não sei se as diferenças vão muito além da forma que você escreve e validação com validators customizados e asincronos.
 
 Já a validação, utilizei pouco o form de template, mas lembro que as validações eram feitas através de atributos dos inputs mesmo, certo? Já forms reativos você tem uma classe de validatos
 que utiliza para validar seus controladores, FormArrays e FormGroups, além de poder criar seus próprios validadores.
 
 9.  Como se utiliza o ``angular router``? Quais são as formas de enviar parâmetros para uma rota?
+
 R: Na forma mais basica, você define rotas e quais componentes essa rota deve exibir. Ao navegar para determinada URL essa rota é exibida no elemento router-outlet.
 Você pode enviar parametros, por exemplo, definindo que o caminho pra uma rota será um parametro (ex: path: ':id') e pegar esse parametro na próxima página. Você pode utilizar o atributo queryParams junto de um routerLink e passar parametros. Da mesma forma pode utilizar o fragment. E também pode enviar utilizando o serviço de Router e passar como state, por exemplo.
 
 10.  O que são *guards de rota* e para que são úteis?
+
 R: Guards de rotas são metodos que podem ser atribuidos as rotas no router e que fazem a segurança de uma rota, executando um bloco de código para assegurar que a navegação para aquela rota pode acontecer, se as condições forem superadas.
 Alguns casos onde um guard é útil é quando usuários tem permissões para usar certas funcionalidades de um sistema. Com um guard você pode facilmente verificar, antes do usuário acessar uma rota, se ele tem permissão para isso. Ou mesmo verificar se ele está logado antes de acessar uma home, por exemplo.
 
 11. O que é ``NgZone``? Em que momento deve ser utilizada?
+
 R: aaaa vou ficar devendo essa, vou pegar pra ler melhor, mas sei que é algo sobre contexto de execução, persistir dados.
 
 12. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
+
 R: Essa é algo que sempre enrosco pra explicar. Injeção de dependência é um conceito, um design pattern, onde você disponibiliza serviços para um componente ou outra classe sem criar uma nova instância desse serviço, fazendo com que os dados persistam entre as classes sem perder o estado atual dela e com isso a aplicação inteira tem acesso aos mesmos dados, e o que acontece em um componente reflete nos outros que dependem do mesmo componente.
 
 É útil por isso, disponibilizar os mesmos dados pra aplicação inteira. Porém deve-se tomar muito cuidado com efeitos colaterais ao alterar um valor em um serviço.
@@ -88,6 +100,7 @@ R: Essa é algo que sempre enrosco pra explicar. Injeção de dependência é um
 A forma maios atual se se injetar é utilizar o metadado 'providedIn': root no decorador de um serviço (@Injectable), com isso o serviço já fica disponível para uso em toda a aplicação. Outra forma é passar um serviço no array de providers em um módulo, com isso o serviço já fica disponivel para ser usado no componente e componentes filhos desse módulo.
 
 Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
+
 R: hahahaha essa é a mais difícil aqui em? Olha acho o Charmander o mais legal, gosto dele e das evoluções. Maaaaas sempre vou de Bulbassauro, é super efetivo nos 2 primeiros ginásios e se vira bem nos outros, tem um HP bom, mas não gosto muito dos ataques dele na última evolução. Squirtle acho bom também, primeiro ginásio passa sossegado e você pega bastante pokémon de grama nas primeiras áreas, o que ajuda contra os próximos 2 ginásios. Fora que o HP e defesa dele são bem altos, da pra brincar bastante.
 
 ### Projeto: Criando uma Pokédex usando a PokéAPI
