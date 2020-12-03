@@ -1,3 +1,5 @@
+import { POKEMON_LIST } from './../../assets/mock/pokemon-list.mock';
+import { Pokemon } from './../models/pokemon.model';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { PokedexService } from './pokedex.service';
@@ -25,7 +27,7 @@ describe('PokedexService', () => {
   });
 
   it('should return a list of Pokemons', () => {
-    const limit = 25;
+    const limit = POKEMON_LIST.results.length;
     service.getPokemonList(limit).subscribe(pokemons => {
       expect(pokemons.length).toEqual(limit);
       expect(typeof pokemons[0].id).toBe('number');
@@ -33,8 +35,35 @@ describe('PokedexService', () => {
       expect(pokemons[0].types.length).toBeLessThanOrEqual(2);
     });
 
-    const req = httpTesting.expectOne(`${environment}/pokemon?limit=${limit}&offset=0`);
+    const req = httpTesting.expectOne(`${environment.api_url}/pokemon?limit=${limit}&offset=0`);
     expect(req.request.method).toEqual('GET');
-    req.flush(new Array(limit).fill(POKEMON));
+    req.flush(POKEMON_LIST);
+  });
+
+  it('should return a pokemon by its ID', () => {
+    const id = POKEMON.id;
+    service.getPokemonByID(id).subscribe((pokemon: Pokemon) => {
+      expect(pokemon.name).toBe(POKEMON.name);
+      expect(pokemon.sprites.other['official-artwork']).toBeTruthy();
+      expect(pokemon.types.length).toBeLessThanOrEqual(2);
+    });
+
+    const req = httpTesting.expectOne(`${environment.api_url}/pokemon/${id}`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(POKEMON);
+  });
+
+  it('should return a pokemon by its name', () => {
+    const name = POKEMON.name;
+    service.getPokemonByName(name).subscribe((pokemon: Pokemon) => {
+      expect(pokemon.name).toBe(POKEMON.name);
+      expect(pokemon.id).toBeTruthy();
+      expect(pokemon.sprites.other['official-artwork']).toBeTruthy();
+      expect(pokemon.types.length).toBeLessThanOrEqual(2);
+    });
+
+    const req = httpTesting.expectOne(`${environment.api_url}/pokemon/${name}`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(POKEMON);
   });
 });
