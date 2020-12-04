@@ -1,1 +1,3 @@
-<p>type-badge works!</p>
+<p [ngStyle]="{ 'background-color': type.color, color: type.contrast }">
+  {{ type.name }}
+</p>

@@ -6,6 +6,7 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { PokemonFilter } from '../models/pokemon-filter.model';
 
 /**
  * Serviço responsável por buscar os dados dos pokémons na PokéAPI
@@ -25,7 +26,7 @@ export class PokedexService {
    * @param limit Quantidade de resultados para buscar
    * @param offset Numero do item para se buscar a partir dele
    */
-  getPokemonList(limit: number = 25, offset: number = 0): Observable<Pokemon[]> {
+  getPokemonList(limit: number = 25, offset: number = 0): Observable<any[]> {
     // retorno a busca de pokémons
     return this.http.get(`${environment.api_url}/pokemon?limit=${limit}&offset=${offset}`)
       .pipe(
@@ -54,7 +55,7 @@ export class PokedexService {
    * Busca uma lista de pokémons pelo tipo deles (como grama, eletrico, fogo, etc...)
    * @param type ID do tipo de pokémon
    */
-  getPokemonListByType(type: number): Observable<Pokemon[]> {
+  getPokemonListByType(type: number): Observable<any[]> {
     return this.http.get(`${environment.api_url}/type/${type}`)
       .pipe(
         // map para pegar apenas os resultados; Para type tem um objeto a mais dentro
@@ -70,11 +71,11 @@ export class PokedexService {
    * É uma arrow function pelo contexto do this em mergeMap. Poderia ser feito um .bind() também
    * @param pokemons Array com os dados dos pokemons, como nome e URL para pegar ID
    */
-  private loadPokemonsFromApiOrDB = (pokemons: { name: string, url: string }[]): Observable<Pokemon[]> => {
+  private loadPokemonsFromApiOrDB = (pokemons: { name: string, url: string }[]): Observable<any> => {
     // pego os pokemons salvos no localStorage
     const pokemonsDB = this._pokemonStore.getPokemon || {};
     // crio um array que observaqveis de pokemon iterando os resultados da primeira busca
-    const details = pokemons.map( pokemon  => {
+    const details = pokemons.map(pokemon  => {
       // pego o id do pokemon na URL
       const id = pokemon.url.split('pokemon/')[1].replace(/[^0-9]/g, '');
       // se tem o pokemon desse id no storage devolve ele num observavel, se não devolve a chamada

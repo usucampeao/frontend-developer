@@ -1,1 +1,9 @@
-<p>pokecard works!</p>
+<article>
+  <p>{{ pokemon.name }}</p>
+  <img
+    width="300px"
+    height="auto"
+    [src]="pokemon.sprites['official'] || pokemon.sprites['front']"
+    [alt]="pokemon.name"
+  />
+</article>

@@ -16,6 +16,7 @@ describe('TypeBadgeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TypeBadgeComponent);
     component = fixture.componentInstance;
+    component.id = 0;
     fixture.detectChanges();
   });
 
