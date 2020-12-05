@@ -7,3 +7,10 @@ TODO:
 - Criar alerta
 - Tratar erros
 - ARRUMAR COM URGENCIA AS INTERFACES, TA UMA CAGADA QUE SÓ POR CAUSA DAS ALTERAÇÕES DO INDEXEDDB
+
+
+AMANHA:
+- componente loading
+- componente erro
+- Imagem de titulo
+- começar página detalhes

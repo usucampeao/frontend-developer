@@ -1,39 +1,70 @@
 <!-- cabeçalho do site -->
-<header>hey</header>
+<header>
+  <h1>PokéPédia</h1>
+</header>
 
 <!-- Seção com a tabs para alterar entre busca e tipo -->
-<section>
-  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="viewList = $event.tab.textLabel">
+<section class="form">
+  <mat-tab-group
+    mat-align-tabs="center"
+    (selectedTabChange)="viewList = $event.tab.textLabel"
+  >
     <mat-tab label="Pokémon">
       <app-search (search)="onSearch($event)" matTabContent></app-search>
     </mat-tab>
     <mat-tab label="Tipos">
       <ng-container matTabContent>
+        <h2>Escolha um tipo para ver seus Pokémons</h2>
         <!--
           Tem que somar + 1 na hora de pegar o type pois na API ele começa em index 0, mas o id do primeiro
           é 1
         -->
-        <div
-          *ngFor="let type of types; let i = index"
-          (click)="loadPokemonByType(i + 1)"
-        >
-          <app-type-badge [id]="i + 1"></app-type-badge>
+        <div class="type--container">
+          <app-type-badge
+            *ngFor="let type of types; let i = index"
+            (click)="loadPokemonByType(i + 1)"
+            [id]="i + 1"
+          ></app-type-badge>
         </div>
       </ng-container>
     </mat-tab>
   </mat-tab-group>
 </section>
 
-<!-- Seção para apresentação dos pokemons -->
+<!-- Seção para apresentação dos pokemons  -->
 <section [ngSwitch]="viewList">
   <article *ngSwitchCase="'Pokémon'">
-    <div>
-      <app-pokecard *ngFor="let pokemon of pokemonsPaginated" [pokemon]="pokemon"></app-pokecard>
+    <div
+      class="responsive-grid"
+      *ngIf="pokemonsPaginated"
+      [@listAnimation]="pokemonsPaginated.length"
+    >
+      <app-pokecard
+        *ngFor="let pokemon of pokemonsPaginated"
+        [pokemon]="pokemon"
+        (click)="goToPokemonDetails(pokemon)"
+      ></app-pokecard>
     </div>
+    <mat-paginator
+      *ngIf="length$ | async as length"
+      [length]="length"
+      [pageSize]="limit"
+      [pageSizeOptions]="limitOptions"
+      (page)="changePage($event)"
+    >
+    </mat-paginator>
   </article>
   <article *ngSwitchCase="'Tipos'">
-    <div>
-      <app-pokecard *ngFor="let pokemon of pokemonsByType" [pokemon]="pokemon"></app-pokecard>
+    <div
+      class="responsive-grid"
+      *ngIf="pokemonsByType"
+      [@listAnimation]="pokemonsByType.length"
+    >
+      <app-pokecard
+        *ngFor="let pokemon of pokemonsByType"
+        [pokemon]="pokemon"
+        (click)="goToPokemonDetails(pokemon)"
+      ></app-pokecard>
     </div>
   </article>
 </section>

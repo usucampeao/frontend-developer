@@ -2,11 +2,10 @@ import { PokemonsStore } from '../stores/pokemon.store';
 import { PokemonList } from './../models/pokemon-list.model';
 import { Pokemon } from './../models/pokemon.model';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, of } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { forkJoin, Observable, of, BehaviorSubject } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { PokemonFilter } from '../models/pokemon-filter.model';
 
 /**
  * Serviço responsável por buscar os dados dos pokémons na PokéAPI
@@ -15,6 +14,15 @@ import { PokemonFilter } from '../models/pokemon-filter.model';
   providedIn: 'root'
 })
 export class PokedexService {
+
+  /**
+   * Subject para emitir e guardar o total de itens existentes na lista de pokémons
+   */
+  private lengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+  /**
+   * Observavel para replicar o valor do subject de tamanho da lista de pokemons
+   */
+  public length$: Observable<number> = this.lengthSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -30,6 +38,7 @@ export class PokedexService {
     // retorno a busca de pokémons
     return this.http.get(`${environment.api_url}/pokemon?limit=${limit}&offset=${offset}`)
       .pipe(
+        tap((res: any) => this.lengthSubject.next(res.count)),
         map((res: PokemonList) => res.results), // map para pegar apenas os resultados
         mergeMap(this.loadPokemonsFromApiOrDB)
       );
@@ -46,6 +55,8 @@ export class PokedexService {
   /**
    * Busca um pokémon por nome, vai ser usado no search
    * @param name Nome do pokémon para buscar
+   *
+   * TODO: Tratar quando não vem um pokémon na busca, se buscar por qualquer coisa nada a ve
    */
   getPokemonByName(name: string): Observable<Pokemon> {
     return this.http.get(`${environment.api_url}/pokemon/${name}`) as Observable<Pokemon>;

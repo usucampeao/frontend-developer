@@ -1,5 +1,5 @@
-<form (submit)="doSearch()">
-  <mat-form-field>
+<form (submit)="doSearch()" class="search">
+  <mat-form-field class="search--field">
     <mat-label>Procure por nome...</mat-label>
     <input
       type="text"
@@ -13,5 +13,5 @@
       Nome obrigatório para busca!
     </mat-error>
   </mat-form-field>
-  <button type="submit" mat-raised-button color="primary">Procurar</button>
+  <button type="submit" mat-raised-button color="primary" class="search--button">Procurar</button>
 </form>

@@ -3,9 +3,12 @@ import { map } from 'rxjs/operators';
 import { TypesService } from './../../services/types.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokedexService } from 'src/app/services/pokedex.service';
 import { PokemonsStore } from 'src/app/stores/pokemon.store';
+import { Observable } from 'rxjs';
+import { ngForAnimation } from 'src/assets/animations/animations';
+
+
 
 /**
  * - TODO
@@ -14,14 +17,30 @@ import { PokemonsStore } from 'src/app/stores/pokemon.store';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss']
+  styleUrls: ['./home.page.scss'],
+  animations: [ngForAnimation]
 })
 export class HomePage implements OnInit {
 
   /**
    * Propriedade para alterar qual lista está vendo, a páginada ou por tipo
    */
-  viewList = 'Pokémon';
+  public viewList = 'Pokémon';
+
+  /**
+   * Observável que vai receber o total de itens na API para usar no paginador
+   */
+  public length$: Observable<number>;
+
+  /**
+   * Limite de dados para buscar
+   */
+  public limit = 25;
+
+  /**
+   * Diferentes opções de limites para a busca
+   */
+  public limitOptions = [10, 25, 50];
 
   /**
    * Array de pokémons para apresentar na view de paginação
@@ -59,8 +78,18 @@ export class HomePage implements OnInit {
    */
   async ngOnInit(): Promise<void> {
     await this._pokemonsStore.initializeStore();
+    this.length$ = this._pokedex.length$;
     this.types = Array.from(this._types.pokemonTypes, (type) => type[1]);
-    this._pokedex.getPokemonList()
+    this.getPokemonPaginatorList();
+  }
+
+  /**
+   * Busca a lista de pokemons que deve ser exibida quando está com o campo de busca e páginador
+   * @param limit Quantidade de itens que deve trazer
+   * @param offset Numero de itens que deve pular para então buscar dados
+   */
+  getPokemonPaginatorList(limit: number = 25, offset: number = 0): void {
+    this._pokedex.getPokemonList(limit, offset)
       .pipe(
         map(this.pokemonListMap)
       )
@@ -68,6 +97,15 @@ export class HomePage implements OnInit {
         this.pokemonsPaginated = pokemons;
         this._pokemonsStore.setPokemons = pokemons;
       });
+  }
+
+  /**
+   * Muda a página ao avançar, voltar ou alterar o tamanho limite. Atribui o novo valor do limite
+   * e calcula o offset pela pagina atual * tamanho de itens, vai dar quantos deve pular.
+   */
+  changePage(event): void {
+    this.limit = event.pageSize;
+    this.getPokemonPaginatorList(this.limit, event.pageIndex * this.limit);
   }
 
   /**
@@ -80,6 +118,16 @@ export class HomePage implements OnInit {
         relativeTo: this.route,
         state: { pokemon }
       });
+    });
+  }
+
+  /**
+   * Navega para a página do pokémon após clique em card
+   */
+  goToPokemonDetails(pokemon): void {
+    this._router.navigate([pokemon.id], {
+      relativeTo: this.route,
+      state: { pokemon }
     });
   }
 

@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 
+
+/**
+ * Configuração para o IndexedDB
+ */
 const dbConfig: DBConfig = {
   name: 'pokemonDB',
   version: 1,
@@ -23,8 +27,7 @@ const dbConfig: DBConfig = {
       { name: 'weight', keypath: 'weight', options: { unique: false }}
     ]
   }]
-
-}
+};
 
 @NgModule({
   declarations: [
