@@ -1,6 +1,10 @@
 import { TypesService } from './../../services/types.service';
 import { Component, Input, OnInit } from '@angular/core';
 
+/**
+ * Componente que exibe uma badge com o tipo do pokémon, estilizado com a
+ * cor correspondente
+ */
 @Component({
   selector: 'app-type-badge',
   templateUrl: './type-badge.component.html',
@@ -15,16 +19,18 @@ export class TypeBadgeComponent implements OnInit {
 
   /**
    * Dados de um tipo de pokémon
-   * TODO: passar para uma interface
    */
   public type: { name: string, color: string, contrast: string };
 
+  /**
+   * Construtor da classe com os serviços injetados
+   */
   constructor(
     private _types: TypesService
   ) { }
 
   /**
-   * Apo inicializar pega os dados de um tipo, como nome e cores para a badge
+   * Ao inicializar pega os dados de um tipo, como nome e cores para a badge
    */
   ngOnInit(): void {
     this.type = this._types.pokemonTypes.get(this.id);

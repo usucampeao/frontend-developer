@@ -1,3 +1,6 @@
+/**
+ * Dados de um pokémon como o que vem ao chamar a API
+ */
 export const POKEMON = {
   abilities: [
     {

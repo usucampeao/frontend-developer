@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Serviço que tem como o unico intuito centralizar os dados de tipos dos pokémons
+ * como cores, cor de contraste, nome.
+ *
+ * Todas as cores de contraste são brancas pois a legibilidade fica um tanto quanto
+ * boa, mas se for necessário mudar o contraste por causa das recomendações do
+ * WCAG, então fica mais fácil se for em um só lugar
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -30,6 +38,4 @@ export class TypesService {
     [17, { name: 'Noturno', color: '#705848', contrast: '#FFFFFF' }],
     [18, { name: 'fada', color: '#EE99AC', contrast: '#FFFFFF' }]
   ]);
-
-  constructor() { }
 }

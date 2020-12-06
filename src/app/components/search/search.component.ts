@@ -7,6 +7,9 @@ import { ErrorStateMatcher } from '@angular/material/core';
  * tenha modificado ou clicado nele e clicado fora, então apresenta a mensagem de erro.
  */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
+  /**
+   * Metodo que verifica se o controlador está invalido
+   */
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));

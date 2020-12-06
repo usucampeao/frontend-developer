@@ -9,15 +9,20 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatPaginatorModule, MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PokestatusComponent } from './pokestatus/pokestatus.component';
+import { MatIconModule, MatIcon } from '@angular/material/icon';
 
+/**
+ * Função para pegar o label do paginador
+ */
 const getRangeLabel = (page: number, pageSize: number, length: number) => {
   length = Math.max(length, 0);
-  const startIndex = page * pageSize;
-  const endIndex = startIndex < length ?
-      Math.min(startIndex + pageSize, length) :
-      startIndex + pageSize;
+  const start = page * pageSize;
+  const end = start < length ?
+    Math.min(start + pageSize, length) :
+    start + pageSize;
 
-  return `${startIndex + 1} - ${endIndex} de ${length}`;
+  return `${start + 1} - ${end} de ${length}`;
 }
 
 /**
@@ -38,7 +43,8 @@ const translatePaginator = () => {
   declarations: [
     SearchComponent,
     PokecardComponent,
-    TypeBadgeComponent
+    TypeBadgeComponent,
+    PokestatusComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +53,7 @@ const translatePaginator = () => {
     MatButtonModule,
     MatPaginatorModule,
     ReactiveFormsModule,
+    MatIconModule,
     FormsModule
   ],
   exports: [
@@ -58,7 +65,9 @@ const translatePaginator = () => {
     MatPaginator,
     TypeBadgeComponent,
     SearchComponent,
-    PokecardComponent
+    PokecardComponent,
+    PokestatusComponent,
+    MatIcon
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: translatePaginator() }

@@ -1,16 +1,9 @@
 EXPLICAR NO README DEPOIS (OU OUTRO LUGAR):
 - MUDANÇA DO LOCALSTORAGE PARA INDEXEDDB
 
-TODO:
-- Fazer animação no ngSwitch da home pois a tab é animada e a section não, da um baque
-- Criar loading
-- Criar alerta
-- Tratar erros
-- ARRUMAR COM URGENCIA AS INTERFACES, TA UMA CAGADA QUE SÓ POR CAUSA DAS ALTERAÇÕES DO INDEXEDDB
-
 
 AMANHA:
-- componente loading
-- componente erro
-- Imagem de titulo
-- começar página detalhes
+- refatorar css
+- pwa
+- escrever o que souber de teste
+- escrever Readme

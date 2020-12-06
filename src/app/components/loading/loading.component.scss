@@ -1,0 +1,15 @@
+.loading {
+  width: 300px;
+  height: 150px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  animation: show .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+
+  p {
+    margin: 0 15px 0 0;
+    font-size: 2rem;
+  }
+}

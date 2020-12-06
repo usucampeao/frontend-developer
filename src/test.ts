@@ -7,6 +7,10 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+/**
+ * Não sei muito bem o que esse teste faz. Talvez mapeia todas as specs da aplicação
+ * para rodar o teste depois
+ */
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
     keys(): string[];
@@ -19,7 +23,9 @@ getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
 );
-// Then we find all the tests.
+/**
+ * Contexto da aplicação?
+ */
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

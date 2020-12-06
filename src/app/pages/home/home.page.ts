@@ -1,4 +1,4 @@
-import { PokemonFilter } from './../../models/pokemon-filter.model';
+import { Pokemon } from '../../models/pokemon.model';
 import { map } from 'rxjs/operators';
 import { TypesService } from './../../services/types.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,8 +11,8 @@ import { ngForAnimation } from 'src/assets/animations/animations';
 
 
 /**
- * - TODO
- * - - caguei totalmente nos tipos meu deus, preciso arrumar com urgencia
+ * Página inicial da aplicação, deverá exibir uma lista de pokémons paginada ou
+ * lista de pokémons por tipo
  */
 @Component({
   selector: 'app-home',
@@ -45,12 +45,12 @@ export class HomePage implements OnInit {
   /**
    * Array de pokémons para apresentar na view de paginação
    */
-  public pokemonsPaginated: Partial<PokemonFilter>[];
+  public pokemonsPaginated: Partial<Pokemon>[];
 
   /**
    * Array de pokémons de um determinado tipo para apresentar na view
    */
-  public pokemonsByType: Partial<PokemonFilter>[];
+  public pokemonsByType: Partial<Pokemon>[];
 
   /**
    * Todos os tipos de pokémons para serem utilizados na busca por tipos
@@ -61,6 +61,9 @@ export class HomePage implements OnInit {
     contrast: string;
   }[];
 
+  /**
+   * Construtor com os serviços injetados
+   */
   constructor(
     private _pokedex: PokedexService,
     private _pokemonsStore: PokemonsStore,
@@ -90,9 +93,6 @@ export class HomePage implements OnInit {
    */
   getPokemonPaginatorList(limit: number = 25, offset: number = 0): void {
     this._pokedex.getPokemonList(limit, offset)
-      .pipe(
-        map(this.pokemonListMap)
-      )
       .subscribe((pokemons) => {
         this.pokemonsPaginated = pokemons;
         this._pokemonsStore.setPokemons = pokemons;
@@ -136,35 +136,10 @@ export class HomePage implements OnInit {
    */
   loadPokemonByType(id: number): void {
     this._pokedex.getPokemonListByType(id)
-      .pipe(
-        map(this.pokemonListMap)
-      ).subscribe(pokemons => {
+      .subscribe(pokemons => {
         this.pokemonsByType = pokemons;
         this._pokemonsStore.setPokemons = pokemons;
       });
-  }
-
-  /**
-   * Filtra a lista de pokémon pegando apenas os dados importantes para a aplicação
-   * Só deixo retornar se o pokemon tem foto oficial, não quero apresentar sprite de jogo
-   */
-  pokemonListMap = (pokemonList): PokemonFilter[] => {
-    return pokemonList
-      .filter(pokemon => {
-        return pokemon.sprites.other || pokemon.sprites.official;
-      })
-      .map(pokemon => ({
-        height: pokemon.height,
-        id: pokemon.id,
-        name: pokemon.name,
-        sprites: {
-          front: pokemon.sprites.front ? pokemon.sprites.front : pokemon.sprites.front_default,
-          official: pokemon.sprites.official ? pokemon.sprites.official : pokemon.sprites.other['official-artwork'].front_default
-        },
-        stats: pokemon.stats,
-        types: pokemon.types,
-        weight: pokemon.weight,
-      }));
   }
 
 }

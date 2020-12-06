@@ -1,3 +1,6 @@
+/**
+ * Interface dos dados retornados na busca da API quando se busca por listas
+ */
 export interface PokemonList {
   /**
    * Total de pokémons na API

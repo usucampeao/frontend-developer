@@ -1,9 +1,5 @@
-import { PokemonFilter } from './../models/pokemon-filter.model';
-import { POKEMON } from './../../assets/mock/pokemon.mock';
 import { Pokemon } from '../models/pokemon.model';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 /**
@@ -22,8 +18,11 @@ export class PokemonsStore {
   /**
    * BehaviourSubject privado para fazer a comunicação e disparar novos cursos e aquela coisa toda
    */
-  private pokemonsDB: { [key: string]: PokemonFilter } = {};
+  private pokemonsDB: { [key: string]: Pokemon } = {};
 
+  /**
+   * Construtor da classe com os serviços injetados
+   */
   constructor(
     private dbService: NgxIndexedDBService
   ) {}
@@ -45,14 +44,14 @@ export class PokemonsStore {
   /**
    * getter que apenas retorna os pokémons que estão no DB
    */
-  get getPokemon(): { [key: string]: PokemonFilter } {
+  get getPokemons(): { [key: string]: Pokemon } {
     return this.pokemonsDB;
   }
 
   /**
-   * Atualiza os pokemons no localStorage e no store
+   * Atualiza os pokemons no indexedDB e no store
    */
-  set setPokemons(pokemonList: PokemonFilter[]) {
+  set setPokemons(pokemonList: Pokemon[]) {
     // itera por todos os pokémons que vieram por argumento
     // filtra os que já existem no array local
     // os que não existem então atribui e salva no DB
