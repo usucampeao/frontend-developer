@@ -35,6 +35,14 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 
 **PS:** Utilizamos este mesmo testes para os níveis (**júnior**, **pleno** ou **sênior**), apenas adequando o nível de exigência na avaliação de acordo com o perfil da vaga.
 
+### Informações Adicionais sobre a Aplicação
+
+Foi criado um dockerfile, caso seja útil. Há scripts pra isso, `npm run docker:build` e depois `docker:run`.
+
+Para documentação foi utilizado o Compodoc, basta rodar o comando `npm run compodoc`.
+
+Aqui acabou ocorrendo alguns problemas pós `npm i` referentes ao ngcc, por isso criei um script `npm run postinstall` para lidar com os problemas. Eles ocorreram apenas no primeiro npm install, quando reinstalei os pacotes não houve problema, mas caso haja algum problema de build pode ser isso.
+
 ### Questionário
 
 1. O que são ``components`` e ``directives`` e quais as difenças entre eles? Dê alguns exemplos de utilização.

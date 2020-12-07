@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 /**
  * Configuração para o IndexedDB
@@ -43,7 +45,8 @@ const dbConfig: DBConfig = {
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    NgxIndexedDBModule.forRoot(dbConfig)
+    NgxIndexedDBModule.forRoot(dbConfig),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

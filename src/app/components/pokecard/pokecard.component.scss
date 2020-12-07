@@ -1,10 +1,10 @@
 .pokecard {
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   padding: 15px;
   transition: filter .3s ease-out;
-  filter: drop-shadow(2px 4px 6px black);
+  filter: var(--filter-shadow);
   cursor: pointer;
 
   &:hover {

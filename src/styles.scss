@@ -1,15 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* Imports de váriaveis de CSS */
+@import './assets/css/variables.scss';
 
+/* CSS adicionado pelo Angular Material */
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-color: var(--primary-bg);
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+/* CSS especifico de classes */
 header.page-title {
   background-color: #f04037;
   display: flex;
@@ -30,7 +35,7 @@ header.page-title {
   }
 
   img {
-    filter: drop-shadow(2px 4px 6px black);
+    filter: var(--filter-shadow);
   }
 
   h1 {
@@ -38,12 +43,6 @@ header.page-title {
     color: white;
     text-transform: capitalize;
   }
-}
-
-.responsive-grid {
-  display: grid;
-  grid-template: 1fr / repeat(auto-fit, minmax(260px, 1fr));
-  gap: 15px;
 }
 
 .backdrop {
@@ -54,11 +53,22 @@ header.page-title {
   z-index: 100;
   top: 0;
   left: 0;
+}
+
+/* Utilitários */
+.responsive-grid {
+  display: grid;
+  grid-template: 1fr / repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.center-content {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Animações de css */
 @keyframes show {
   from {
     transform: scale(0.3);

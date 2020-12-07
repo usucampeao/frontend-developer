@@ -31,7 +31,7 @@ describe('PokedexService', () => {
     service.getPokemonList(limit).subscribe(pokemons => {
       expect(pokemons.length).toEqual(limit);
       expect(typeof pokemons[0].id).toBe('number');
-      expect(pokemons[0].sprites.other['official-artwork']).toBeTruthy();
+      expect(pokemons[0].sprites.official).toBeTruthy();
       expect(pokemons[0].types.length).toBeLessThanOrEqual(2);
     });
 
@@ -44,7 +44,7 @@ describe('PokedexService', () => {
     const id = POKEMON.id;
     service.getPokemonByID(id).subscribe((pokemon: Pokemon) => {
       expect(pokemon.name).toBe(POKEMON.name);
-      expect(pokemon.sprites.other['official-artwork']).toBeTruthy();
+      expect(pokemon.sprites.official).toBeTruthy();
       expect(pokemon.types.length).toBeLessThanOrEqual(2);
     });
 
@@ -58,7 +58,7 @@ describe('PokedexService', () => {
     service.getPokemonByName(name).subscribe((pokemon: Pokemon) => {
       expect(pokemon.name).toBe(POKEMON.name);
       expect(pokemon.id).toBeTruthy();
-      expect(pokemon.sprites.other['official-artwork']).toBeTruthy();
+      expect(pokemon.sprites.official).toBeTruthy();
       expect(pokemon.types.length).toBeLessThanOrEqual(2);
     });
 
