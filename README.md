@@ -38,15 +38,31 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 ### Questionário
 
 1. O que são ``components`` e ``directives`` e quais as difenças entre eles? Dê alguns exemplos de utilização.
+    Compoments é uma classe dentro do aplicativo. Ele é composto por HTML (template), CSS e TypeScript. Podemos criar um component para criar uma lista de produtos dentro de um aplicativo, ele é resposável por capturar os dados de uma API REST, tratar e enviar para o template renderizado para o usuário.
+
+    Com Directives podemos criar um elemento que será utilizado repetidas vezes em diferentes locais da aplicação. 
+    Vamos supor que temos um select de usuários, que pode ser utilizado como filtro em diversos lugares diferentes. Para não repetir o código do select completo em todas os templates, usamos apenas a directive desse select de usuários. Assim quando for necessário alguma alteração no select, essa alteração só ocorre na directive e a mudança é refletida em todo o aplicativo.
 2. O que são ``services``? Dê alguns exemplos de utilização.
+    Service é a camada de comunicação com uma fonte de dados. Posso criar uma service para a comunicação de uma API REST, e centralizar nela os endpoints necessários para a aplicação
 3. O que são ``pipes``? Dê alguns exemplos de utilização.
+    Pipe é um recurso utilizado para formatar exibição de valores. Exemplo: Temos uma data no seguinte formato '2021-02-05 14:00:00' e queremos mostra-lá assim: '05/02/2021 14:00'. Podemos utilizar o pipe para formatar a data da seguinte forma: {{ dataCadastro | date:'dd/MM/yyyy HH::mm' }}
 4. O que é ``data-binding`` e quais os tipos que o Angular dá suporte?
+    - Quando inserimos algum texto num input e esse texto já reflete em algum lugar do template
+    - Podemos associar informação do component para o template. Ex.: [propriedade]="valor" ou {{ valor }}
+    - Podemos associar informacao do template para o component. Ex. (event)="handle"
 5. Como se adiciona um *listener* de eventos do usuário em um componente? Por exemplo, como adicionar uma função que responde a um clique de usuário?
 6. Quais as diferenças entre ``constructor`` e ``ngOnInit``, e quando devemos usar cada um?
+    ngOnInit é carregado na inicialização do component. Deve ser usado para buscar uma lista de registros ao carregar uma listagem de produtos, por exemplo.
+    Contructor é um método default de qualquer classe. Utilizamos quando precisamos injetar alguma dependencia num component, por exemplo.
 7. Quais as diferenças entre ``Observables`` e ``Promises``? Como você o utilizaria cada um em um ``template``?
 8. Quais as diferenças entre ``template-driven forms`` e ``reactive forms``? Como fazer validação de dados de formulário em cada caso?
 9.  Como se utiliza o ``angular router``? Quais são as formas de enviar parâmetros para uma rota?
+    Se utiliza por meio do AppRoutingModule. Nesse módulo colocamos todas as rotas do aplicativo e qual component a rota utilizará. 
+    
+    Para enviar um parametro para uma rota, primeiro devemos definir o parametro no array de rotas dentro do módulo. Ex.: { path: 'home/:param', component: HomeComponent }. Para enviar esses parametros para a rota, podemos utilizar o routerLink direto no link dentro do nosso template ou usar TypeScript usando o metodo navigate do Router
+
 10.  O que são *guards de rota* e para que são úteis?
+    Permitem ou não o acesso as rotas definidas. Pode ser utilizado para impedir um usuário comum acessar uma área destinada somente a administradores.
 11. O que é ``NgZone``? Em que momento deve ser utilizada?
 12. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
 
@@ -103,3 +119,10 @@ Ganhe pontos extras por:
 E não se esqueça, bugs e exceções são como Pokémons: *Gotta catch 'em all!*
 
 **Boa sorte! =)**
+
+### Executando a aplicação
+
+Após fazer o clone do repositório e basta rodar os seguintes comandos
+`cd frontend-developer`
+`npm install`
+`ng serve --open`
