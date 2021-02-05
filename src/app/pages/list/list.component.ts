@@ -47,7 +47,8 @@ export class ListComponent implements OnInit {
         this.pokemonService.getPokemonByUrl(d.url)
         .subscribe(detalhesPokemon => {
             this.pokemons.push({
-              name: d.name.replace(/-/g, " "),
+              displayName: d.name.replace(/-/g, " "),
+              name: d.name,
               sprite: detalhesPokemon.sprites.other['official-artwork'].front_default,
               types: detalhesPokemon.types,
             });

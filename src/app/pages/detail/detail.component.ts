@@ -25,6 +25,7 @@ export class DetailComponent implements OnInit {
     this.pokemonService.getPokemonByName(name)
       .subscribe(detailPokemon => {
         this.pokemon = detailPokemon;
+        this.pokemon.name = this.pokemon.name.replace(/-/g, " ");
 
         // busca os dados da especie do pokemon
         this.pokemonService.getPokemonByUrl(detailPokemon.species.url)
@@ -39,7 +40,7 @@ export class DetailComponent implements OnInit {
                 this.pokemonService.getPokemonByName(evolutionChain.chain.species.name)
                   .subscribe(detailPokemonEvolution => {
                     this.pokemon_evolution.push({
-                      name: evolutionChain.chain.species.name,
+                      name: evolutionChain.chain.species.name.replace(/-/g, " "),
                       min_level: 0,
                       sprite: detailPokemonEvolution.sprites.other['official-artwork'].front_default,
                     });
@@ -50,7 +51,7 @@ export class DetailComponent implements OnInit {
                 this.pokemonService.getPokemonByName(evolutionChain.chain.evolves_to[0].species.name)
                   .subscribe(detailPokemonEvolution => {
                     this.pokemon_evolution.push({
-                      name: evolutionChain.chain.evolves_to[0].species.name,
+                      name: evolutionChain.chain.evolves_to[0].species.name.replace(/-/g, " "),
                       min_level: evolutionChain.chain.evolves_to[0].evolution_details[0].min_level,
                       sprite: detailPokemonEvolution.sprites.other['official-artwork'].front_default,
                     });

@@ -17,7 +17,7 @@
                 <div mat-card-avatar>
                     <img src="{{ pokemon.sprite }}" alt="">
                 </div>
-                <mat-card-title class="pokemon-name">{{ pokemon.name }}</mat-card-title>
+                <mat-card-title class="pokemon-name">{{ pokemon.displayName }}</mat-card-title>
                 <mat-card-subtitle>
                     <label class="label-type" *ngFor="let item of pokemon.types">
                     <span class="bg-{{ item.type.name }}">{{ item.type.name }}</span>
