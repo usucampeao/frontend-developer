@@ -4,6 +4,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { ListComponent } from './pages/list/list.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'detail/:name', component: DetailComponent },
   { path: 'list', component: ListComponent },
 ];

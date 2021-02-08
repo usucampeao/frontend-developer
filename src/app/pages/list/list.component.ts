@@ -54,7 +54,6 @@ export class ListComponent implements OnInit {
             });
         });        
       }
-      console.log(this.pokemons);
     });
   }
 }
