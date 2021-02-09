@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'Pokedex';
-  constructor(private router: Router) { }
+  constructor() { }
   ngOnInit() { }
 }

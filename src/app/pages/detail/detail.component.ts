@@ -10,69 +10,52 @@ import { PokemonService } from '../../services/pokemon.service';
 export class DetailComponent implements OnInit {
 
   public pokemon: any;
-  public pokemon_species: any;
-  public pokemon_evolution: any = new Array();
-  public detail_pokemon_evolution: any;
+  public species: any;
+  public evolution_chain: any = new Array();
 
   constructor(private activatedRoute: ActivatedRoute, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.getDetailPokemon(this.activatedRoute.snapshot.paramMap.get('name'));
+    var name = this.activatedRoute.snapshot.params['name'];
+    this.getPokemon(name);
+    this.getPokemonSpecies(name);
   }
 
-  getDetailPokemon(name: any) {
+  getPokemon(name: any) {
     // busca os dados principais do pokemon
     this.pokemonService.getPokemonByName(name)
-      .subscribe(detailPokemon => {
-        this.pokemon = detailPokemon;
+      .subscribe(pokemon => {
+        this.pokemon = pokemon;
         this.pokemon.name = this.pokemon.name.replace(/-/g, " ");
+      });
+  }
+  
+  getPokemonSpecies(name: any) {
+    // busca os dados de especie do pokemon
+    this.pokemonService.getPokemonSpeciesByName(name)
+      .subscribe(species => {
+        this.species = species;
 
-        // busca os dados da especie do pokemon
-        this.pokemonService.getPokemonByUrl(detailPokemon.species.url)
-          .subscribe(speciesPokemon => {
-            this.pokemon_species = speciesPokemon;
+        // busca a cadeia de evolucao do pokemon
+        this.pokemonService.getPokemonByUrl(species.evolution_chain.url)
+          .subscribe(evolution_chain => {
+            var evoData = evolution_chain.chain;
+            do {
+              
+              var evoDetails = evoData['evolution_details'][0];
+              var splittedUrl = evoData.species.url.split('/', 7);
+              var idPokemon = splittedUrl[6];
 
-            // busca a cadeia de evolucao do pokemon
-            this.pokemonService.getPokemonByUrl(speciesPokemon.evolution_chain.url)
-              .subscribe(evolutionChain => {
-
-                // monta um array com as evolucoes
-                this.pokemonService.getPokemonByName(evolutionChain.chain.species.name)
-                  .subscribe(detailPokemonEvolution => {
-                    this.pokemon_evolution.push({
-                      name: evolutionChain.chain.species.name.replace(/-/g, " "),
-                      min_level: 0,
-                      sprite: detailPokemonEvolution.sprites.other['official-artwork'].front_default,
-                    });
-                  });
-
-                // verifica se o pokemon tem mais uma evolucao
-                // se tiver, inclui no array de evolucoes do pokemon
-                this.pokemonService.getPokemonByName(evolutionChain.chain.evolves_to[0].species.name)
-                  .subscribe(detailPokemonEvolution => {
-                    this.pokemon_evolution.push({
-                      name: evolutionChain.chain.evolves_to[0].species.name.replace(/-/g, " "),
-                      min_level: evolutionChain.chain.evolves_to[0].evolution_details[0].min_level,
-                      sprite: detailPokemonEvolution.sprites.other['official-artwork'].front_default,
-                    });
-                  });
-
-                  // verifica se o pokemon tem mais uma evolucao
-                  // se tiver, inclui no array de evolucoes do pokemon
-                  if (evolutionChain.chain.evolves_to[0].hasOwnProperty('evolves_to')) {
-                    this.pokemonService.getPokemonByName(evolutionChain.chain.evolves_to[0].evolves_to[0].species.name)
-                      .subscribe(detailPokemonEvolution => {
-                        this.pokemon_evolution.push({
-                          name: evolutionChain.chain.evolves_to[0].evolves_to[0].species.name,
-                          min_level: evolutionChain.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level,
-                          sprite: detailPokemonEvolution.sprites.other['official-artwork'].front_default,
-                        });
-                      });
-                  }
+              this.evolution_chain.push({
+                "sprite": this.pokemonService.baseUrlSprite + '/' + idPokemon + '.png',
+                "name": evoData.species.name,
+                "min_level": !evoDetails ? 1 : evoDetails.min_level,
               });
-
-              console.log(this.pokemon_evolution);
+            
+              evoData = evoData['evolves_to'][0];
+            } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
           });
+          console.log(this.evolution_chain);
       });
   }
 }

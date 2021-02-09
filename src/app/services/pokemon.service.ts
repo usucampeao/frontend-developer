@@ -8,7 +8,8 @@ import { retry, catchError, map } from 'rxjs/operators';
 })
 export class PokemonService {
 
-  url = 'https://pokeapi.co/api/v2/pokemon';
+  url = 'https://pokeapi.co/api/v2';
+  public baseUrlSprite = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -20,7 +21,7 @@ export class PokemonService {
 
   // Obtem a lista de pokemons
   getPokemons(offset: number): Observable<any> {
-    return this.httpClient.get<any>(this.url + '?offset='+offset+'&limit=20')
+    return this.httpClient.get<any>(this.url + '/pokemon?offset='+offset+'&limit=100')
       .pipe(
         retry(2),
         catchError(this.handleError))
@@ -37,7 +38,25 @@ export class PokemonService {
   
   // Obtem um pokemon pelo nome
   getPokemonByName(name: string): Observable<any> {
-    return this.httpClient.get<any>(this.url + '/' + name)
+    return this.httpClient.get<any>(this.url + '/pokemon/' + name)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+  
+  // Obtem a espécie de um pokemon pelo nome
+  getPokemonSpeciesByName(name: string): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/pokemon-species/' + name)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+  
+  // Obtem a cadeia de evolucoes de um pokemon pelo nome
+  getPokemonEvolutionById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.url + '/evolution-chain/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
