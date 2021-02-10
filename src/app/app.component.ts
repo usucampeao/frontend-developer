@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  title = 'Pokedex';
+  title = 'pokedex';
   constructor() { }
   ngOnInit() { }
 }
