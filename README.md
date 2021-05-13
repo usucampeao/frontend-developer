@@ -86,6 +86,7 @@ Temos alguns pré-requisitos:
 - Utilização de Angular 8+;
 - Uso de SASS/SCSS para CSS da aplicação;
 - Design responsivo;
+- Testes usando JEST serao obrigatorios !!!!
 - Ah, e não se esqueça de mostrar os sprites (as imagens) de cada Pokémon!
 
 Além disso, vamos avaliar como você organiza e documenta o projeto, e a estrutura de módulos, componentes, serviços e rotas que você criou.
