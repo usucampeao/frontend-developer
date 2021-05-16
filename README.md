@@ -50,6 +50,149 @@ A sua entrega será feita através de um Pull Request nesse repositório. Faça 
 11. O que é ``NgZone``? Em que momento deve ser utilizada?
 12. O que é *injeção de dependências* e por que isso é útil? Como você realiza injeção de dependências entre módulos?
 
+### Respostas
+1)
+    - Components
+    É também um tipo de diretiva com template, estilos e parte lógica que é o tipo de diretiva mais famoso entre todos no Angular2. Nesse tipo de diretiva, você pode usar outras diretivas, sejam elas personalizadas ou integradas na @Component
+    anotação
+    Ex: 
+    @Component({
+        selector: "my-app"
+        directives: [custom_directive_here]
+    })
+
+    - Diretivas estruturais
+    Usado para alterar o layout DOM adicionando e removendo elementos DOM.
+    Ex: 
+    *ngFor
+    <li *ngFor="let itens of objPokemon?.abilities">
+        <span class="attribute-list">{{itens?.ability?.name}}</span>
+    </li>
+
+    *ngIf
+    <span *ngIf="!hoverPokemon">
+        <img src="{{objPokemon?.sprites?.front_default}}" style="width: 50%;">
+    </span>
+
+    - Diretivas de atributo
+    Eles são usados ​​para dar comportamento ou estilo personalizado aos elementos existentes, aplicando algumas funções / lógica. Like ngStyleé uma diretiva de atributo para dar estilo dinamicamente aos elementos. Podemos criar nossa própria diretiva e usá-la como atributo de alguns elementos predefinidos ou personalizados
+    Ex:
+    import {Directive, ElementRef, Renderer, Input} from '@angular/core';
+
+    @Directive({
+    selector: '[Icheck]',
+    })
+    export class RadioCheckbox {
+    // code here
+    }
+
+
+2)
+    Service é o objeto usado para organizar e/ou compartilhar estados de objetos e as regras de negócio da aplicação. Ele é singleton, ou seja, há apenas uma instância disponível durante a vida útil da aplicação. Outra característica importante é a inicialização tardia (lazily instantiated), que só é efetuada quando o AngularJS identifica que tem algum componente dependente.
+    Ex:
+    export class pokeApiService{
+        constructor(private http: HttpClient) { }
+
+        listAllPokemons(){
+            return this.http.get('https://pokeapi.co/api/v2/pokemon/');
+        }
+    }
+
+3)
+    Para quem ainda não conhece as pipes do Angular, elas são uma maneira elegante de realizarmos transformações no nosso front-end. Com ela nos podemos criar funções ou filtros (como ela é chamado no inglês), que podem ser utilizadas em qualquer parte do template do nosso projeto.
+    Ex:
+    <p><span class="attribute-list">{{ objPokemon?.height| number : '.1-3' }} m</span></p>
+
+4)
+    O Angular fornece de duas vias de vinculação de dados para lidar com a sincronização de dados entre o model e a view.
+    Ex:
+    <h5 class="card-title namePokemon">Nº {{ objPokemon?.id}} - {{ objPokemon?.name }}</h5>
+
+5)
+    No exemplo abaixo tem o exemplo de como adicionar o listener "(click)" e após isso incluir o método que será executado ao realizar o clique
+    <div class="content-block content-block-full">
+        <a id="loadMore" (click)="onClickLoadMore()">
+                <span class="buttonLightBlue">Carregar mais Pokémon</span>
+            </a>
+    </div>
+
+6)
+    O "constructor" é o método default da classe. No Angular ele é usado principalmente para injetar dependências no componente
+
+    O "ngOnInit" faz parte do ciclo de vida do componente. Uma prática comum é usar ele para inicialização da lógica do componente.
+
+7)
+    A Promise lida com um único evento quando uma operação assíncrona é concluída ou falha.
+    Observable é como um Stream e permite passar zero ou mais eventos nos quais o retorno de chamada é chamado para cada evento.
+    Promisse
+    listaTodos() {
+        let agendamentos: Agendamento[] = [];
+
+        this._storage.forEach((agendamento: Agendamento) => {
+        agendamentos.push(agendamento);
+        });
+
+        return agendamentos;
+    }
+
+    Observable
+    return Observable.fromPromise(promise);
+
+8)
+    No caso dos Template-Driven a lógica é implementada no template do componente (HTML)
+    Template-Driven Forms funcionam de forma assíncrona
+    Para usar o Template-Driven Forms é necessário importar o módulo FormsModule
+    No caso dos Reactive Forms a lógica fica, geralmente, no componente e as suas validações são feitas programaticamente com TypeScript.
+    Reactive Forms funciona de forma síncrona
+    Para usar Reactive Forms deverá ser importado o módulo ReactiveFormsModule
+
+    Template-Driven 
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <p><label>Nome: </label><input type="text" name="nome" ngModel required></p>
+    <p><label>Cidade: </label><input type="text" name="cidade" ngModel maxlength="30"></p>
+    <p><label>CEP: </label><input type="text" name="cep" ngModel pattern="[0-9]{8}"></p>
+    <p><button type="submit" [disabled]="!f.valid">Submit</button></p>
+    </form>
+
+    Reactive Forms
+    .html
+    <form [formGroup]="registerForm">
+    <label>Primeiro Nome: </label>
+    <input type="text" formControlName="primeironome">
+    <button type="submit" [disabled]="registerForm.invalid">Enviar</button>
+    </form>
+
+    .ts
+    registerForm = new FormGroup({
+        primeironome: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    });
+
+9)
+    Utilizando o método "Navigate". Porém antes é necessário injetar no Router o componente.
+    Para utilizar parametros, precisamos primeiro definir o nome dele nas constantes do módulo de rotas
+    Ex: { path: 'home/:parametro', component: HomeComponent }
+
+    Depois podemos recuperar o valor pelo ActiveRoute
+    const par = this.activatedRoute.snapshot.paramMap.get('parametro');
+
+10)
+    Guardas de rotas, são o que permitem ou não o acesso a determinadas rotas. As guardas são cumulativas.
+    Possuem o método CanActivate retornando um true ou false para poder ou não acessar a rota.
+
+11)
+    O Zone lida com a maioria das APIs assíncronas, como setTimeout (), Promise.then () e addEventListenner. Portanto, você não precisa acionar a detecção de alterações para eles manualmente.
+    Ainda existem algumas APIs de terceiros que o Zone não controla. Nesses casos, o serviço NgZone fornece um método run () que permite que você execute uma função dentro da zona angular.
+    Deve ser utilizada quando algum método, função depende de algum retorno de API, ou de algum outro serviço. Desta forma é possivel garantir que todas as variáveis,objetos estarão preenchidas conforme a lógica escrita.
+
+12)
+    Injeção de Dependências é um tipo de Inversão de Controle e significa que uma classe não mais é responsável por criar ou buscar os objetos dos quais depende.
+    Isso serve para desacoplar as classes, evitando dependência direta entre elas.
+    Essa injeção pode ser feita pelo construtor
+    Como por exemplo abaixo:
+    constructor(private pokeapiservice: pokeApiService) { }
+
+
+
 Ah, e a mais importante de todas: Bulbassauro, Charmander ou Squirtle? =)
 
 ### Projeto: Criando uma Pokédex usando a PokéAPI

@@ -1,0 +1,46 @@
+<div class="toolbar" role="banner">
+    <a [routerLink]="['']">
+        <img
+        width="40"
+        alt="Pokédex Icon"
+        src="../../assets/pokedex-icon.png"
+        />
+    </a>
+  
+    POKEDEX - PokeAPI 
+</div>
+  
+<div class="content" role="main">
+    
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6" *ngFor="let item of objAllPokemons; let i = index">
+            <div class="card text-center mb-3" (click)="onClickButtonRedirect(item)">
+                <div class="card-body">
+                    <div (mouseenter)="item.hover=true" (mouseleave)="item.hover=false">
+                        <span *ngIf="item?.hover==true">
+                            <img src="{{item?.sprites?.back_default}}">
+                        </span>
+                        <span *ngIf="item?.hover==false">
+                            <img src="{{item?.sprites?.front_default}}">
+                        </span>
+                    </div>
+                    <p class="idPokemon"><span>Nº {{item?.id}}</span></p>
+                    <h5 class="card-title namePokemon">{{ item?.name }}</h5>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="col-6 p-1" *ngFor="let type of objAllPokemons[i].types">
+                                <p class="card-text typeStyle p-1" [ngClass]="type?.type?.name">{{type?.type?.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-block content-block-full">
+        <a id="loadMore" (click)="onClickLoadMore()">
+            <span class="buttonLightBlue">Carregar mais Pokémon</span>
+        </a>
+    </div>
+    
+</div>
