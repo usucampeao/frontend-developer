@@ -1,0 +1,54 @@
+
+<section>
+    <div class="row"> <!-- linha do filtro e da ordenação-->
+        <div class="col-sm-6" style="text-align: right;">
+            <mat-form-field class="form-grande" appearance="standard"> <!-- filtro -->
+                <mat-label>Filtro Pokemon</mat-label>
+                <input matInput [formControl]="filtro" >
+            </mat-form-field>
+        </div>
+        <div class="col-sm-6">
+            <mat-form-field class="form-grande" appearance="standard"> <!-- Ordenação -->
+                <mat-label>Ordenar</mat-label>
+                <mat-select [(value)]="ordem" (selectionChange)="ordenarListaPokemons()"> 
+                    <mat-option *ngFor="let ord of ordenador.ordens" [value]="ord">
+                        {{ordenador.ordenacao[ord]}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</section>
+
+<section>
+    <mat-grid-list *ngIf="!carregando; else loading"  cols="6" rowHeight="1:1.6"> <!-- grid com cards pokemon-->
+        <div *ngFor="let pokemon of listaTodosPokemons"> <!-- for loop que passa por todos os pokemons-->
+            <mat-grid-tile *ngIf="filtroPokemon(pokemon.name)"> <!-- filtra pokemons pelo nome -->
+                <mat-card class="card-pokemon">
+                    <mat-card-header class="display-contents">
+                        <mat-card-title> {{pokemon.name | titlecase }} </mat-card-title>
+                        <mat-card-subtitle> Nº{{pokemon.id}} </mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image src="{{pokemon.sprites.front_default}}" alt="Imagem do pokemon ${{pokemon.name}}">
+                    <mat-card-content>
+                        <div class="row">
+                            <mat-card class="col-sm-6 card-tipo-{{tipo.type.name}}" *ngFor="let tipo of pokemon.types">
+                                <mat-card-header class="display-contents">{{tipo.type.name}}</mat-card-header>
+                            </mat-card>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions class="centered pad-off">
+                        <button mat-raised-button color="primary" (click)="irParaDetalhes(pokemon)">Detalhes</button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</section>
+
+<ng-template #loading> <!-- Spinner de loading -->
+    <div class="padding-50">
+        <mat-spinner class="center-spinner" mode="indeterminate"></mat-spinner>
+    </div>
+</ng-template>

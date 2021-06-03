@@ -1,0 +1,39 @@
+
+<section *ngIf="pokemon">
+    <button mat-raised-button color="warn" class="botao-voltar" (click)="voltarParaListagem()">Voltar</button>
+    <div class="row">
+        <img class="col-sm-3" src="{{pokemon.sprites.front_default}}" alt="Imagem do pokemon ${{pokemon.name}}">
+        <div class="col-sm-9">
+            <mat-card>
+                <mat-card-header class="display-contents">
+                    <mat-card-title>{{pokemon.name | titlecase }}</mat-card-title>
+                    <mat-card-subtitle>Nº{{pokemon.id}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <h6 class="col-sm-2"> Peso médio: </h6>
+                        <label class="col-sm-2"> {{ pokemon.weight / 10 }} Kg</label>
+                        <h6 class="col-sm-2"> Tam. médio: </h6>
+                        <label class="col-sm-2"> {{ pokemon.height / 10}} Metros</label>
+                        <h6 class="col-sm-2"> Exp. base: </h6>
+                        <label class="col-sm-2"> {{ pokemon.base_experience}} xp</label>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-sm-2" *ngIf="pokemon.types.length == 1">Tipo: </h6>
+                        <h6 class="col-sm-2" *ngIf="pokemon.types.length > 1">Tipos: </h6>
+                        <mat-card class="col-sm-1 card-tipo-{{tipo.type.name}}" *ngFor="let tipo of pokemon.types">
+                            <mat-card-header class="display-contents">{{tipo.type.name}}</mat-card-header>
+                        </mat-card>
+                    </div>
+                    <h5>Atributos base: </h5>
+                    <div class="row groove-border centered">
+                        <div class="col-sm-2 groove-border" *ngFor="let atributo of pokemon.stats">
+                            <div><h6>{{atributo.stat.name }}</h6></div>
+                            <div><label>{{atributo.base_stat}}</label></div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</section>

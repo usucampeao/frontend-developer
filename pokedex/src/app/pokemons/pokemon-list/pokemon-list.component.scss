@@ -1,0 +1,9 @@
+.card-pokemon{
+    width: 80%;
+    height: 99%;
+    line-height: 1;
+}
+
+.display-contents{
+    display: contents; //Retira {display: flex} de .mat-card-header
+}

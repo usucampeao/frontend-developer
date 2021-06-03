@@ -1,0 +1,19 @@
+.imagem-pokemon{
+    width: 300px;
+}
+
+.botao-voltar {
+    margin: 10px;
+}
+
+.display-contents{
+    display: contents; //Retira {display: flex} de .mat-card-header
+}
+
+.groove-border{
+    border: groove;
+}
+
+.margin-#{px} {
+    margin: #{px}px;
+}

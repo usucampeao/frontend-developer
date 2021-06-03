@@ -1,0 +1,36 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-grande {
+    width: 300px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.pad-off{
+    padding: 0px;
+}
+.padding-50{
+    padding: 50px;
+}
+
+$tipos: 'water' #4592c4, 'fire' #fd7d24, 'grass' #9bcc50, 'poison' #b97fc9, 'ice' #51c4e7, 'psychic' #f366b9, 
+'bug' #729f3f, 'dark' #707070, 'electric' #eed535, 'fairy' #fdb9e9, 'fighting' #d56723, 'ghost' #7b62a3,
+'rock' #a38c21, 'normal' #a4acaf, 'steel' #9eb7b8, 'flying' #34ebc0, 'dragon' #eb3d34, 'ground' #a68142;
+@each $tuple in $tipos {
+    .card-tipo-#{nth($tuple, 1)} {
+        background-color: nth($tuple, 2);
+        color: white;
+        border-radius: 20px;
+        border-top: outset;
+        border-bottom: inset;
+        border-color: nth($tuple, 2);
+        text-align: center;
+    }
+}
+
+.center-spinner{
+    margin: 0 auto;
+}
