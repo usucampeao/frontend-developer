@@ -8,7 +8,8 @@ export interface Pokemon {
 }
 
 export function getPokemonImage(pokemon: Pokemon): string {
-  return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${getPokemonNumber(pokemon)}.png`;
+  return  `https://projectpokemon.org/images/normal-sprite/${pokemon.name}.gif `
+ 
 }
 
 export function getPokemonNumber(pokemon: Pokemon): string {
