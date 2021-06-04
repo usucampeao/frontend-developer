@@ -8,12 +8,21 @@
     width: 300px
 
     &__image
-        background: #f2f2f2
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 160px
+        width: 160px
+        background-image: url("/assets/pokeball-background.png")
+        background-repeat: no-repeat
+        background-size: 80px
+        background-position: center
+
+    &__gif
 
     &__number,
     &__name
         padding: 0 10px
-        
 
     &__number
         color: #313131
@@ -27,7 +36,6 @@
         font-size: 132%
         margin: 0.5em 0 5px
         text-transform: capitalize
-
 
     &__types
         display: flex
