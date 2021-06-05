@@ -8,6 +8,8 @@ import { PokemonService } from '../../-service/pokemon.service';
 })
 export class PokemonListComponent {
 
+  searchValue = "";
+  
   constructor(
     public pokemonService: PokemonService,
   ) {

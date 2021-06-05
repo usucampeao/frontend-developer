@@ -17,6 +17,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatIconModule } from '@angular/material/icon';
 import { QuestoesComponent } from './questoes/questoes.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SearchPipe } from './pipe/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
     PokemonListComponent,
     PokemonCardComponent,
     QuestoesComponent,
+    SearchPipe,
 
   ],
   exports: [
@@ -57,7 +60,9 @@ import { AppRoutingModule } from './app-routing.module';
     MatSelectModule,
     MatSidenavModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+
 
   ],
   providers: [
