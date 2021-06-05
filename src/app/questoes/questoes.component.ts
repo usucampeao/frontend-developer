@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './questoes.component.html',
   styleUrls: ['./questoes.component.sass']
 })
-export class QuestoesComponent implements OnInit {
+export class QuestoesComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  panelOpenState = false;
 
 }

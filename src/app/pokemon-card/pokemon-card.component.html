@@ -1,4 +1,6 @@
-<div class="pokemon-card" *ngIf="pokemon">
+<button class="pokemon-card" mat-raised-button (click)="openBottomSheet()">
+<div *ngIf="pokemon">
+
     <div class="pokemon-card__image">
         <img class="pokemon-card__gif" [src]="getPokemonImage(pokemon)" alt="Pokemon Image">
     </div>
@@ -6,15 +8,16 @@
     <div class="pokemon-card__number">
         Nº {{ getPokemonNumber(pokemon) }}
     </div>
-
+   
     <div class="pokemon-card__name">
         {{ pokemon.name }}
     </div>
 
     <div class="pokemon-card__types">
-        <div class="pokemon-card__type" *ngFor="let type of pokemon.types"
-            [class]="'pokemon-card__type--' + type.toLowerCase()">
+        <div class="pokemon-card__type" *ngFor="let type of pokemon.types" [class]="'pokemon-card__type--' + type.toLowerCase()">
             {{ type }}
         </div>
+  
     </div>
 </div>
+</button>

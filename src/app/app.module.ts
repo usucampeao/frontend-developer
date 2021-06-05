@@ -19,6 +19,10 @@ import { QuestoesComponent } from './questoes/questoes.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchPipe } from './pipe/search.pipe';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBottomSheet, MatBottomSheetModule, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { PokemonDataComponent } from './pokemon-data/pokemon-data.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -32,6 +36,12 @@ import { FormsModule } from '@angular/forms';
     PokemonCardComponent,
     QuestoesComponent,
     SearchPipe,
+    PokemonDataComponent
+
+  ],
+  entryComponents: [
+
+    PokemonDataComponent
 
   ],
   exports: [
@@ -44,7 +54,7 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    OverlayModule,
+    OverlayModule
 
 
   ],
@@ -61,7 +71,10 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatIconModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatExpansionModule
 
 
   ],
