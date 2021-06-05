@@ -1,18 +1,22 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller"></p>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
+        <div class="H1">
+            <H1 class="h1">Pokedex Usucampeão</H1>
+        </div>
+        <div class="par">
+            <p><a class="link__p" routerLink="questoes" routerLinkActive="active">Questões Respondidas</a></p>
+            <p><a class="link__p" href="https://vcpersike.github.io/">About</a></p>
+            <p *ngIf="showFiller"></p>
+        </div>
     </mat-drawer>
     <div class="example-sidenav-content">
         <mat-toolbar color="primary">
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
               <mat-icon>menu</mat-icon>
             </button>
-            <span>My App</span>
+            <span><a class="link" routerLink="" routerLinkActive="active">UsuCampeão</a></span>
         </mat-toolbar>
     </div>
-    <app-pokemon-list></app-pokemon-list>
+    <router-outlet></router-outlet>
+
 </mat-drawer-container>

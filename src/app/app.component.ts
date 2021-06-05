@@ -9,6 +9,6 @@ import { VERSION } from '@angular/forms';
 export class AppComponent {
   name = 'Angular' + VERSION.major;
   title = 'TPokemon';
-  showFiller = false
+  showFiller = false;
 
 }
