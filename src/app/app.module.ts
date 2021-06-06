@@ -20,11 +20,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchPipe } from './pipe/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatBottomSheet, MatBottomSheetModule, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatBottomSheet  } from '@angular/material/bottom-sheet';
 import { PokemonDataComponent } from './pokemon-data/pokemon-data.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -36,13 +38,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     PokemonCardComponent,
     QuestoesComponent,
     SearchPipe,
-    PokemonDataComponent
-
-  ],
-  entryComponents: [
-
-    PokemonDataComponent
-
+    PokemonDataComponent,
   ],
   exports: [
 
@@ -74,12 +70,17 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     MatButtonModule,
     MatBottomSheetModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule,
+    MatTabsModule
+
+
 
 
   ],
   providers: [
     PokemonService,
+
   ],
   bootstrap: [AppComponent],
 })

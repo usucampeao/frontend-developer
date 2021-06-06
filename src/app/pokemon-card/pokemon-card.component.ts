@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { getPokemonImage, getPokemonNumber, Pokemon } from '../../-model/Pokemon';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { PokemonDataComponent } from '../pokemon-data/pokemon-data.component';
 
 @Component({
@@ -16,9 +16,9 @@ export class PokemonCardComponent {
 
   public getPokemonNumber = getPokemonNumber;
 
-  constructor(private _bottomSheet: MatBottomSheet) {}
+  constructor(private _bottomSheet: MatBottomSheet) { }
 
   openBottomSheet(): void {
-    this._bottomSheet.open(PokemonDataComponent);
+    this._bottomSheet.open(PokemonDataComponent, {data: this.pokemon});
   }
 }

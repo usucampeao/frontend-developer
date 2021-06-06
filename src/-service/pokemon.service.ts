@@ -24,11 +24,20 @@ export class PokemonService {
         );
       }),
       mergeMap(value => value),
-    ).subscribe((result: any) => this.pokemons[result.id] = {
-      image: result.sprites.front_default,
-      number: result.id,
-      name: result.name,
-      types: result.types.map((t: { type: { name: any; }; }) => t.type.name),
+    ).subscribe((result: any) => {
+      this.pokemons[result.id] = {
+        image: result.sprites.front_default,
+        number: result.id,
+        name: result.name,
+        abilities: result.abilities,
+        base_experience: result.base_experience,
+        height: result.height,
+        location_area_encounters: result.location_area,
+        species: result.species,
+        stats: result.stats,
+        weight: result.weight,
+        types: result.types.map((t: { type: { name: any; }; }) => t.type.name),
+      }
     });
   }
 }
